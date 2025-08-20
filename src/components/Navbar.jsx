@@ -168,7 +168,13 @@ const Navbar = () => {
                                 fontSize: "2.2rem",
                                 fontFamily: "'Bangers', system-ui",
                                 fontWeight: "bold",
-                                color: "#FF69B4", 
+                                color: "#FF69B4",
+                                textShadow: `
+                                    -1px -1px 0 #FFFFFF,  
+                                    1px -1px 0 #FFFFFF,
+                                    -1px  1px 0 #FFFFFF,
+                                    1px  1px 0 #FFFFFF
+                                `
                             }}
                         >
                             <Box as="span">Σ</Box>
@@ -184,18 +190,18 @@ const Navbar = () => {
                     mb="20px"
                     />
                     <Flex
-                        as="ul"
-                        display={isMobile ? 'none' : 'flex'}
-                        listStyleType="none"
-                        ml="auto"
-                        alignItems="center"
-                        gap="2rem"
-                        flex="1"
-                        justifyContent="space-evenly"
-                        whiteSpace="nowrap"
+                    as="ul"
+                    display={isMobile ? 'none' : 'flex'}
+                    listStyleType="none"
+                    ml="auto"
+                    alignItems="center"
+                    gap="2rem"
+                    flex="1"
+                    justifyContent="space-evenly"
+                    whiteSpace="nowrap"
                     >
-                        {['ABOUT', 'SOCIAL', 'MENU', 'CONTACT'].map((text, index) => (
-                    <ChakraLink
+                    {['ABOUT', 'SOCIAL', 'MENU', 'CONTACT'].map((text, index) => (
+                        <ChakraLink
                         key={index}
                         as={ScrollLink}
                         to={text.replace(' ', '-').toLowerCase()}
@@ -206,18 +212,25 @@ const Navbar = () => {
                         fontSize="xl"
                         fontWeight="extrabold"
                         fontFamily="'Bangers', system-ui"
-                        color="#FF69B4" 
+                        color="#FF69B4"
                         position="relative"
+                        textShadow={`
+                            -1px -1px 0 #FFF,
+                            1px -1px 0 #FFF,
+                            -1px  1px 0 #FFF,
+                            1px  1px 0 #FFF,
+                            0px  0px 6px #FFF
+                        `}
                         _hover={{
                             transform: 'scale(1.05)',
                             transition: 'transform 0.2s',
-                            color: '#FF69B4', 
+                            color: '#FF69B4',
                         }}
                         style={{ cursor: 'pointer' }}
-                    >
+                        >
                         {text}
-                    </ChakraLink>
-                        ))}
+                        </ChakraLink>
+                    ))}
                     </Flex>
                     {isOpen && (
                     <motion.div
@@ -247,9 +260,17 @@ const Navbar = () => {
                                     />
                                 </Box>
                                 <IconButton
-                                    icon={<CloseIcon w={7} h={7} />}
+                                    icon={
+                                        <CloseIcon
+                                            w={7}
+                                            h={7}
+                                            style={{
+                                                filter: 'drop-shadow(2px 2px 0 #FFFFFF) drop-shadow(-1px -1px 0 #FFFFFF)'
+                                            }}
+                                        />
+                                    }
                                     marginRight={10}
-                                    color="#FFD500" 
+                                    color="#FFD500"
                                     aria-label="Close Menu"
                                     variant="outline"
                                     onClick={onClose}
@@ -261,8 +282,8 @@ const Navbar = () => {
                                 />
                             </Flex>
                             <Flex as="ul" flexDirection="column" alignItems="flex-start" gap="1rem" mt="1rem">
-                                {['ABOUT', 'SOCIAL', 'MENU', 'CONTACT'].map((text, index) => (
-                            <ChakraLink
+                            {['ABOUT', 'SOCIAL', 'MENU', 'CONTACT'].map((text, index) => (
+                                <ChakraLink
                                 key={index}
                                 as={ScrollLink}
                                 to={text.replace(' ', '-').toLowerCase()}
@@ -270,20 +291,25 @@ const Navbar = () => {
                                 smooth={true}
                                 offset={-100}
                                 duration={500}
-                                fontSize="lg"
+                                fontSize="2xl"
                                 fontFamily="'Bangers', system-ui"
                                 fontWeight="bold"
-                                color="#FFD500" 
+                                color="#FFD500"
                                 _hover={{
                                     transform: 'scale(1.05)',
                                     transition: 'transform 0.2s',
                                     color: "#FFD500",
                                 }}
-                                style={{ cursor: 'pointer' }}
-                            >
+                                style={{
+                                    cursor: 'pointer',
+                                    textShadow: "0 2px 4px rgba(255,255,255,0.9)", 
+                                    WebkitTextStroke: "1px white", 
+                                    WebkitTextFillColor: "#FFD500", 
+                                }}
+                                >
                                 {text}
-                            </ChakraLink>
-                                ))}
+                                </ChakraLink>
+                            ))}
                             </Flex>
                         </Box>
                     </motion.div>
