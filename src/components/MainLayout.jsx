@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Stock from './Stock.jsx'; 
+import SocialMedia from './SocialMedia.jsx';
 import Cards from './Cards.jsx';
 import Comics from './Comics.jsx';
 import VintageGames from './VintageGames.jsx';
@@ -14,6 +15,7 @@ const MainLayout = () => {
   return (
     <>     
         <Stock /> 
+        <SocialMedia />
         <Cards />
         <Comics />
         <VintageGames />
