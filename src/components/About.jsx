@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState, useRef } from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
@@ -89,9 +88,7 @@ const About = () => {
           ))}
         </Text>
       )}
-
-      {/* Hidden audio element */}
-      <audio ref={audioRef} src="/fun-sound.mp3" preload="auto" />
+      <audio ref={audioRef} src="/bubble-pop.mp3" preload="auto" />
     </Box>
   );
 };
