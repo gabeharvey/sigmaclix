@@ -156,28 +156,27 @@ const Navbar = () => {
                         </motion.div>
                         ) : (
                         <motion.div
-                            whileHover={{ scale: 1.3 }}
-                            animate={{ scale: [1, 1.1, 1] }}
-                            transition={{
-                                duration: 2,
-                                repeat: Infinity,
-                                repeatType: "loop",
-                                ease: "easeInOut",
-                            }}
-                            style={{
-                                fontSize: "2.2rem",
-                                fontFamily: "'Bangers', system-ui",
-                                fontWeight: "bold",
-                                color: "#FF69B4",
-                                textShadow: `
-                                    -1px -1px 0 #FFFFFF,  
-                                    1px -1px 0 #FFFFFF,
-                                    -1px  1px 0 #FFFFFF,
-                                    1px  1px 0 #FFFFFF
-                                `
-                            }}
+                        whileHover={{ scale: 1.3 }}
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            ease: "easeInOut",
+                        }}
+                        style={{
+                            fontSize: "2.8rem",
+                            fontFamily: "'Bangers', system-ui",
+                            fontWeight: "bold",
+                            color: "#FF69B4",
+                            textShadow: `
+                            1px 1px 0 #FFFFFF,
+                            2px 2px 0 #FFFFFF,
+                            3px 3px 0 #FFFFFF
+                            `,
+                        }}
                         >
-                            <Box as="span">Σ</Box>
+                        <Box as="span">Σ</Box>
                         </motion.div>
                         )
                     }
@@ -269,7 +268,7 @@ const Navbar = () => {
                                             }}
                                         />
                                     }
-                                    marginRight={10}
+                                    marginRight={2}
                                     color="#FFD500"
                                     aria-label="Close Menu"
                                     variant="outline"
