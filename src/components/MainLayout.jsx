@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import Cards from './Cards.jsx';
+import Comics from './Comics.jsx';
 import Stock from './Stock.jsx'; 
 
 const MainLayout = () => {
@@ -7,8 +9,10 @@ const MainLayout = () => {
   }, []); 
 
   return (
-    <>
-      <Stock /> 
+    <>     
+        <Stock /> 
+        <Cards />
+        <Comics />
     </>
   );
 };
