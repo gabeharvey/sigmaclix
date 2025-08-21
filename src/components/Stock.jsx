@@ -45,7 +45,7 @@ const Stock = () => {
               role="group"
               bg="#FFF9F0"
               borderRadius="15px"
-              border="16px solid #FFFFFF"
+              border="8px solid #FFFFFF"
               boxShadow="0 6px 15px rgba(0,0,0,0.2)"
               overflow="hidden"
               w={{ base: '120px', md: '180px', lg: '220px' }}
@@ -71,7 +71,7 @@ const Stock = () => {
               />
               <Text
                 mt="0.5rem"
-                fontSize={{ base: '1.2rem', md: '1.5rem', lg: '1.8rem' }}
+                fontSize={{ base: '1rem', md: '1.3rem', lg: '1.6rem' }}
                 fontWeight="bold"
                 color={item.color}
                 position="absolute"
