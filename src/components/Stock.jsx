@@ -48,8 +48,8 @@ const Stock = () => {
               border="16px solid #FFFFFF"
               boxShadow="0 6px 15px rgba(0,0,0,0.2)"
               overflow="hidden"
-              w={{ base: '160px', md: '220px', lg: '260px' }}
-              h={{ base: '220px', md: '280px', lg: '320px' }}
+              w={{ base: '120px', md: '180px', lg: '220px' }}
+              h={{ base: '180px', md: '240px', lg: '300px' }}
               display="flex"
               flexDirection="column"
               alignItems="center"
