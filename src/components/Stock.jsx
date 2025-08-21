@@ -24,6 +24,12 @@ const Stock = () => {
         textAlign="center"
         mb="2rem"
         color="#FF69B4"
+        textShadow="
+          -2px -2px 0 #FFFFFF,  
+           2px -2px 0 #FFFFFF,
+          -2px  2px 0 #FFFFFF,
+           2px  2px 0 #FFFFFF
+        "
       >
         Stock
       </Text>

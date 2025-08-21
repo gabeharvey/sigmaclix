@@ -1,5 +1,5 @@
 import { Box, Flex, Text, Icon, Link } from '@chakra-ui/react';
-import { FaInstagram, FaTiktok, FaSnapchatGhost } from 'react-icons/fa';
+import { FaInstagram, FaTiktok, FaSnapchatGhost, FaYoutube } from 'react-icons/fa';
 import '../App.css';
 
 const SocialMedia = () => {
@@ -7,6 +7,7 @@ const SocialMedia = () => {
     { id: 1, name: 'Instagram', icon: FaInstagram, url: 'https://www.instagram.com/sigma_clix/', color: '#E1306C' },
     { id: 2, name: 'TikTok', icon: FaTiktok, url: 'https://www.tiktok.com/@sigma_clix', color: '#69C9D0' },
     { id: 3, name: 'Snapchat', icon: FaSnapchatGhost, url: 'https://www.snapchat.com', color: '#FFFFFF' },
+    { id: 4, name: 'YouTube', icon: FaYoutube, url: 'https://www.youtube.com/@sigma_clix_live', color: '#FF0000' },
   ];
 
   return (
@@ -23,6 +24,12 @@ const SocialMedia = () => {
         textAlign="center"
         mb="2rem"
         color="#FF69B4"
+        textShadow="
+          -2px -2px 0 #FFFFFF,  
+           2px -2px 0 #FFFFFF,
+          -2px  2px 0 #FFFFFF,
+           2px  2px 0 #FFFFFF
+        "
       >
         Get Drops
       </Text>
