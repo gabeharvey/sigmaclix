@@ -36,7 +36,7 @@ const Stock = () => {
             to={item.target}  
             smooth={true}
             duration={500}
-            offset={-400}
+            offset={-300}
           >
             <Box
               role="group"
