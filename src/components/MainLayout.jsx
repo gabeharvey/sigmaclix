@@ -6,6 +6,7 @@ import Cards from './Cards.jsx';
 import Comics from './Comics.jsx';
 import VintageGames from './VintageGames.jsx';
 import Toys from './Toys.jsx';
+import Contact from './Contact.jsx';
 
 
 const MainLayout = () => {
@@ -22,6 +23,7 @@ const MainLayout = () => {
         <Comics />
         <VintageGames />
         <Toys />
+        <Contact />
     </>
   );
 };
