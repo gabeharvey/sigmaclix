@@ -3,10 +3,10 @@ import '../App.css';
 
 const Cards = () => {
   const cards = [
-    { id: 1, name: 'Venom', image: '/venom.png', price: '$200' },
-    { id: 2, name: 'Hulk', image: '/hulk.png', price: '$100' },
-    { id: 3, name: 'Spider-Man', image: '/spider-man.png', price: '$500' },
-    { id: 4, name: 'Wonder Woman', image: '/wonder-woman.png', price: '$200' },
+    { id: 1, name: '2025 Marvel Chrome Storm 1/1', image: '/storm-super-2025.jpg', price: '$80000' },
+    { id: 2, name: 'Shohei Ohtani RC', image: '/ohtani-rc.jpg', price: '$20000' },
+    { id: 3, name: 'Aaron Judge RC 1/1', image: '/judge-rc-1.jpg', price: '$10000' },
+    { id: 4, name: 'Dak Prescott Prizm RC 2/5', image: '/dak-rc-5.jpg', price: '$25000' },
   ];
 
   return (

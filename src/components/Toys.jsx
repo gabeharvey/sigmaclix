@@ -3,10 +3,10 @@ import '../App.css';
 
 const Toys = () => {
   const toys = [
-    { id: 1, name: 'Dumbo Glow', image: '/toys-placeholder.png', price: '$250' },
-    { id: 2, name: 'Metallic Iron Man', image: '/toys-placeholder.png', price: '$400' },
-    { id: 3, name: 'Goku Super Saiyan', image: '/toys-placeholder.png', price: '$350' },
-    { id: 4, name: 'Chase Batman', image: '/toys-placeholder.png', price: '$500' },
+    { id: 1, name: 'Funko Pop! Wonder Woman', image: '/wonder-woman-funko.jpg', price: '$40' },
+    // { id: 2, name: 'Metallic Iron Man', image: '/toys-placeholder.png', price: '$400' },
+    // { id: 3, name: 'Goku Super Saiyan', image: '/toys-placeholder.png', price: '$350' },
+    // { id: 4, name: 'Chase Batman', image: '/toys-placeholder.png', price: '$500' },
   ];
 
   return (

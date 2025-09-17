@@ -3,15 +3,15 @@ import '../App.css';
 
 const Comics = () => {
   const comics = [
-    { id: 1, name: 'Elektra', image: '/comic-placeholder.png', price: '$180' },
-    { id: 2, name: 'Shang-Chi', image: '/comic-placeholder.png', price: '$200' },
-    { id: 3, name: 'Rogue', image: '/comic-placeholder.png', price: '$170' },
-    { id: 4, name: 'Blade', image: '/comic-placeholder.png', price: '$260' },
-    { id: 5, name: 'Emma Frost', image: '/comic-placeholder.png', price: '$240' },
-    { id: 6, name: 'Luke Cage', image: '/comic-placeholder.png', price: '$210' },
-    { id: 7, name: 'Mantis', image: '/comic-placeholder.png', price: '$160' },
-    { id: 8, name: 'Beta Ray Bill', image: '/comic-placeholder.png', price: '$280' },
-    { id: 9, name: 'Misty Knight', image: '/comic-placeholder.png', price: '$190' },
+    { id: 1, name: 'Amaranth 1st Appearance 9.8', image: '/amaranth-1st.jpg', price: '$300' },
+    // { id: 2, name: 'Shang-Chi', image: '/comic-placeholder.png', price: '$200' },
+    // { id: 3, name: 'Rogue', image: '/comic-placeholder.png', price: '$170' },
+    // { id: 4, name: 'Blade', image: '/comic-placeholder.png', price: '$260' },
+    // { id: 5, name: 'Emma Frost', image: '/comic-placeholder.png', price: '$240' },
+    // { id: 6, name: 'Luke Cage', image: '/comic-placeholder.png', price: '$210' },
+    // { id: 7, name: 'Mantis', image: '/comic-placeholder.png', price: '$160' },
+    // { id: 8, name: 'Beta Ray Bill', image: '/comic-placeholder.png', price: '$280' },
+    // { id: 9, name: 'Misty Knight', image: '/comic-placeholder.png', price: '$190' },
   ];
 
   return (

@@ -3,10 +3,10 @@ import '../App.css';
 
 const VintageGames = () => {
   const games = [
-    { id: 1, name: 'Super Mario Bros.', image: '/vintage-games-placeholder.png', price: '$300' },
-    { id: 2, name: 'The Legend of Zelda', image: '/vintage-games-placeholder.png', price: '$450' },
-    { id: 3, name: 'Metroid', image: '/vintage-games-placeholder.png', price: '$350' },
-    { id: 4, name: 'Castlevania', image: '/vintage-games-placeholder.png', price: '$400' },
+    { id: 1, name: '5 screw Kung Fu in Box', image: '/kung-fu-box.jpg', price: '$200' },
+    // { id: 2, name: 'The Legend of Zelda', image: '/vintage-games-placeholder.png', price: '$450' },
+    // { id: 3, name: 'Metroid', image: '/vintage-games-placeholder.png', price: '$350' },
+    // { id: 4, name: 'Castlevania', image: '/vintage-games-placeholder.png', price: '$400' },
   ];
 
   return (
