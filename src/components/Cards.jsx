@@ -3,10 +3,10 @@ import '../App.css';
 
 const Cards = () => {
   const cards = [
-    { id: 1, name: '2025 Topps Marvel Chrome Storm 1/1', image: '/storm-super-2025.jpg', price: '$80000' },
-    { id: 2, name: '2018 Topps Heritage Shohei Ohtani RC Auto', image: '/ohtani-rc.jpg', price: '$20000' },
-    { id: 3, name: '2017 Gypsy Queen Aaron Judge RC 1/1', image: '/judge-rc-1.jpg', price: '$10000' },
-    { id: 4, name: '2016 Panini Prizm Dak Prescott RC 2/5', image: '/dak-rc-5.jpg', price: '$25000' },
+    { id: 1, name: '2025 Topps Marvel Chrome Storm 1/1', image: '/storm-super-2025.jpg', price: '$80,000' },
+    { id: 2, name: '2018 Topps Heritage Shohei Ohtani RC Auto', image: '/ohtani-rc.jpg', price: '$20,000' },
+    { id: 3, name: '2017 Gypsy Queen Aaron Judge RC 1/1', image: '/judge-rc-1.jpg', price: '$10,000' },
+    { id: 4, name: '2016 Panini Prizm Dak Prescott RC 2/5', image: '/dak-rc-5.jpg', price: '$25,000' },
   ];
 
   return (
