@@ -3,7 +3,7 @@ import '../App.css';
 
 const Comics = () => {
   const comics = [
-    { id: 1, name: 'Amaranth 1st Appearance 9.8', image: '/amaranth-1st.jpg', price: '$300' },
+    { id: 1, name: 'Amaranth 1st Appearance CGC 9.8', image: '/amaranth-1st.jpg', price: '$300' },
     // { id: 2, name: 'Shang-Chi', image: '/comic-placeholder.png', price: '$200' },
     // { id: 3, name: 'Rogue', image: '/comic-placeholder.png', price: '$170' },
     // { id: 4, name: 'Blade', image: '/comic-placeholder.png', price: '$260' },
