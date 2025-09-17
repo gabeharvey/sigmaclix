@@ -4,8 +4,8 @@ import '../App.css';
 const Cards = () => {
   const cards = [
     { id: 1, name: '2025 Marvel Topps Chrome Storm 1/1 🔥SLAY🔥', image: '/storm-super-2025.jpg', price: '$80,000' },
-    { id: 2, name: '2025 Marvel Topps Chrome Web-Head 1/5 🌶️SPICY🌶️', image: '/web-head-5.jpg', price: '$2,500' },
-    { id: 3, name: '2025 Marvel Topps Chrome Spider-Girl 1/5 ✨LIT✨', image: '/spider-girl-5.jpg', price: '$4,000' },
+    { id: 2, name: '2025 Marvel Topps Chrome Web-Head 1st Appearance 1/5 🌶️SPICY🌶️', image: '/web-head-5.jpg', price: '$2,500' },
+    { id: 3, name: '2025 Marvel Topps Chrome Spider-Girl 1st Appearance 1/5 ✨LIT✨', image: '/spider-girl-5.jpg', price: '$4,000' },
     { id: 4, name: '2018 Topps Heritage Shohei Ohtani RC Auto', image: '/ohtani-rc.jpg', price: '$20,000' },
     { id: 5, name: '2017 Gypsy Queen Aaron Judge RC 1/1', image: '/judge-rc-1.jpg', price: '$10,000' },
     { id: 6, name: '2016 Panini Prizm Dak Prescott RC 2/5', image: '/dak-rc-5.jpg', price: '$25,000' },
