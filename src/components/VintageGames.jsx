@@ -2,11 +2,11 @@ import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom'; 
 import '../App.css'; 
 
-const Toys = () => {
+const VintageGames = () => {
   const navigate = useNavigate(); 
 
-  const toys = [
-    { id: 1, name: 'Funko Pop! Wonder Woman', image: '/wonder-woman-funko.jpg', price: '$40' },
+  const games = [
+    { id: 1, name: 'Kung Fu 5 Screw Original NES in Box Unsealed', image: '/kung-fu-box.jpg', price: '$200' },
   ];
 
   const clickSound = new Audio('/power-up.mp3');
@@ -19,7 +19,7 @@ const Toys = () => {
 
   return (
     <Box
-      id="toys"
+      id="vintage-games"
       minH="100vh"
       bg="#FFD500"
       px={{ base: '1rem', md: '3rem', lg: '5rem' }}
@@ -39,16 +39,16 @@ const Toys = () => {
            2px  2px 0 #FFFFFF
         "
       >
-        Toys
+        Vintage Games
       </Text>
 
       <Flex wrap="wrap" justify="center" gap={{ base: '1rem', md: '2rem' }}>
-        {toys.map((toy) => (
+        {games.map((game) => (
           <Box
-            key={toy.id}
-            bg="#FFF9F0" 
+            key={game.id}
+            bg="#FFF9F0"
             borderRadius="15px"
-            boxShadow="0 6px 15px rgba(0,0,0,0.2)" 
+            boxShadow="0 6px 15px rgba(0,0,0,0.2)"
             overflow="hidden"
             w={{ base: '150px', md: '200px', lg: '220px' }}
             textAlign="center"
@@ -60,8 +60,8 @@ const Toys = () => {
             }}
           >
             <Image
-              src={toy.image}
-              alt={toy.name}
+              src={game.image}
+              alt={game.name}
               w="100%"
               h="200px"
               objectFit="cover"
@@ -69,14 +69,15 @@ const Toys = () => {
               mb="0.5rem"
             />
             <Text fontSize={{ base: '1rem', md: '1.2rem' }} fontWeight="bold" color="#00B3B3">
-              {toy.name}
+              {game.name}
             </Text>
             <Text fontSize={{ base: '0.9rem', md: '1rem' }} color="#FF69B4">
-              {toy.price}
+              {game.price}
             </Text>
           </Box>
         ))}
       </Flex>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
@@ -103,4 +104,4 @@ const Toys = () => {
   );
 };
 
-export default Toys;
+export default VintageGames;
