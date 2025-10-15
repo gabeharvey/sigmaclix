@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import About from './About.jsx';
 import Stock from './Stock.jsx'; 
 import SocialMedia from './SocialMedia.jsx';
 import Contact from './Contact.jsx';
 
 const MainLayout = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, []);
+
   return (
     <>
       <div id="about"><About /></div>
