@@ -1,17 +1,25 @@
-import { Box, Flex, Text, Image } from '@chakra-ui/react';
+import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom'; 
 import '../App.css'; 
 
-const VintageGames = () => {
-  const games = [
-    { id: 1, name: '5 screw Kung Fu in Box', image: '/kung-fu-box.jpg', price: '$200' },
-    // { id: 2, name: 'The Legend of Zelda', image: '/vintage-games-placeholder.png', price: '$450' },
-    // { id: 3, name: 'Metroid', image: '/vintage-games-placeholder.png', price: '$350' },
-    // { id: 4, name: 'Castlevania', image: '/vintage-games-placeholder.png', price: '$400' },
+const Toys = () => {
+  const navigate = useNavigate(); 
+
+  const toys = [
+    { id: 1, name: 'Funko Pop! Wonder Woman', image: '/wonder-woman-funko.jpg', price: '$40' },
   ];
+
+  const clickSound = new Audio('/power-up.mp3');
+
+  const handleHomeClick = () => {
+    clickSound.play(); 
+    navigate('/'); 
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+  };
 
   return (
     <Box
-      id="vintage-games"
+      id="toys"
       minH="100vh"
       bg="#FFD500"
       px={{ base: '1rem', md: '3rem', lg: '5rem' }}
@@ -31,17 +39,13 @@ const VintageGames = () => {
            2px  2px 0 #FFFFFF
         "
       >
-        Vintage Games
+        Toys
       </Text>
 
-      <Flex
-        wrap="wrap"
-        justify="center"
-        gap={{ base: '1rem', md: '2rem' }}
-      >
-        {games.map((game) => (
+      <Flex wrap="wrap" justify="center" gap={{ base: '1rem', md: '2rem' }}>
+        {toys.map((toy) => (
           <Box
-            key={game.id}
+            key={toy.id}
             bg="#FFF9F0" 
             borderRadius="15px"
             boxShadow="0 6px 15px rgba(0,0,0,0.2)" 
@@ -56,32 +60,47 @@ const VintageGames = () => {
             }}
           >
             <Image
-              src={game.image}
-              alt={game.name}
+              src={toy.image}
+              alt={toy.name}
               w="100%"
               h="200px"
               objectFit="cover"
               borderRadius="10px"
               mb="0.5rem"
             />
-            <Text
-              fontSize={{ base: '1rem', md: '1.2rem' }}
-              fontWeight="bold"
-              color="#00B3B3" 
-            >
-              {game.name}
+            <Text fontSize={{ base: '1rem', md: '1.2rem' }} fontWeight="bold" color="#00B3B3">
+              {toy.name}
             </Text>
-            <Text
-              fontSize={{ base: '0.9rem', md: '1rem' }}
-              color="#FF69B4" 
-            >
-              {game.price}
+            <Text fontSize={{ base: '0.9rem', md: '1rem' }} color="#FF69B4">
+              {toy.price}
             </Text>
           </Box>
         ))}
+      </Flex>
+      <Flex justify="center" mt="3rem">
+        <Button
+          onClick={handleHomeClick}
+          fontFamily="'Bangers', system-ui"
+          fontSize={{ base: '1.8rem', md: '2.2rem' }}
+          bg="#FFFFFF"
+          color="#FF69B4"
+          px="3rem"
+          py="1.5rem"
+          borderRadius="25px 10px 25px 15px"
+          border="3px solid #FF69B4"
+          boxShadow='0 0 0 4px #FFFFFF, 0 0 0 6px #FF69B4'
+          _hover={{ 
+            transform: 'scale(1.1) rotate(-1deg)',
+            boxShadow: '0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FF69B4',
+            bg: '#FFFFFF'
+          }}
+          transition="all 0.3s ease-in-out"
+        >
+          Home
+        </Button>
       </Flex>
     </Box>
   );
 };
 
-export default VintageGames;
+export default Toys;
