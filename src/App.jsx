@@ -1,7 +1,8 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'; 
-import { Outlet } from 'react-router-dom'; 
-import Navbar from '../src/components/Navbar.jsx';
-import Footer from '../src/components/Footer.jsx';
+import { Outlet, useLocation } from 'react-router-dom'; 
+import { useEffect } from 'react';
+import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer.jsx';
 
 const theme = extendTheme({
   styles: {
@@ -14,16 +15,33 @@ const theme = extendTheme({
   },
 });
 
+const ScrollToTop = () => {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const element = document.getElementById(hash.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [pathname, hash]);
+
+  return null;
+};
+
 function App() {
   return (
     <ChakraProvider theme={theme}> 
-      <div>
-        <Navbar />
-        <Outlet />
-        <Footer />
-      </div>
+      <ScrollToTop />
+      <Navbar />
+      <Outlet />
+      <Footer />
     </ChakraProvider>
   );
 }
 
 export default App;
+
