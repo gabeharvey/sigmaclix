@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
-import About from './About.jsx';
-import Stock from './Stock.jsx'; 
-import SocialMedia from './SocialMedia.jsx';
-import Contact from './Contact.jsx';
+import { useLocation } from 'react-router-dom';
+import About from './About';
+import Stock from './Stock'; 
+import SocialMedia from './SocialMedia';
+import Contact from './Contact';
 
 const MainLayout = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [location]);
 
   return (
     <>

@@ -83,7 +83,7 @@ const Navbar = () => {
         return `/${text.toLowerCase()}`;
     };
 
-    const navItems = ['STOCK', 'SOCIAL', 'CARDS', 'COMICS', 'VINTAGE GAMES', 'TOYS', 'CONTACT'];
+    const navItems = ['HOME', 'STOCK', 'SOCIAL', 'CARDS', 'COMICS', 'VINTAGE GAMES', 'TOYS', 'CONTACT'];
 
     return (
         <Box position="sticky" top="0" zIndex="999" bg="transparent">
@@ -238,7 +238,7 @@ const Navbar = () => {
                         as={HashLink}
                         to={`/#${text.replace(' ', '-').toLowerCase()}`}
                         onClick={onClose}
-                        scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                        scroll={text === 'HOME' ? () => window.scrollTo({ top: 0, behavior: 'smooth' }) : el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                         fontSize="xl"
                         fontWeight="extrabold"
                         fontFamily="'Bangers', system-ui"
@@ -346,7 +346,7 @@ const Navbar = () => {
                                             key={index}
                                             as={HashLink}
                                             to={`/#${text.replace(' ', '-').toLowerCase()}`}
-                                            scroll={el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                                            scroll={text === 'HOME' ? () => window.scrollTo({ top: 0, behavior: 'smooth' }) : el => el.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                                             fontSize="2xl"
                                             fontFamily="'Bangers', system-ui"
                                             fontWeight="bold"
