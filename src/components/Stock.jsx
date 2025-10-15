@@ -1,13 +1,13 @@
 import { Box, Flex, Text, Image } from '@chakra-ui/react';
-import { Link as ScrollLink } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import '../App.css';
 
 const Stock = () => {
   const items = [
     { id: 1, name: 'Cards', image: '/cards-placeholder.png', color: '#00B3B3', target: 'cards' },
     { id: 2, name: 'Comics', image: '/comics-placeholder.png', color: '#FF69B4', target: 'comics' },
-    { id: 3, name: 'Vintage Games', image: '/vintage-games-placeholder.png', color: '#00B3B3', target: 'vintage-games' },
-    { id: 4, name: 'Toys', image: '/toys-placeholder.png', color: '#FF69B4', target: 'toys' },
+    { id: 3, name: 'Vintage Games', image: '/vintage-games-placeholder.png', color: '#00B3B3', target: 'vintagegames' },
+    { id: 4, name: 'Toys', image: '/vinyl-jawa.png', color: '#FF69B4', target: 'toys' },
   ];
 
   return (
@@ -40,13 +40,7 @@ const Stock = () => {
         gap={{ base: '1.5rem', md: '3rem' }}
       >
         {items.map((item) => (
-          <ScrollLink
-            key={item.id}
-            to={item.target}  
-            smooth={true}
-            duration={500}
-            offset={-300}
-          >
+          <Link key={item.id} to={`/${item.target}`}>
             <Box
               role="group"
               bg="#FFF9F0"
@@ -93,7 +87,7 @@ const Stock = () => {
                 {item.name}
               </Text>
             </Box>
-          </ScrollLink>
+          </Link>
         ))}
       </Flex>
     </Box>
