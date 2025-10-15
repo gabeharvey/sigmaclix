@@ -14,7 +14,7 @@ const Cards = () => {
     { id: 6, name: '2016 Panini Prizm Dak Prescott RC 2/5', image: '/dak-rc-5.jpg', price: '$25,000' },
   ];
 
-  const clickSound = new Audio('/diamond.mp3');
+  const clickSound = new Audio('/power-up.mp3');
 
   const handleHomeClick = () => {
     clickSound.play();
