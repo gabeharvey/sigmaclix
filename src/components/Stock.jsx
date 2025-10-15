@@ -5,7 +5,7 @@ import '../App.css';
 const Stock = () => {
   const items = [
     { id: 1, name: 'Cards', image: '/cards-placeholder.png', color: '#00B3B3', target: 'cards' },
-    { id: 2, name: 'Comics', image: '/comics-placeholder.png', color: '#FF69B4', target: 'comics' },
+    { id: 2, name: 'Comics', image: '/amazing-fantasy-15.png', color: '#FF69B4', target: 'comics' },
     { id: 3, name: 'Vintage Games', image: '/vintage-games-placeholder.png', color: '#00B3B3', target: 'vintagegames' },
     { id: 4, name: 'Toys', image: '/vinyl-jawa.png', color: '#FF69B4', target: 'toys' },
   ];
