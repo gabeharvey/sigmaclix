@@ -76,12 +76,6 @@ const MainLayout = () => {
         <Text
           fontSize={{ base: '1rem', md: '1.2rem' }}
           textAlign="center"
-          textShadow="
-            -1px -1px 0 #000,
-             1px -1px 0 #000,
-            -1px  1px 0 #000,
-             1px  1px 0 #000
-          "
         >
           💥 POW! 💥<br /> Have a question about a jewel? <br />
           Summon us!
