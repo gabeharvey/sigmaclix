@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 
-const clickSound = new Audio('/bubble-pop-2.mp3');
+const clickSound = new Audio('/diamond.mp3');
 clickSound.volume = 0.6;
 
 const MotionBox = motion(Box);
