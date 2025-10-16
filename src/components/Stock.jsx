@@ -13,8 +13,7 @@ const Stock = () => {
   ];
 
   const handleClick = () => {
-    // Play click sound
-    clickSound.currentTime = 0; // rewind to start
+    clickSound.currentTime = 0; 
     clickSound.play();
   };
 
