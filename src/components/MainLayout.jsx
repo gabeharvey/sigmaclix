@@ -77,7 +77,7 @@ const MainLayout = () => {
           fontSize={{ base: '1rem', md: '1.2rem' }}
           textAlign="center"
         >
-          💥 POW! 💥<br /> Have a question about a jewel? <br />
+          Question about a jewel? 💎<br />
           Summon us!
         </Text>
       </MotionBox>
