@@ -2,6 +2,8 @@ import { Box, Flex, Text, Image } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
+const clickSound = new Audio('/splash.mp3');
+
 const Stock = () => {
   const items = [
     { id: 1, name: 'Cards', image: '/psylocke-super-trimmed.jpg', color: '#00B3B3', target: 'cards' },
@@ -9,6 +11,12 @@ const Stock = () => {
     { id: 3, name: 'Vintage Games', image: '/vintage-games-placeholder.png', color: '#00B3B3', target: 'vintagegames' },
     { id: 4, name: 'Toys', image: '/vinyl-jawa.png', color: '#FF69B4', target: 'toys' },
   ];
+
+  const handleClick = () => {
+    // Play click sound
+    clickSound.currentTime = 0; // rewind to start
+    clickSound.play();
+  };
 
   return (
     <Box
@@ -57,6 +65,7 @@ const Stock = () => {
               transition="transform 0.3s, box-shadow 0.3s"
               cursor="pointer"
               position="relative"
+              onClick={handleClick} // <-- added click sound
               _hover={{
                 transform: 'scale(1.05)',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
