@@ -70,7 +70,7 @@ const cards = [
     image: '/ohtani-rc.jpg',
     price: '$20,000',
     description: 'Ohtani’s legendary rookie card delivers epic collector value.',
-    bubbleText: '⚾POWER HIT⚾'
+    bubbleText: '⚾POWER⚾'
   },
   {
     id: 5,
@@ -86,7 +86,7 @@ const cards = [
     image: '/dak-rc-5.jpg',
     price: '$25,000',
     description: 'Dak Prescott’s rare rookie shines with unbeatable style.',
-    bubbleText: '🏈GAME CHANGER🏈'
+    bubbleText: '🏈ELITE🏈'
   }
 ];
 
