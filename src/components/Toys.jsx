@@ -112,7 +112,7 @@ const Toys = () => {
                     <Box
                       w="calc(100% - 8px)"
                       h="calc(100% - 8px)"
-                      border="3px solid #FF69B4"
+                      border="3px solid #C28840"
                       borderRadius="13px"
                       display="flex"
                       alignItems="center"
