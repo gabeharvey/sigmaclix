@@ -14,7 +14,7 @@ const Stock = () => {
 
   const handleClick = () => {
     clickSound.currentTime = 0; 
-    clickSound.play();
+    clickSound.play().catch(err => console.warn('Sound play failed:', err));
   };
 
   return (
@@ -41,59 +41,83 @@ const Stock = () => {
         Stock
       </Text>
 
-      <Flex
-        wrap="wrap"
-        justify="center"
-        gap={{ base: '1.5rem', md: '3rem' }}
-      >
+      <Flex wrap="wrap" justify="center" gap={{ base: '1.5rem', md: '3rem' }}>
         {items.map((item) => (
           <Link key={item.id} to={`/${item.target}`}>
             <Box
               role="group"
-              bg="#FFF9F0"
-              borderRadius="15px"
-              border="8px solid #FFFFFF"
-              boxShadow="0 6px 15px rgba(0,0,0,0.2)"
-              overflow="hidden"
               w={{ base: '120px', md: '180px', lg: '220px' }}
               h={{ base: '180px', md: '240px', lg: '300px' }}
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="flex-end"
-              transition="transform 0.3s, box-shadow 0.3s"
               cursor="pointer"
               position="relative"
-              onClick={handleClick} // <-- added click sound
+              onClick={handleClick}
               _hover={{
                 transform: 'scale(1.05)',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
               }}
             >
-              <Image
-                src={item.image}
-                alt={item.name}
+              {/* Outer white border */}
+              <Box
                 w="100%"
                 h="100%"
-                objectFit="cover"
-              />
-              <Text
-                mt="0.5rem"
-                fontSize={{ base: '.9rem', md: '1.3rem', lg: '1.6rem' }}
-                fontWeight="bold"
-                color={item.color}
-                position="absolute"
-                bottom="10px"
-                bg="rgba(255,255,255,0.6)"
-                px="0.5rem"
-                borderRadius="5px"
-                transition="background 0.3s"
-                _groupHover={{
-                  bg: 'rgba(255,255,255,1)' 
-                }}
+                border="1px solid #FFFFFF"
+                borderRadius="15px"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                bg="#FFF9F0"
               >
-                {item.name}
-              </Text>
+                {/* Middle colored border */}
+                <Box
+                  w="calc(100% - 8px)"
+                  h="calc(100% - 8px)"
+                  border={`3px solid ${item.color}`}
+                  borderRadius="13px"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  bg="#FFF9F0"
+                >
+                  {/* Inner white border / image container */}
+                  <Box
+                    w="calc(100% - 4px)"
+                    h="calc(100% - 4px)"
+                    border="2px solid #FFFFFF"
+                    borderRadius="12px"
+                    overflow="hidden"
+                    position="relative"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.name}
+                      w="100%"
+                      h="100%"
+                      objectFit="cover"
+                    />
+                    <Text
+                      mt="0.5rem"
+                      fontSize={{ base: '.9rem', md: '1.3rem', lg: '1.6rem' }}
+                      fontWeight="bold"
+                      color={item.color}
+                      position="absolute"
+                      bottom="10px"
+                      bg="rgba(255,255,255,0.6)"
+                      px="0.5rem"
+                      borderRadius="5px"
+                      transition="background 0.3s"
+                      _groupHover={{
+                        bg: 'rgba(255,255,255,1)'
+                      }}
+                      textAlign="center"
+                      w="90%"
+                      left="50%"
+                      transform="translateX(-50%)"
+                    >
+                      {item.name}
+                    </Text>
+                  </Box>
+                </Box>
+              </Box>
             </Box>
           </Link>
         ))}
