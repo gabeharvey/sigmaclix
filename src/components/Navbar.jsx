@@ -103,7 +103,7 @@ const Navbar = () => {
                     <Flex flexDirection="column" alignItems="center">
                         <Box maxW={{ base: '220px', md: '260px', lg: '340px' }} w="100%">
                             <Image
-                                src="/sigmaclix-logo-alt.png"
+                                src="/sigmaclix.png"
                                 alt="Logo"
                                 w="100%"
                                 h="auto"
