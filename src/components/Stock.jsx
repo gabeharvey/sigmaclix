@@ -96,7 +96,7 @@ const Stock = () => {
                     />
                     <Text
                       mt="0.5rem"
-                      fontSize={{ base: '.7rem', md: '1.1rem', lg: '1.4rem' }}
+                      fontSize={{ base: '.9rem', md: '1.3rem', lg: '1.6rem' }}
                       fontWeight="bold"
                       color={item.color}
                       position="absolute"
