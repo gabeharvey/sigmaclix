@@ -34,19 +34,61 @@ const Cards = () => {
   };
 
   const handlePurchase = (cardName) => {
-    moneySound.currentTime = 0; // play money sound
+    moneySound.currentTime = 0; 
     moneySound.play().catch((err) => console.warn('Sound play failed:', err));
     alert(`Purchased: ${cardName}`);
   };
 
-  const cards = [
-    { id: 1, name: '2025 Marvel Topps Chrome Storm 1/1 🔥SLAY🔥', image: '/storm-super-2025.jpg', price: '$80,000', description: 'An ultra-rare Storm card, capturing the ultimate heroic energy.' },
-    { id: 2, name: '2025 Marvel Topps Chrome Web-Head 1st Appearance 1/5 🌶️SPICY🌶️', image: '/web-head-5.jpg', price: '$2,500', description: 'Web-Head swings into collectors’ hearts with style and flair.' },
-    { id: 3, name: '2025 Marvel Topps Chrome Spider-Girl 1st Appearance 1/5 ✨LIT✨', image: '/spider-girl-5.jpg', price: '$4,000', description: 'Spider-Girl shines bright as the next iconic hero of Marvel.' },
-    { id: 4, name: '2018 Topps Heritage Shohei Ohtani RC Auto', image: '/ohtani-rc.jpg', price: '$20,000', description: 'Ohtani’s legendary rookie card delivers epic collector value.' },
-    { id: 5, name: '2017 Gypsy Queen Aaron Judge RC 1/1', image: '/judge-rc-1.jpg', price: '$10,000', description: 'Aaron Judge stands tall on this unique collector’s masterpiece.' },
-    { id: 6, name: '2016 Panini Prizm Dak Prescott RC 2/5', image: '/dak-rc-5.jpg', price: '$25,000', description: 'Dak Prescott’s rare rookie shines with unbeatable style.' },
-  ];
+const cards = [
+  {
+    id: 1,
+    name: '2025 Marvel Topps Chrome Storm 1/1 🔥SLAY🔥',
+    image: '/storm-super-2025.jpg',
+    price: '$80,000',
+    description: 'An ultra-rare Storm card, capturing the ultimate heroic energy.',
+    bubbleText: '🔥SLAY🔥'
+  },
+  {
+    id: 2,
+    name: '2025 Marvel Topps Chrome Web-Head 1st Appearance 1/5 🌶️SPICY🌶️',
+    image: '/web-head-5.jpg',
+    price: '$2,500',
+    description: 'Web-Head swings into collectors’ hearts with style and flair.',
+    bubbleText: '🌶️SPICY🌶️'
+  },
+  {
+    id: 3,
+    name: '2025 Marvel Topps Chrome Spider-Girl 1st Appearance 1/5 ✨LIT✨',
+    image: '/spider-girl-5.jpg',
+    price: '$4,000',
+    description: 'Spider-Girl shines bright as the next iconic hero of Marvel.',
+    bubbleText: '✨LIT✨'
+  },
+  {
+    id: 4,
+    name: '2018 Topps Heritage Shohei Ohtani RC Auto',
+    image: '/ohtani-rc.jpg',
+    price: '$20,000',
+    description: 'Ohtani’s legendary rookie card delivers epic collector value.',
+    bubbleText: '⚾POWER HIT⚾'
+  },
+  {
+    id: 5,
+    name: '2017 Gypsy Queen Aaron Judge RC 1/1',
+    image: '/judge-rc-1.jpg',
+    price: '$10,000',
+    description: 'Aaron Judge stands tall on this unique collector’s masterpiece.',
+    bubbleText: '🧢HOME RUN🧢'
+  },
+  {
+    id: 6,
+    name: '2016 Panini Prizm Dak Prescott RC 2/5',
+    image: '/dak-rc-5.jpg',
+    price: '$25,000',
+    description: 'Dak Prescott’s rare rookie shines with unbeatable style.',
+    bubbleText: '🏈GAME CHANGER🏈'
+  }
+];
 
   return (
     <Box
@@ -93,23 +135,66 @@ const Cards = () => {
                 style={{ transformStyle: 'preserve-3d', transition: 'transform 0.6s' }}
                 transform={isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}
               >
-                <Box
-                  position="absolute"
-                  w="100%"
-                  h="100%"
-                  borderRadius="15px"
-                  boxShadow="0 6px 15px rgba(0,0,0,0.2)"
-                  style={{ backfaceVisibility: 'hidden' }}
-                  overflow="hidden"
-                >
-                  <Image
-                    src={card.image}
-                    alt={card.name}
-                    w="100%"
-                    h="100%"
-                    objectFit="cover"
-                  />
-                </Box>
+<Box
+  position="absolute"
+  w="100%"
+  h="100%"
+  borderRadius="15px"
+  boxShadow="0 6px 15px rgba(0,0,0,0.2)"
+  style={{ backfaceVisibility: 'hidden' }}
+  overflow="hidden"
+  border="4px solid #FFFFFF"
+>
+  {/* Card image */}
+  <Image
+    src={card.image}
+    alt={card.name}
+    w="100%"
+    h="100%"
+    objectFit="cover"
+  />
+
+  {/* Dynamic comic-style bubble */}
+  <Box
+    position="absolute"
+    top="10px"
+    right="10px"
+    bg="#FFEB3B"
+    color="#FF0000"
+    fontWeight="bold"
+    fontSize="0.8rem"
+    px="0.6rem"
+    py="0.3rem"
+    borderRadius="10px"
+    boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+    textAlign="center"
+    transform="rotate(-10deg)"
+    animation="floatBubble 2s ease-in-out infinite"
+  >
+    {card.bubbleText || 'HOT!'}
+    <Box
+      position="absolute"
+      bottom="-6px"
+      left="20%"
+      width="0"
+      height="0"
+      borderLeft="6px solid transparent"
+      borderRight="6px solid transparent"
+      borderTop="6px solid #FFEB3B"
+      transform="rotate(10deg)"
+    />
+  </Box>
+</Box>
+
+<style>
+{`
+  @keyframes floatBubble {
+    0%, 100% { transform: translateY(0px) rotate(-10deg); }
+    50% { transform: translateY(-5px) rotate(-10deg); }
+  }
+`}
+</style>
+
                 <Box
                   position="absolute"
                   w="100%"
