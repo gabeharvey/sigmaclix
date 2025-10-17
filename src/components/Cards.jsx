@@ -157,7 +157,7 @@ const Cards = () => {
                     }}
                     transition="all 0.3s ease-in-out"
                   >
-                    ADD TO CART
+                    BUY
                   </Button>
                 </Box>
               </Box>
