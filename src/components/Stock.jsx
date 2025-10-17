@@ -53,7 +53,6 @@ const Stock = () => {
               onClick={handleClick}
               _hover={{
                 transform: 'scale(1.05)',
-                boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
               }}
             >
               {/* Outer white border */}
