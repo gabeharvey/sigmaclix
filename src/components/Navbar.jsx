@@ -89,8 +89,8 @@ const Navbar = () => {
         <Box position="sticky" top="0" zIndex="999" bg="transparent">
             <Box
                 bg="#00B3B3"
-                pb="2rem"
-                pt="2.5rem"
+                pb={{ base: '1rem', md: '1.5rem' }} 
+                pt={{ base: '1rem', md: '1.5rem' }}  
                 px="2rem"
                 fontFamily="'Bangers', system-ui"
                 position="relative"
@@ -99,9 +99,10 @@ const Navbar = () => {
                 borderBottomLeftRadius="15px" 
                 borderBottomRightRadius="15px" 
             >
+
                 <Flex alignItems="center" justifyContent="space-between" wrap="wrap">
                     <Flex flexDirection="column" alignItems="center">
-                        <Box maxW={{ base: '220px', md: '260px', lg: '340px' }} w="100%">
+                        <Box maxW={{ base: '180px', md: '220px', lg: '260px' }} w="100%">
                             <Image
                                 src="/sigmaclix.png"
                                 alt="Logo"
@@ -109,10 +110,11 @@ const Navbar = () => {
                                 h="auto"
                             />
                         </Box>
+
                         <Text
                             mt="0.5rem"
                             fontFamily="'Bangers', system-ui"
-                            fontSize={{ base: '2.5rem', md: '3rem', lg: '3.5rem' }}
+                            fontSize={{ base: '2rem', md: '2.5rem', lg: '3rem' }}
                             fontWeight="md"
                             textAlign="center"
                             lineHeight="1.2"
@@ -122,10 +124,11 @@ const Navbar = () => {
                         >
                             Sigma Clix
                         </Text>
+
                         <Text
                             mt="0.25rem"
                             fontFamily="'Luckiest Guy', system-ui"
-                            fontSize={{ base: '.8rem', md: '1rem', lg: '1.2rem' }}
+                            fontSize={{ base: '.7rem', md: '.85rem', lg: '1rem' }} 
                             fontWeight="bold"
                             textAlign="center"
                             lineHeight="1.2"
