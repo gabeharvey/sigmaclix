@@ -155,7 +155,7 @@ const cards = [
                   <Box
                     w="calc(100% - 8px)"
                     h="calc(100% - 8px)"
-                    border="3px solid #C28840"
+                    border="3px solid #E6BE8A"
                     borderRadius="13px"
                     display="flex"
                     alignItems="center"

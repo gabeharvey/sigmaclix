@@ -6,10 +6,10 @@ const clickSound = new Audio('/splash.mp3');
 
 const Stock = () => {
   const items = [
-    { id: 1, name: 'Cards', image: '/psylocke-super-trimmed.jpg', color: '#C28840', target: 'cards' },
-    { id: 2, name: 'Comics', image: '/amazing-fantasy-15.png', color: '#C28840', target: 'comics' },
-    { id: 3, name: 'Vintage Games', image: '/vintage-games-placeholder.png', color: '#C28840', target: 'vintagegames' },
-    { id: 4, name: 'Toys', image: '/vinyl-jawa.png', color: '#C28840', target: 'toys' },
+    { id: 1, name: 'Cards', image: '/psylocke-super-trimmed.jpg', color: '#E6BE8A', target: 'cards' },
+    { id: 2, name: 'Comics', image: '/amazing-fantasy-15.png', color: '#E6BE8A', target: 'comics' },
+    { id: 3, name: 'Vintage Games', image: '/vintage-games-placeholder.png', color: '#E6BE8A', target: 'vintagegames' },
+    { id: 4, name: 'Toys', image: '/vinyl-jawa.png', color: '#E6BE8A', target: 'toys' },
   ];
 
   const handleClick = () => {
