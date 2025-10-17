@@ -92,57 +92,81 @@ const VintageGames = () => {
                 style={{ transformStyle: 'preserve-3d', transition: 'transform 0.6s' }}
                 transform={isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}
               >
-                {/* Front */}
                 <Box
                   position="absolute"
                   w="100%"
                   h="100%"
                   borderRadius="15px"
-                  boxShadow="0 6px 15px rgba(0,0,0,0.2)"
-                  style={{ backfaceVisibility: 'hidden' }}
-                  overflow="hidden"
-                  border="4px solid #FFFFFF"
+                  style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
-                  <Image
-                    src={game.image}
-                    alt={game.name}
+                  <Box
                     w="100%"
                     h="100%"
-                    objectFit="cover"
-                  />
-
-                  {/* Comic bubble */}
-                  <Box
-                    position="absolute"
-                    top="10px"
-                    right="10px"
-                    bg="#FFEB3B"
-                    color="#FF0000"
-                    fontWeight="bold"
-                    fontSize="0.8rem"
-                    px="0.6rem"
-                    py="0.3rem"
-                    borderRadius="10px"
-                    boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                    textAlign="center"
-                    transform="rotate(-10deg)"
-                    animation="floatBubble 2s ease-in-out infinite"
+                    border="1px solid #FFFFFF"
+                    borderRadius="15px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    bg="#FFFFFF"
                   >
-                    {game.bubbleText || 'HOT!'}
                     <Box
-                      position="absolute"
-                      bottom="-6px"
-                      left="20%"
-                      width="0"
-                      height="0"
-                      borderLeft="6px solid transparent"
-                      borderRight="6px solid transparent"
-                      borderTop="6px solid #FFEB3B"
-                      transform="rotate(10deg)"
-                    />
+                      w="calc(100% - 8px)"
+                      h="calc(100% - 8px)"
+                      border="3px solid #FF69B4"
+                      borderRadius="13px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      bg="#FFFFFF"
+                    >
+                      <Box
+                        w="calc(100% - 4px)"
+                        h="calc(100% - 4px)"
+                        border="2px solid #FFFFFF"
+                        borderRadius="12px"
+                        overflow="hidden"
+                        position="relative"
+                      >
+                        <Image
+                          src={game.image}
+                          alt={game.name}
+                          w="100%"
+                          h="100%"
+                          objectFit="cover"
+                        />
+                        <Box
+                          position="absolute"
+                          top="10px"
+                          right="10px"
+                          bg="#FFEB3B"
+                          color="#FF0000"
+                          fontWeight="bold"
+                          fontSize="0.8rem"
+                          px="0.6rem"
+                          py="0.3rem"
+                          borderRadius="10px"
+                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                          textAlign="center"
+                          transform="rotate(-10deg)"
+                          animation="floatBubble 2s ease-in-out infinite"
+                        >
+                          {game.bubbleText || 'HOT!'}
+                          <Box
+                            position="absolute"
+                            bottom="-6px"
+                            left="20%"
+                            width="0"
+                            height="0"
+                            borderLeft="6px solid transparent"
+                            borderRight="6px solid transparent"
+                            borderTop="6px solid #FFEB3B"
+                            transform="rotate(10deg)"
+                          />
+                        </Box>
+                      </Box>
+                    </Box>
                   </Box>
                 </Box>
-
                 {/* Back */}
                 <Box
                   position="absolute"
@@ -196,7 +220,6 @@ const VintageGames = () => {
           );
         })}
       </Flex>
-
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
