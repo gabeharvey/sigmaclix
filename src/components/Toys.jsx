@@ -1,21 +1,51 @@
 import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom'; 
-import '../App.css'; 
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import '../App.css';
 
 const Toys = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const [flippedToys, setFlippedToys] = useState({});
 
-  const toys = [
-    { id: 1, name: 'Funko Pop! Wonder Woman', image: '/wonder-woman-funko.jpg', price: '$40' },
-  ];
+  const flipSound = new Audio('/card-flip.mp3');
+  flipSound.volume = 0.7;
 
-  const clickSound = new Audio('/power-up.mp3'); 
+  const powerUpSound = new Audio('/power-up.mp3'); 
+  powerUpSound.volume = 0.7;
+
+  const moneySound = new Audio('/coin.mp3'); 
+  moneySound.volume = 0.7;
+
+  const handleFlip = (id) => {
+    flipSound.currentTime = 0;
+    flipSound.play().catch(err => console.warn('Sound play failed:', err));
+    setFlippedToys(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   const handleHomeClick = () => {
-    clickSound.play(); 
-    navigate('/'); 
-    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+    powerUpSound.currentTime = 0;
+    powerUpSound.play().catch(err => console.warn('Sound play failed:', err));
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handlePurchase = (toyName) => {
+    moneySound.currentTime = 0;
+    moneySound.play().catch(err => console.warn('Sound play failed:', err));
+    alert(`Purchased: ${toyName}`);
+  };
+
+  const toys = [
+    {
+      id: 1,
+      name: 'Funko Pop! Wonder Woman',
+      image: '/wonder-woman-funko.jpg',
+      price: '$40',
+      description: 'A must-have Funko Pop for superhero collectors!',
+      bubbleText: '🧸FUN🧸'
+    },
+    // Add more toys here
+  ];
 
   return (
     <Box
@@ -43,40 +73,130 @@ const Toys = () => {
       </Text>
 
       <Flex wrap="wrap" justify="center" gap={{ base: '1rem', md: '2rem' }}>
-        {toys.map((toy) => (
-          <Box
-            key={toy.id}
-            bg="#FFF9F0" 
-            borderRadius="15px"
-            boxShadow="0 6px 15px rgba(0,0,0,0.2)" 
-            overflow="hidden"
-            w={{ base: '150px', md: '200px', lg: '220px' }}
-            textAlign="center"
-            p="1rem"
-            transition="transform 0.3s, box-shadow 0.3s"
-            _hover={{
-              transform: 'scale(1.05)',
-              boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
-            }}
-          >
-            <Image
-              src={toy.image}
-              alt={toy.name}
-              w="100%"
-              h="200px"
-              objectFit="cover"
-              borderRadius="10px"
-              mb="0.5rem"
-            />
-            <Text fontSize={{ base: '1rem', md: '1.2rem' }} fontWeight="bold" color="#00B3B3">
-              {toy.name}
-            </Text>
-            <Text fontSize={{ base: '0.9rem', md: '1rem' }} color="#FF69B4">
-              {toy.price}
-            </Text>
-          </Box>
-        ))}
+        {toys.map(toy => {
+          const isFlipped = flippedToys[toy.id];
+
+          return (
+            <Box
+              key={toy.id}
+              w={{ base: '150px', md: '200px', lg: '220px' }}
+              h="300px"
+              perspective="1000px"
+              cursor="pointer"
+              onClick={() => handleFlip(toy.id)}
+            >
+              <Box
+                w="100%"
+                h="100%"
+                position="relative"
+                style={{ transformStyle: 'preserve-3d', transition: 'transform 0.6s' }}
+                transform={isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}
+              >
+                {/* Front */}
+                <Box
+                  position="absolute"
+                  w="100%"
+                  h="100%"
+                  borderRadius="15px"
+                  boxShadow="0 6px 15px rgba(0,0,0,0.2)"
+                  style={{ backfaceVisibility: 'hidden' }}
+                  overflow="hidden"
+                  border="4px solid #FFFFFF"
+                >
+                  <Image
+                    src={toy.image}
+                    alt={toy.name}
+                    w="100%"
+                    h="100%"
+                    objectFit="cover"
+                  />
+
+                  {/* Comic bubble */}
+                  <Box
+                    position="absolute"
+                    top="10px"
+                    right="10px"
+                    bg="#FFEB3B"
+                    color="#FF0000"
+                    fontWeight="bold"
+                    fontSize="0.8rem"
+                    px="0.6rem"
+                    py="0.3rem"
+                    borderRadius="10px"
+                    boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                    textAlign="center"
+                    transform="rotate(-10deg)"
+                    animation="floatBubble 2s ease-in-out infinite"
+                  >
+                    {toy.bubbleText || 'HOT!'}
+                    <Box
+                      position="absolute"
+                      bottom="-6px"
+                      left="20%"
+                      width="0"
+                      height="0"
+                      borderLeft="6px solid transparent"
+                      borderRight="6px solid transparent"
+                      borderTop="6px solid #FFEB3B"
+                      transform="rotate(10deg)"
+                    />
+                  </Box>
+                </Box>
+
+                {/* Back */}
+                <Box
+                  position="absolute"
+                  w="100%"
+                  h="100%"
+                  borderRadius="15px"
+                  bg="#FF69B4"
+                  color="#FFFFFF"
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="center"
+                  p="1rem"
+                  boxShadow="0 6px 15px rgba(0,0,0,0.3)"
+                  style={{ backfaceVisibility: 'hidden' }}
+                  transform="rotateY(180deg)"
+                  textAlign="center"
+                >
+                  <Text fontSize={{ base: '0.9rem', md: '1rem' }} fontWeight="bold" mb="0.5rem">
+                    {toy.name}
+                  </Text>
+                  <Text fontSize={{ base: '0.85rem', md: '0.95rem' }} mb="0.5rem">
+                    {toy.description}
+                  </Text>
+                  <Text fontSize={{ base: '0.9rem', md: '1rem' }} fontWeight="bold" color="#FFD700" mb="1rem">
+                    {toy.price}
+                  </Text>
+                  <Button
+                    onClick={(e) => { e.stopPropagation(); handlePurchase(toy.name); }}
+                    fontFamily="'Bangers', system-ui"
+                    fontSize={{ base: '1rem', md: '1.1rem' }}
+                    bg="#FFFFFF"
+                    color="#FF69B4"
+                    px="2.5rem"
+                    py="0.8rem"
+                    borderRadius="10px"
+                    border="3px solid #FF69B4"
+                    boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
+                    _hover={{
+                      transform: 'scale(1.05)',
+                      boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
+                      bg: '#FFFFFF',
+                    }}
+                    transition="all 0.3s ease-in-out"
+                  >
+                    BUY
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
+          );
+        })}
       </Flex>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
@@ -88,17 +208,26 @@ const Toys = () => {
           py="1.5rem"
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
-          boxShadow='0 0 0 4px #FFFFFF, 0 0 0 6px #FF69B4'
-          _hover={{ 
+          boxShadow="0 0 0 4px #FFFFFF, 0 0 0 6px #FF69B4"
+          _hover={{
             transform: 'scale(1.1) rotate(-1deg)',
             boxShadow: '0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FF69B4',
-            bg: '#FFFFFF'
+            bg: '#FFFFFF',
           }}
           transition="all 0.3s ease-in-out"
         >
           Home
         </Button>
       </Flex>
+
+      <style>
+        {`
+          @keyframes floatBubble {
+            0%, 100% { transform: translateY(0px) rotate(-10deg); }
+            50% { transform: translateY(-5px) rotate(-10deg); }
+          }
+        `}
+      </style>
     </Box>
   );
 };
