@@ -46,8 +46,8 @@ const Stock = () => {
           <Link key={item.id} to={`/${item.target}`}>
             <Box
               role="group"
-              w={{ base: '120px', md: '180px', lg: '220px' }}
-              h={{ base: '180px', md: '240px', lg: '300px' }}
+              w={{ base: '140px', md: '200px', lg: '240px' }}
+              h={{ base: '200px', md: '260px', lg: '320px' }}
               cursor="pointer"
               position="relative"
               onClick={handleClick}
