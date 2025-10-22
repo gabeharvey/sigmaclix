@@ -70,7 +70,7 @@ const cards = [
     image: '/ohtani-rc.jpg',
     price: '$20,000',
     description: 'Ohtani’s legendary rookie card delivers epic collector value.',
-    bubbleText: '⚾POWER⚾'
+    bubbleText: '⚾LEGEND⚾'
   },
   {
     id: 5,
