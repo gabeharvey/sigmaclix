@@ -71,19 +71,25 @@ const Comics = () => {
       >
         Comics
       </Text>
-
-      <Flex wrap="wrap" justify="center" gap={{ base: '1rem', md: '2rem' }}>
+            <Flex
+              wrap="wrap"
+              justify="center"
+              align="center"
+              direction={{ base: 'column', md: 'row' }}
+              gap={{ base: '2rem', md: '2rem' }}
+            >
         {comics.map(comic => {
           const isFlipped = flippedComics[comic.id];
 
           return (
             <Box
               key={comic.id}
-              w={{ base: '150px', md: '200px', lg: '220px' }}
-              h="300px"
+              w={{ base: '75%', sm: '60%', md: '200px', lg: '220px' }}
+              h={{ base: '430px', sm: '450px', md: '300px' }}
               perspective="1000px"
               cursor="pointer"
               onClick={() => handleFlip(comic.id)}
+              mx="auto"
             >
               <Box
                 w="100%"
