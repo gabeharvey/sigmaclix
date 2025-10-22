@@ -46,7 +46,7 @@ function Footer() {
                 textShadow="2px 2px 4px rgba(255, 255, 255, 0.7)"
                 style={{ WebkitTextStroke: "1px white" }}
             >
-                Sigma Clix
+                Sigma Clix LLC
             </Box>
         </Text>
       </Flex>
