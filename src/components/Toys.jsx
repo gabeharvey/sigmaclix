@@ -29,21 +29,28 @@ const Toys = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePurchase = (toyName) => {
-    moneySound.currentTime = 0;
-    moneySound.play().catch(err => console.warn('Sound play failed:', err));
-    alert(`Purchased: ${toyName}`);
+  const handlePurchase = () => {
+    moneySound.currentTime = 0; 
+    moneySound.play().catch((err) => console.warn('Sound play failed:', err));
+
+    navigate('/'); 
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 500);
   };
 
   const toys = [
-    {
-      id: 1,
-      name: 'Funko Pop! Wonder Woman',
-      image: '/wonder-woman-funko.jpg',
-      price: '$40',
-      description: 'A must-have Funko Pop for superhero collectors!',
-      bubbleText: '🧸FUN🧸'
-    },
+    // {
+    //   id: 1,
+    //   name: 'Funko Pop! Wonder Woman',
+    //   image: '/wonder-woman-funko.jpg',
+    //   price: '$40',
+    //   description: 'A must-have Funko Pop for superhero collectors!',
+    //   bubbleText: '🧸FUN🧸'
+    // },
     // Add more toys here
   ];
 

@@ -29,21 +29,28 @@ const VintageGames = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePurchase = (gameName) => {
-    moneySound.currentTime = 0;
-    moneySound.play().catch(err => console.warn('Sound play failed:', err));
-    alert(`Purchased: ${gameName}`);
+  const handlePurchase = () => {
+    moneySound.currentTime = 0; 
+    moneySound.play().catch((err) => console.warn('Sound play failed:', err));
+
+    navigate('/'); 
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 500);
   };
 
   const games = [
-    {
-      id: 1,
-      name: 'Kung Fu 5 Screw Original NES in Box Unsealed',
-      image: '/kung-fu-box.jpg',
-      price: '$200',
-      description: 'A rare NES game for collectors and retro gamers!',
-      bubbleText: '🎮CLASSIC🎮'
-    },
+    // {
+    //   id: 1,
+    //   name: 'Kung Fu 5 Screw Original NES in Box Unsealed',
+    //   image: '/kung-fu-box.jpg',
+    //   price: '$200',
+    //   description: 'A rare NES game for collectors and retro gamers!',
+    //   bubbleText: '🎮CLASSIC🎮'
+    // },
     // Add more vintage games here
   ];
 

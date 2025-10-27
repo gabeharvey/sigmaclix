@@ -33,61 +33,68 @@ const Cards = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePurchase = (cardName) => {
+  const handlePurchase = () => {
     moneySound.currentTime = 0; 
     moneySound.play().catch((err) => console.warn('Sound play failed:', err));
-    alert(`Purchased: ${cardName}`);
+
+    navigate('/'); 
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 500);
   };
 
 const cards = [
   {
     id: 1,
-    name: '2025 Marvel Topps Chrome Storm 1/1 🔥SLAY🔥',
-    image: '/storm-super-2025.jpg',
-    price: '$80,000',
-    description: 'An ultra-rare Storm card, capturing the ultimate heroic energy.',
-    bubbleText: '🔥SLAY🔥'
-  },
-  {
-    id: 2,
-    name: '2025 Marvel Topps Chrome Web-Head 1st Appearance 1/5 🌶️SPICY🌶️',
-    image: '/web-head-5.jpg',
-    price: '$2,500',
-    description: 'Web-Head swings into collectors’ hearts with style and flair.',
-    bubbleText: '🌶️SPICY🌶️'
-  },
-  {
-    id: 3,
-    name: '2025 Marvel Topps Chrome Spider-Girl 1st Appearance 1/5 ✨LIT✨',
-    image: '/spider-girl-5.jpg',
-    price: '$4,000',
-    description: 'Spider-Girl shines bright as the next iconic hero of Marvel.',
-    bubbleText: '✨LIT✨'
-  },
-  {
-    id: 4,
     name: '2018 Topps Heritage Shohei Ohtani RC Auto',
-    image: '/ohtani-rc.jpg',
+    image: '/ohtani-rc-1.jpg',
     price: '$20,000',
     description: 'Ohtani’s legendary rookie card delivers epic collector value.',
     bubbleText: '⚾LEGEND⚾'
   },
-  {
-    id: 5,
-    name: '2017 Gypsy Queen Aaron Judge RC 1/1',
-    image: '/judge-rc-1.jpg',
-    price: '$10,000',
-    description: 'Aaron Judge stands tall on this unique collector’s masterpiece.',
-    bubbleText: '🧢HOME RUN🧢'
-  },
-  {
-    id: 6,
-    name: '2016 Panini Prizm Dak Prescott RC 2/5',
-    image: '/dak-rc-5.jpg',
-    price: '$25,000',
-    description: 'Dak Prescott’s rare rookie shines with unbeatable style.',
-    bubbleText: '🏈ELITE🏈'
-  }
+  // {
+  //   id: 2,
+  //   name: '2025 Marvel Topps Chrome Storm 1/1 🔥SLAY🔥',
+  //   image: '/storm-super-2025.jpg',
+  //   price: '$80,000',
+  //   description: 'An ultra-rare Storm card, capturing the ultimate heroic energy.',
+  //   bubbleText: '🔥SLAY🔥'
+  // },
+  // {
+  //   id: 3,
+  //   name: '2025 Marvel Topps Chrome Web-Head 1st Appearance 1/5 🌶️SPICY🌶️',
+  //   image: '/web-head-5.jpg',
+  //   price: '$2,500',
+  //   description: 'Web-Head swings into collectors’ hearts with style and flair.',
+  //   bubbleText: '🌶️SPICY🌶️'
+  // },
+  // {
+  //   id: 4,
+  //   name: '2025 Marvel Topps Chrome Spider-Girl 1st Appearance 1/5 ✨LIT✨',
+  //   image: '/spider-girl-5.jpg',
+  //   price: '$4,000',
+  //   description: 'Spider-Girl shines bright as the next iconic hero of Marvel.',
+  //   bubbleText: '✨LIT✨'
+  // },
+  // {
+  //   id: 5,
+  //   name: '2017 Gypsy Queen Aaron Judge RC 1/1',
+  //   image: '/judge-rc-1.jpg',
+  //   price: '$10,000',
+  //   description: 'Aaron Judge stands tall on this unique collector’s masterpiece.',
+  //   bubbleText: '🧢HOME RUN🧢'
+  // },
+  // {
+  //   id: 6,
+  //   name: '2016 Panini Prizm Dak Prescott RC 2/5',
+  //   image: '/dak-rc-5.jpg',
+  //   price: '$25,000',
+  //   description: 'Dak Prescott’s rare rookie shines with unbeatable style.',
+  //   bubbleText: '🏈ELITE🏈'
+  // }
 ];
 
   return (
@@ -272,7 +279,7 @@ const cards = [
                     }}
                     transition="all 0.3s ease-in-out"
                   >
-                    BUY
+                    NEGOTIATE
                   </Button>
                 </Box>
               </Box>

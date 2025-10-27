@@ -29,21 +29,28 @@ const Comics = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handlePurchase = (comicName) => {
-    moneySound.currentTime = 0;
-    moneySound.play().catch(err => console.warn('Sound play failed:', err));
-    alert(`Purchased: ${comicName}`);
+  const handlePurchase = () => {
+    moneySound.currentTime = 0; 
+    moneySound.play().catch((err) => console.warn('Sound play failed:', err));
+
+    navigate('/'); 
+    setTimeout(() => {
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 500);
   };
 
   const comics = [
-    {
-      id: 1,
-      name: 'Scarlet Witch #9 Amaranth 1st Cover Appearance CGC 9.8',
-      image: '/amaranth-1st.jpg',
-      price: '$300',
-      description: 'Scarlet Witch shines in her first cover appearance, perfect for collectors!',
-      bubbleText: '✨FIRST APPEARANCE✨'
-    },
+    // {
+    //   id: 1,
+    //   name: 'Scarlet Witch #9 Amaranth 1st Cover Appearance CGC 9.8',
+    //   image: '/amaranth-1st.jpg',
+    //   price: '$300',
+    //   description: 'Scarlet Witch shines in her first cover appearance, perfect for collectors!',
+    //   bubbleText: '✨FIRST APPEARANCE✨'
+    // },
     // You can add more comics here following the same structure
   ];
 
