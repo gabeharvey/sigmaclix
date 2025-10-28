@@ -18,20 +18,20 @@ const Cards = () => {
 
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
-    flipSound.play().catch((err) => console.warn('Sound play failed:', err));
-    setFlippedCards((prev) => ({ ...prev, [id]: !prev[id] }));
+    flipSound.play().catch(err => console.warn('Sound play failed:', err));
+    setFlippedCards(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleHomeClick = () => {
     powerUpSound.currentTime = 0;
-    powerUpSound.play().catch((err) => console.warn('Sound play failed:', err));
+    powerUpSound.play().catch(err => console.warn('Sound play failed:', err));
     navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handlePurchase = () => {
     moneySound.currentTime = 0;
-    moneySound.play().catch((err) => console.warn('Sound play failed:', err));
+    moneySound.play().catch(err => console.warn('Sound play failed:', err));
     navigate('/');
     setTimeout(() => {
       const contactSection = document.getElementById('contact');
@@ -76,7 +76,7 @@ const Cards = () => {
       </Text>
 
       <Flex wrap="wrap" justify="center" align="center" gap="2rem">
-        {cards.map((card) => {
+        {cards.map(card => {
           const isFlipped = flippedCards[card.id];
 
           return (
@@ -87,7 +87,6 @@ const Cards = () => {
               perspective="1000px"
               cursor="pointer"
               onClick={() => handleFlip(card.id)}
-              mx="auto"
             >
               <Box
                 w="100%"
@@ -133,38 +132,35 @@ const Cards = () => {
                         position="relative"
                       >
                         <Image src={card.image} alt={card.name} w="100%" h="100%" objectFit="cover" />
-                        {/* Floating Bubble with fade */}
-                        <Box
-                          position="absolute"
-                          top="10px"
-                          right="10px"
-                          bg="#FFFFFF"
-                          color="#FF0000"
-                          fontSize="0.9rem"
-                          px="0.9rem"
-                          py="0.6rem"
-                          borderRadius="10px"
-                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                          textAlign="center"
-                          animation="floatBubble 2s ease-in-out infinite"
-                          style={{
-                            opacity: isFlipped ? 0 : 1,
-                            transition: `opacity 0.3s ease-in-out ${isFlipped ? '0.20s' : '0s'}`,
-                            pointerEvents: 'none',
-                          }}
-                        >
-                          {card.bubbleText || 'HOT!'}
+                        {/* Floating Bubble */}
+                        {!isFlipped && (
                           <Box
                             position="absolute"
-                            bottom="-6px"
-                            left="20%"
-                            width="0"
-                            height="0"
-                            borderLeft="6px solid transparent"
-                            borderRight="6px solid transparent"
-                            borderTop="6px solid #FFFFFF"
-                          />
-                        </Box>
+                            top="10px"
+                            right="10px"
+                            bg="#FFFFFF"
+                            color="#FF0000"
+                            fontSize="0.9rem"
+                            px="0.9rem"
+                            py="0.6rem"
+                            borderRadius="10px"
+                            boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                            textAlign="center"
+                            animation="floatBubble 2s ease-in-out infinite"
+                          >
+                            {card.bubbleText || 'HOT!'}
+                            <Box
+                              position="absolute"
+                              bottom="-6px"
+                              left="20%"
+                              width="0"
+                              height="0"
+                              borderLeft="6px solid transparent"
+                              borderRight="6px solid transparent"
+                              borderTop="6px solid #FFFFFF"
+                            />
+                          </Box>
+                        )}
                       </Box>
                     </Box>
                   </Box>
@@ -290,14 +286,15 @@ const Cards = () => {
           );
         })}
       </Flex>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize={{ base: '1.8rem', md: '2.2rem' }} 
+          fontSize={{ base: '1.8rem', md: '2.2rem' }}
           bg="#FFFFFF"
           color="#FF69B4"
-          px={{ base: '2.5rem', md: '3rem' }} 
+          px={{ base: '2.5rem', md: '3rem' }}
           py={{ base: '1rem', md: '1.5rem' }}
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
@@ -312,28 +309,26 @@ const Cards = () => {
           Home
         </Button>
       </Flex>
-      <style>
-        {`
-          @keyframes floatBubble {
-            0% { transform: translateY(0px) rotate(10deg); }
-            50% { transform: translateY(-5px) rotate(10deg); }
-            100% { transform: translateY(0px) rotate(10deg); }
-          }
 
-          @keyframes holoShimmer1 {
-            0% { background-position: 0 0; }
-            100% { background-position: 150% 150%; }
-          }
-          @keyframes holoShimmer2 {
-            0% { background-position: 0 0; }
-            100% { background-position: -150% 150%; }
-          }
-          @keyframes holoShimmer3 {
-            0% { background-position: 0 0; }
-            100% { background-position: 150% -150%; }
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes floatBubble {
+          0% { transform: translateY(0px) rotate(10deg); }
+          50% { transform: translateY(-5px) rotate(10deg); }
+          100% { transform: translateY(0px) rotate(10deg); }
+        }
+        @keyframes holoShimmer1 {
+          0% { background-position: 0 0; }
+          100% { background-position: 150% 150%; }
+        }
+        @keyframes holoShimmer2 {
+          0% { background-position: 0 0; }
+          100% { background-position: -150% 150%; }
+        }
+        @keyframes holoShimmer3 {
+          0% { background-position: 0 0; }
+          100% { background-position: 150% -150%; }
+        }
+      `}</style>
     </Box>
   );
 };

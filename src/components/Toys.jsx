@@ -40,14 +40,7 @@ const Toys = () => {
   };
 
   const toys = [
-    // {
-    //   id: 1,
-    //   name: 'X-Men #129 CGC 9.8 White Pages',
-    //   image: '/x-men-129-front.jpg',
-    //   price: '$3,000',
-    //   description: 'The legendary 1st appearance of Emma Frost (The White Queen) and Kitty Pryde.',
-    //   bubbleText: '1st Appearance'
-    // }
+    // Add your toy items here
   ];
 
   return (
@@ -123,56 +116,45 @@ const Toys = () => {
                       alignItems="center"
                       justifyContent="center"
                       bg="#FFFFFF"
+                      position="relative"
                     >
-                      <Box
-                        w="calc(100% - 4px)"
-                        h="calc(100% - 4px)"
-                        border="2px solid #FFFFFF"
+                      <Image
+                        src={toy.image}
+                        alt={toy.name}
+                        w="100%"
+                        h="100%"
+                        objectFit="cover"
                         borderRadius="12px"
-                        overflow="hidden"
-                        position="relative"
+                      />
+                      {/* Bubble */}
+                      <Box
+                        position="absolute"
+                        top="10px"
+                        right="10px"
+                        bg="#FFFFFF"
+                        color="#FF0000"
+                        fontSize="0.9rem"
+                        px="0.9rem"
+                        py="0.6rem"
+                        borderRadius="10px"
+                        boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                        textAlign="center"
+                        animation="floatBubble 2s ease-in-out infinite"
+                        opacity={isFlipped ? 0 : 1}
+                        transition="opacity 0.3s ease-in-out"
+                        pointerEvents="none"
                       >
-                        <Image
-                          src={toy.image}
-                          alt={toy.name}
-                          w="100%"
-                          h="100%"
-                          objectFit="cover"
+                        {toy.bubbleText || 'HOT!'}
+                        <Box
+                          position="absolute"
+                          bottom="-6px"
+                          left="20%"
+                          width="0"
+                          height="0"
+                          borderLeft="6px solid transparent"
+                          borderRight="6px solid transparent"
+                          borderTop="6px solid #FFFFFF"
                         />
-                        {/* Bubble only visible when not flipped */}
-                        {!isFlipped && (
-                          <Box
-                            position="absolute"
-                            top="10px"
-                            right="10px"
-                            bg="#FFFFFF"
-                            color="#FF0000"
-                            fontSize="0.9rem"
-                            px="0.9rem"
-                            py="0.6rem"
-                            borderRadius="10px"
-                            boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                            textAlign="center"
-                            animation="floatBubble 2s ease-in-out infinite"
-                            style={{
-                              opacity: isFlipped ? 0 : 1,
-                              transition: `opacity 0.3s ease-in-out ${isFlipped ? '0.15s' : '0s'}`,
-                              pointerEvents: 'none',
-                            }}
-                          >
-                            {toy.bubbleText || 'HOT!'}
-                            <Box
-                              position="absolute"
-                              bottom="-6px"
-                              left="20%"
-                              width="0"
-                              height="0"
-                              borderLeft="6px solid transparent"
-                              borderRight="6px solid transparent"
-                              borderTop="6px solid #FFFFFF"
-                            />
-                          </Box>
-                        )}
                       </Box>
                     </Box>
                   </Box>
@@ -297,14 +279,15 @@ const Toys = () => {
           );
         })}
       </Flex>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize={{ base: '1.8rem', md: '2.2rem' }} 
+          fontSize={{ base: '1.8rem', md: '2.2rem' }}
           bg="#FFFFFF"
           color="#FF69B4"
-          px={{ base: '2.5rem', md: '3rem' }} 
+          px={{ base: '2.5rem', md: '3rem' }}
           py={{ base: '1rem', md: '1.5rem' }}
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
@@ -319,6 +302,7 @@ const Toys = () => {
           Home
         </Button>
       </Flex>
+
       <style>
         {`
           @keyframes floatBubble {

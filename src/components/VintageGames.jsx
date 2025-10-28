@@ -40,6 +40,7 @@ const VintageGames = () => {
   };
 
   const games = [
+    // Example card
     // {
     //   id: 1,
     //   name: 'X-Men #129 CGC 9.8 White Pages',
@@ -65,12 +66,7 @@ const VintageGames = () => {
         textAlign="center"
         mb="2rem"
         color="#FF69B4"
-        textShadow="
-          -2px -2px 0 #FFFFFF,  
-           2px -2px 0 #FFFFFF,
-          -2px  2px 0 #FFFFFF,
-           2px  2px 0 #FFFFFF
-        "
+        textShadow="-2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 2px 2px 0 #FFFFFF"
       >
         Vintage Games
       </Text>
@@ -139,39 +135,39 @@ const VintageGames = () => {
                           h="100%"
                           objectFit="cover"
                         />
-                        {!isFlipped && (
+
+                        {/* Floating Bubble */}
+                        <Box
+                          position="absolute"
+                          top="10px"
+                          right="10px"
+                          bg="#FFFFFF"
+                          color="#FF0000"
+                          fontSize="0.9rem"
+                          px="0.9rem"
+                          py="0.6rem"
+                          borderRadius="10px"
+                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                          textAlign="center"
+                          animation="floatBubble 2s ease-in-out infinite"
+                          style={{
+                            backfaceVisibility: 'hidden', // key fix
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          {game.bubbleText || 'HOT!'}
                           <Box
                             position="absolute"
-                            top="10px"
-                            right="10px"
-                            bg="#FFFFFF"
-                            color="#FF0000"
-                            fontSize="0.9rem"
-                            px="0.9rem"
-                            py="0.6rem"
-                            borderRadius="10px"
-                            boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                            textAlign="center"
-                            animation="floatBubble 2s ease-in-out infinite"
-                            style={{
-                              opacity: isFlipped ? 0 : 1,
-                              transition: `opacity 0.3s ease-in-out ${isFlipped ? '0.15s' : '0s'}`,
-                              pointerEvents: 'none',
-                            }}
-                          >
-                            {game.bubbleText || 'HOT!'}
-                            <Box
-                              position="absolute"
-                              bottom="-6px"
-                              left="20%"
-                              width="0"
-                              height="0"
-                              borderLeft="6px solid transparent"
-                              borderRight="6px solid transparent"
-                              borderTop="6px solid #FFFFFF"
-                            />
-                          </Box>
-                        )}
+                            bottom="-6px"
+                            left="20%"
+                            width="0"
+                            height="0"
+                            borderLeft="6px solid transparent"
+                            borderRight="6px solid transparent"
+                            borderTop="6px solid #FFFFFF"
+                            style={{ backfaceVisibility: 'hidden' }}
+                          />
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
@@ -296,6 +292,7 @@ const VintageGames = () => {
           );
         })}
       </Flex>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
@@ -318,6 +315,7 @@ const VintageGames = () => {
           Home
         </Button>
       </Flex>
+
       <style>
         {`
           @keyframes floatBubble {
