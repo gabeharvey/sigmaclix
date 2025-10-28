@@ -225,7 +225,7 @@ const Comics = () => {
                     }}
                     transition="all 0.3s ease-in-out"
                   >
-                    BUY
+                    NEGOTIATE
                   </Button>
                 </Box>
               </Box>
