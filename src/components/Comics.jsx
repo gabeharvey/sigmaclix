@@ -48,6 +48,14 @@ const Comics = () => {
       description: 'The legendary 1st appearance of Emma Frost (The White Queen) and Kitty Pryde.',
       bubbleText: '1st Appearance'
     },
+    {
+      id: 2,
+      name: 'The Amazing Spider-Man #300 CGC 9.6 White Pages',
+      image: '/venom-front.jpg',
+      price: '$1,500',
+      description: 'The iconic 1st full appearance of Venom.',
+      bubbleText: '1st Appearance'
+    }
   ];
 
   return (
