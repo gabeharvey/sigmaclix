@@ -149,8 +149,10 @@ const Comics = () => {
                             textAlign="center"
                             animation="floatBubble 2s ease-in-out infinite"
                             style={{
-                              display: isFlipped ? 'none' : 'flex', 
-                              }}
+                              opacity: isFlipped ? 0 : 1, 
+                              transition: 'opacity 0.3s ease-in-out', 
+                              pointerEvents: 'none',
+                            }}
                           >
                             {comic.bubbleText || 'HOT!'}
                             <Box
