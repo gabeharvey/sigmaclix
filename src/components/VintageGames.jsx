@@ -40,14 +40,21 @@ const VintageGames = () => {
   };
 
   const games = [
-    // Example card
     // {
     //   id: 1,
-    //   name: 'X-Men #129 CGC 9.8 White Pages',
-    //   image: '/x-men-129-front.jpg',
-    //   price: '$3,000',
-    //   description: 'The legendary 1st appearance of Emma Frost (The White Queen) and Kitty Pryde.',
-    //   bubbleText: '1st Appearance'
+    //   name: 'Retro NES Console',
+    //   image: '/nes-console.jpg',
+    //   price: '$250',
+    //   description: 'Classic Nintendo Entertainment System in mint condition.',
+    //   bubbleText: 'Collector!'
+    // },
+    // {
+    //   id: 2,
+    //   name: 'Vintage Pac-Man Arcade',
+    //   image: '/pacman-arcade.jpg',
+    //   price: '$1,200',
+    //   description: 'Fully functional original Pac-Man arcade machine.',
+    //   bubbleText: 'Rare!'
     // }
   ];
 
@@ -83,7 +90,6 @@ const VintageGames = () => {
               perspective="1000px"
               cursor="pointer"
               onClick={() => handleFlip(game.id)}
-              mx="auto"
             >
               <Box
                 w="100%"
@@ -119,24 +125,17 @@ const VintageGames = () => {
                       alignItems="center"
                       justifyContent="center"
                       bg="#FFFFFF"
+                      position="relative"
                     >
-                      <Box
-                        w="calc(100% - 4px)"
-                        h="calc(100% - 4px)"
-                        border="2px solid #FFFFFF"
+                      <Image
+                        src={game.image}
+                        alt={game.name}
+                        w="100%"
+                        h="100%"
+                        objectFit="cover"
                         borderRadius="12px"
-                        overflow="hidden"
-                        position="relative"
-                      >
-                        <Image
-                          src={game.image}
-                          alt={game.name}
-                          w="100%"
-                          h="100%"
-                          objectFit="cover"
-                        />
-
-                        {/* Floating Bubble */}
+                      />
+                      {!isFlipped && (
                         <Box
                           position="absolute"
                           top="10px"
@@ -150,10 +149,7 @@ const VintageGames = () => {
                           boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
                           textAlign="center"
                           animation="floatBubble 2s ease-in-out infinite"
-                          style={{
-                            backfaceVisibility: 'hidden', // key fix
-                            pointerEvents: 'none',
-                          }}
+                          pointerEvents="none"
                         >
                           {game.bubbleText || 'HOT!'}
                           <Box
@@ -165,10 +161,9 @@ const VintageGames = () => {
                             borderLeft="6px solid transparent"
                             borderRight="6px solid transparent"
                             borderTop="6px solid #FFFFFF"
-                            style={{ backfaceVisibility: 'hidden' }}
                           />
                         </Box>
-                      </Box>
+                      )}
                     </Box>
                   </Box>
                 </Box>
@@ -189,102 +184,80 @@ const VintageGames = () => {
                   <Box
                     w="100%"
                     h="100%"
-                    border="2px solid #FFFFFF"
-                    borderRadius="15px"
                     display="flex"
+                    flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
+                    p="1rem"
+                    position="relative"
+                    overflow="hidden"
+                    borderRadius="15px"
                     bg="#FF69B4"
+                    color="#FFFFFF"
                   >
+                    {/* Prism effect */}
                     <Box
-                      w="calc(100% - 6px)"
-                      h="calc(100% - 6px)"
-                      border="3px solid #FF69B4"
-                      borderRadius="13px"
-                      display="flex"
-                      alignItems="center"
-                      justifyContent="center"
-                      bg="#FF69B4"
-                    >
-                      <Box
-                        w="calc(100% - 4px)"
-                        h="calc(100% - 4px)"
-                        border="2px solid #FFFFFF"
-                        borderRadius="12px"
-                        display="flex"
-                        flexDirection="column"
-                        alignItems="center"
-                        justifyContent="center"
-                        p="1rem"
-                        position="relative"
-                        overflow="hidden"
-                        bg="#FF69B4"
-                        color="#FFFFFF"
-                      >
-                        {/* Hologram shimmer */}
-                        <Box
-                          position="absolute"
-                          top="0"
-                          left="0"
-                          w="100%"
-                          h="100%"
-                          bg="repeating-linear-gradient(45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 5px, transparent 5px, transparent 10px)"
-                          animation="holoShimmer1 2s linear infinite alternate"
-                          pointerEvents="none"
-                        />
-                        <Box
-                          position="absolute"
-                          top="0"
-                          left="0"
-                          w="100%"
-                          h="100%"
-                          bg="repeating-linear-gradient(-45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 5px, transparent 5px, transparent 10px)"
-                          animation="holoShimmer2 3s linear infinite alternate"
-                          pointerEvents="none"
-                        />
-                        <Box
-                          position="absolute"
-                          top="0"
-                          left="0"
-                          w="100%"
-                          h="100%"
-                          bg="repeating-linear-gradient(90deg, rgba(255,0,255,0.04), rgba(0,255,255,0.04), rgba(255,255,0,0.04))"
-                          animation="holoShimmer3 4s linear infinite alternate"
-                          pointerEvents="none"
-                        />
+                      position="absolute"
+                      top="0"
+                      left="0"
+                      w="100%"
+                      h="100%"
+                      bg="linear-gradient(135deg, rgba(255,182,193,0.3), rgba(255,105,180,0.3), rgba(255,20,147,0.3))"
+                      style={{ mixBlendMode: 'overlay' }}
+                      animation="tiltPrism1 4s linear infinite alternate"
+                      pointerEvents="none"
+                    />
+                    <Box
+                      position="absolute"
+                      top="0"
+                      left="0"
+                      w="100%"
+                      h="100%"
+                      bg="linear-gradient(-45deg, rgba(255,182,193,0.2), rgba(255,105,180,0.2), rgba(255,20,147,0.2))"
+                      style={{ mixBlendMode: 'overlay' }}
+                      animation="tiltPrism2 5s linear infinite alternate"
+                      pointerEvents="none"
+                    />
+                    <Box
+                      position="absolute"
+                      top="0"
+                      left="0"
+                      w="100%"
+                      h="100%"
+                      bg="repeating-linear-gradient(60deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 6px, transparent 6px, transparent 12px)"
+                      animation="tiltPrism3 6s linear infinite alternate"
+                      pointerEvents="none"
+                    />
 
-                        <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy" zIndex="1">
-                          {game.name}
-                        </Text>
-                        <Text fontSize="0.95rem" mb="0.5rem" zIndex="1">
-                          {game.description}
-                        </Text>
-                        <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem" zIndex="1">
-                          {game.price}
-                        </Text>
-                        <Button
-                          onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
-                          fontFamily="'Bangers', system-ui"
-                          fontSize="1.1rem"
-                          bg="#FFFFFF"
-                          color="#FF69B4"
-                          px="2.5rem"
-                          py="0.8rem"
-                          borderRadius="10px"
-                          border="3px solid #FF69B4"
-                          boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
-                          _hover={{
-                            transform: 'scale(1.05)',
-                            boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
-                            bg: '#FFFFFF',
-                          }}
-                          transition="all 0.3s ease-in-out"
-                          zIndex="1"
-                        >
-                          NEGOTIATE
-                        </Button>
-                      </Box>
-                    </Box>
+                    <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy">
+                      {game.name}
+                    </Text>
+                    <Text fontSize="0.95rem" mb="0.5rem">
+                      {game.description}
+                    </Text>
+                    <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
+                      {game.price}
+                    </Text>
+                    <Button
+                      onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
+                      fontFamily="'Bangers', system-ui"
+                      fontSize="1.1rem"
+                      bg="#FFFFFF"
+                      color="#FF69B4"
+                      px="2.5rem"
+                      py="0.8rem"
+                      borderRadius="10px"
+                      border="3px solid #FF69B4"
+                      boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
+                      _hover={{
+                        transform: 'scale(1.05)',
+                        boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
+                        bg: '#FFFFFF',
+                      }}
+                      transition="all 0.3s ease-in-out"
+                    >
+                      NEGOTIATE
+                    </Button>
                   </Box>
                 </Box>
               </Box>
@@ -316,27 +289,25 @@ const VintageGames = () => {
         </Button>
       </Flex>
 
-      <style>
-        {`
-          @keyframes floatBubble {
-            0% { transform: translateY(0px) rotate(10deg); }
-            50% { transform: translateY(-5px) rotate(10deg); }
-            100% { transform: translateY(0px) rotate(10deg); }
-          }
-          @keyframes holoShimmer1 {
-            0% { background-position: 0 0; }
-            100% { background-position: 150% 150%; }
-          }
-          @keyframes holoShimmer2 {
-            0% { background-position: 0 0; }
-            100% { background-position: -150% 150%; }
-          }
-          @keyframes holoShimmer3 {
-            0% { background-position: 0 0; }
-            100% { background-position: 150% -150%; }
-          }
-        `}
-      </style>
+      <style>{`
+        @keyframes floatBubble {
+          0% { transform: translateY(0px) rotate(10deg); }
+          50% { transform: translateY(-5px) rotate(10deg); }
+          100% { transform: translateY(0px) rotate(10deg); }
+        }
+        @keyframes tiltPrism1 {
+          0% { background-position: 0 0; }
+          100% { background-position: 200% 200%; }
+        }
+        @keyframes tiltPrism2 {
+          0% { background-position: 0 0; }
+          100% { background-position: -200% 200%; }
+        }
+        @keyframes tiltPrism3 {
+          0% { background-position: 0 0; }
+          100% { background-position: 200% -200%; }
+        }
+      `}</style>
     </Box>
   );
 };
