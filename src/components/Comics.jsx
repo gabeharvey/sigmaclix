@@ -43,14 +43,14 @@ const Comics = () => {
   };
 
   const comics = [
-    // {
-    //   id: 1,
-    //   name: 'Scarlet Witch #9 Amaranth 1st Cover Appearance CGC 9.8',
-    //   image: '/amaranth-1st.jpg',
-    //   price: '$300',
-    //   description: 'Scarlet Witch shines in her first cover appearance, perfect for collectors!',
-    //   bubbleText: '✨FIRST APPEARANCE✨'
-    // },
+    {
+      id: 1,
+      name: 'X-Men #129 CGC 9.8 White Pages – 1st Appearance of the White Queen (Emma Frost)',
+      image: '/xmen129-whitequeen.jpg',
+      price: '$3,000',
+      description: 'The legendary 1st appearance of Emma Frost, the White Queen, and Kitty Pryde — a true Bronze Age key for elite collectors.',
+      bubbleText: '👑 1st Appearance 👑'
+    }
     // You can add more comics here following the same structure
   ];
 
