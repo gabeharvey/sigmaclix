@@ -153,6 +153,9 @@ const VintageGames = () => {
                             boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
                             textAlign="center"
                             animation="floatBubble 2s ease-in-out infinite"
+                            style={{
+                              display: isFlipped ? 'none' : 'flex', 
+                              }}
                           >
                             {game.bubbleText || 'HOT!'}
                             <Box

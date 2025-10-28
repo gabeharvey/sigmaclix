@@ -148,8 +148,7 @@ const Cards = () => {
                           textAlign="center"
                           animation="floatBubble 2s ease-in-out infinite"
                           style={{
-                            opacity: isFlipped ? 0 : 1,
-                            transition: 'opacity 0.3s ease-in-out'
+                            display: isFlipped ? 'none' : 'flex', 
                           }}
                         >
                           {card.bubbleText || 'HOT!'}
