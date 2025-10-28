@@ -148,9 +148,9 @@ const Cards = () => {
                           textAlign="center"
                           animation="floatBubble 2s ease-in-out infinite"
                           style={{
-                            opacity: isFlipped ? 0 : 1, 
-                            transition: 'opacity 0.3s ease-in-out', 
-                            pointerEvents: 'none', 
+                            opacity: isFlipped ? 0 : 1,
+                            transition: `opacity 0.3s ease-in-out ${isFlipped ? '0.20s' : '0s'}`,
+                            pointerEvents: 'none',
                           }}
                         >
                           {card.bubbleText || 'HOT!'}
