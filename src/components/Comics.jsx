@@ -46,7 +46,7 @@ const Comics = () => {
     {
       id: 1,
       name: 'X-Men #129 CGC 9.8 White Pages – 1st Appearance of the White Queen (Emma Frost)',
-      image: '/xmen129-whitequeen.jpg',
+      image: '/x-men-129-front.jpg',
       price: '$3,000',
       description: 'The legendary 1st appearance of Emma Frost, the White Queen, and Kitty Pryde — a true Bronze Age key for elite collectors.',
       bubbleText: '👑 1st Appearance 👑'
