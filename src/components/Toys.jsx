@@ -10,10 +10,10 @@ const Toys = () => {
   const flipSound = new Audio('/card-flip.mp3');
   flipSound.volume = 0.7;
 
-  const powerUpSound = new Audio('/power-up.mp3'); 
+  const powerUpSound = new Audio('/power-up.mp3');
   powerUpSound.volume = 0.7;
 
-  const moneySound = new Audio('/coin.mp3'); 
+  const moneySound = new Audio('/coin.mp3');
   moneySound.volume = 0.7;
 
   const handleFlip = (id) => {
@@ -30,15 +30,12 @@ const Toys = () => {
   };
 
   const handlePurchase = () => {
-    moneySound.currentTime = 0; 
-    moneySound.play().catch((err) => console.warn('Sound play failed:', err));
-
-    navigate('/'); 
+    moneySound.currentTime = 0;
+    moneySound.play().catch(err => console.warn('Sound play failed:', err));
+    navigate('/');
     setTimeout(() => {
       const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
     }, 500);
   };
 
@@ -51,7 +48,7 @@ const Toys = () => {
     //   description: 'A must-have Funko Pop for superhero collectors!',
     //   bubbleText: 'FUN'
     // },
-    // Add more toys here
+    // Add more toys as needed
   ];
 
   return (
@@ -78,21 +75,16 @@ const Toys = () => {
       >
         Toys
       </Text>
-            <Flex
-              wrap="wrap"
-              justify="center"
-              align="center"
-              direction={{ base: 'column', md: 'row' }}
-              gap={{ base: '2rem', md: '2rem' }}
-            >
-        {toys.map(toy => {
+
+      <Flex wrap="wrap" justify="center" align="center" gap="2rem">
+        {toys.map((toy) => {
           const isFlipped = flippedToys[toy.id];
 
           return (
             <Box
               key={toy.id}
-              w={{ base: '75%', sm: '60%', md: '200px', lg: '220px' }}
-              h={{ base: '430px', sm: '450px', md: '300px' }}
+              w="220px"
+              h="300px"
               perspective="1000px"
               cursor="pointer"
               onClick={() => handleFlip(toy.id)}
@@ -105,6 +97,7 @@ const Toys = () => {
                 style={{ transformStyle: 'preserve-3d', transition: 'transform 0.6s' }}
                 transform={isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}
               >
+                {/* Front */}
                 <Box
                   position="absolute"
                   w="100%"
@@ -115,7 +108,7 @@ const Toys = () => {
                   <Box
                     w="100%"
                     h="100%"
-                    border="1px solid #FFFFFF"
+                    border="2px solid #FFFFFF"
                     borderRadius="15px"
                     display="flex"
                     alignItems="center"
@@ -123,8 +116,8 @@ const Toys = () => {
                     bg="#FFFFFF"
                   >
                     <Box
-                      w="calc(100% - 8px)"
-                      h="calc(100% - 8px)"
+                      w="calc(100% - 6px)"
+                      h="calc(100% - 6px)"
                       border="3px solid #E6BE8A"
                       borderRadius="13px"
                       display="flex"
@@ -159,7 +152,7 @@ const Toys = () => {
                           borderRadius="10px"
                           boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
                           textAlign="center"
-                          animation="floatBubbleRight 2s ease-in-out infinite"
+                          animation="floatBubble 2s ease-in-out infinite"
                         >
                           {toy.bubbleText || 'HOT!'}
                           <Box
@@ -177,61 +170,119 @@ const Toys = () => {
                     </Box>
                   </Box>
                 </Box>
-                  <style>
-                  {`
-                    @keyframes floatBubbleRight {
-                      0%, 100% { transform: translateY(0px) rotate(10deg); }
-                      50% { transform: translateY(-5px) rotate(10deg); }
-                    }
-                  `}
-                  </style>
+
                 {/* Back */}
                 <Box
                   position="absolute"
                   w="100%"
                   h="100%"
                   borderRadius="15px"
-                  bg="#FF69B4"
-                  color="#FFFFFF"
-                  display="flex"
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                  p="1rem"
-                  boxShadow="0 6px 15px rgba(0,0,0,0.3)"
                   style={{ backfaceVisibility: 'hidden' }}
                   transform="rotateY(180deg)"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
                   textAlign="center"
                 >
-                  <Text fontSize={{ base: '0.9rem', md: '1rem' }} fontWeight="bold" mb="0.5rem">
-                    {toy.name}
-                  </Text>
-                  <Text fontSize={{ base: '0.85rem', md: '0.95rem' }} mb="0.5rem">
-                    {toy.description}
-                  </Text>
-                  <Text fontSize={{ base: '0.9rem', md: '1rem' }} fontWeight="bold" color="#FFD700" mb="1rem">
-                    {toy.price}
-                  </Text>
-                  <Button
-                    onClick={(e) => { e.stopPropagation(); handlePurchase(toy.name); }}
-                    fontFamily="'Bangers', system-ui"
-                    fontSize={{ base: '1rem', md: '1.1rem' }}
-                    bg="#FFFFFF"
-                    color="#FF69B4"
-                    px="2.5rem"
-                    py="0.8rem"
-                    borderRadius="10px"
-                    border="3px solid #FF69B4"
-                    boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
-                    _hover={{
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
-                      bg: '#FFFFFF',
-                    }}
-                    transition="all 0.3s ease-in-out"
+                  <Box
+                    w="100%"
+                    h="100%"
+                    border="2px solid #FFFFFF"
+                    borderRadius="15px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    bg="#FF69B4"
                   >
-                    NEGOTIATE
-                  </Button>
+                    <Box
+                      w="calc(100% - 6px)"
+                      h="calc(100% - 6px)"
+                      border="3px solid #FF69B4"
+                      borderRadius="13px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      bg="#FF69B4"
+                    >
+                      <Box
+                        w="calc(100% - 4px)"
+                        h="calc(100% - 4px)"
+                        border="2px solid #FFFFFF"
+                        borderRadius="12px"
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        p="1rem"
+                        position="relative"
+                        overflow="hidden"
+                        bg="#FF69B4"
+                        color="#FFFFFF"
+                      >
+                        {/* Hologram shimmer */}
+                        <Box
+                          position="absolute"
+                          top="0"
+                          left="0"
+                          w="100%"
+                          h="100%"
+                          bg="repeating-linear-gradient(45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 5px, transparent 5px, transparent 10px)"
+                          animation="holoShimmer1 2s linear infinite alternate"
+                          pointerEvents="none"
+                        />
+                        <Box
+                          position="absolute"
+                          top="0"
+                          left="0"
+                          w="100%"
+                          h="100%"
+                          bg="repeating-linear-gradient(-45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 5px, transparent 5px, transparent 10px)"
+                          animation="holoShimmer2 3s linear infinite alternate"
+                          pointerEvents="none"
+                        />
+                        <Box
+                          position="absolute"
+                          top="0"
+                          left="0"
+                          w="100%"
+                          h="100%"
+                          bg="repeating-linear-gradient(90deg, rgba(255,0,255,0.04), rgba(0,255,255,0.04), rgba(255,255,0,0.04))"
+                          animation="holoShimmer3 4s linear infinite alternate"
+                          pointerEvents="none"
+                        />
+                        <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy" zIndex="1">
+                          {toy.name}
+                        </Text>
+                        <Text fontSize="0.95rem" mb="0.5rem" zIndex="1">
+                          {toy.description}
+                        </Text>
+                        <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem" zIndex="1">
+                          {toy.price}
+                        </Text>
+                        <Button
+                          onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
+                          fontFamily="'Bangers', system-ui"
+                          fontSize="1.1rem"
+                          bg="#FFFFFF"
+                          color="#FF69B4"
+                          px="2.5rem"
+                          py="0.8rem"
+                          borderRadius="10px"
+                          border="3px solid #FF69B4"
+                          boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
+                          _hover={{
+                            transform: 'scale(1.05)',
+                            boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
+                            bg: '#FFFFFF',
+                          }}
+                          transition="all 0.3s ease-in-out"
+                          zIndex="1"
+                        >
+                          NEGOTIATE
+                        </Button>
+                      </Box>
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
             </Box>
@@ -243,7 +294,7 @@ const Toys = () => {
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize={{ base: '1.8rem', md: '2.2rem' }}
+          fontSize="2.2rem"
           bg="#FFFFFF"
           color="#FF69B4"
           px="3rem"
@@ -261,6 +312,28 @@ const Toys = () => {
           Home
         </Button>
       </Flex>
+
+      <style>
+        {`
+          @keyframes floatBubble {
+            0% { transform: translateY(0px) rotate(10deg); }
+            50% { transform: translateY(-5px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(10deg); }
+          }
+          @keyframes holoShimmer1 {
+            0% { background-position: 0 0; }
+            100% { background-position: 150% 150%; }
+          }
+          @keyframes holoShimmer2 {
+            0% { background-position: 0 0; }
+            100% { background-position: -150% 150%; }
+          }
+          @keyframes holoShimmer3 {
+            0% { background-position: 0 0; }
+            100% { background-position: 150% -150%; }
+          }
+        `}
+      </style>
     </Box>
   );
 };

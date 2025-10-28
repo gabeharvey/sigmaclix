@@ -10,48 +10,44 @@ const Comics = () => {
   const flipSound = new Audio('/card-flip.mp3');
   flipSound.volume = 0.7;
 
-  const powerUpSound = new Audio('/power-up.mp3'); 
+  const powerUpSound = new Audio('/power-up.mp3');
   powerUpSound.volume = 0.7;
 
-  const moneySound = new Audio('/coin.mp3'); 
+  const moneySound = new Audio('/coin.mp3');
   moneySound.volume = 0.7;
 
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
-    flipSound.play().catch(err => console.warn('Sound play failed:', err));
-    setFlippedComics(prev => ({ ...prev, [id]: !prev[id] }));
+    flipSound.play().catch((err) => console.warn('Sound play failed:', err));
+    setFlippedComics((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleHomeClick = () => {
     powerUpSound.currentTime = 0;
-    powerUpSound.play().catch(err => console.warn('Sound play failed:', err));
+    powerUpSound.play().catch((err) => console.warn('Sound play failed:', err));
     navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handlePurchase = () => {
-    moneySound.currentTime = 0; 
+    moneySound.currentTime = 0;
     moneySound.play().catch((err) => console.warn('Sound play failed:', err));
-
-    navigate('/'); 
+    navigate('/');
     setTimeout(() => {
       const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
     }, 500);
   };
 
   const comics = [
     {
       id: 1,
-      name: 'X-Men #129 CGC 9.8 White Pages – 1st Appearance of the White Queen (Emma Frost)',
+      name: 'X-Men #129 CGC 9.8 White Pages',
       image: '/x-men-129-front.jpg',
       price: '$3,000',
-      description: 'The legendary 1st appearance of Emma Frost, the White Queen, and Kitty Pryde — a true Bronze Age key for elite collectors.',
+      description: 'The legendary 1st appearance of Emma Frost (The White Queen) and Kitty Pryde.',
       bubbleText: '1st Appearance'
     }
-    // You can add more comics here following the same structure
   ];
 
   return (
@@ -78,21 +74,16 @@ const Comics = () => {
       >
         Comics
       </Text>
-            <Flex
-              wrap="wrap"
-              justify="center"
-              align="center"
-              direction={{ base: 'column', md: 'row' }}
-              gap={{ base: '2rem', md: '2rem' }}
-            >
-        {comics.map(comic => {
+
+      <Flex wrap="wrap" justify="center" align="center" direction={{ base: 'column', md: 'row' }} gap="2rem">
+        {comics.map((comic) => {
           const isFlipped = flippedComics[comic.id];
 
           return (
             <Box
               key={comic.id}
-              w={{ base: '75%', sm: '60%', md: '200px', lg: '220px' }}
-              h={{ base: '430px', sm: '450px', md: '300px' }}
+              w="220px" // Fixed width for all screens
+              h="300px" // Fixed height
               perspective="1000px"
               cursor="pointer"
               onClick={() => handleFlip(comic.id)}
@@ -105,6 +96,7 @@ const Comics = () => {
                 style={{ transformStyle: 'preserve-3d', transition: 'transform 0.6s' }}
                 transform={isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}
               >
+                {/* Front Card */}
                 <Box
                   position="absolute"
                   w="100%"
@@ -115,7 +107,7 @@ const Comics = () => {
                   <Box
                     w="100%"
                     h="100%"
-                    border="1px solid #FFFFFF"
+                    border="2px solid #FFFFFF"
                     borderRadius="15px"
                     display="flex"
                     alignItems="center"
@@ -123,8 +115,8 @@ const Comics = () => {
                     bg="#FFFFFF"
                   >
                     <Box
-                      w="calc(100% - 8px)"
-                      h="calc(100% - 8px)"
+                      w="calc(100% - 6px)"
+                      h="calc(100% - 6px)"
                       border="3px solid #E6BE8A"
                       borderRadius="13px"
                       display="flex"
@@ -140,98 +132,151 @@ const Comics = () => {
                         overflow="hidden"
                         position="relative"
                       >
-                        <Image
-                          src={comic.image}
-                          alt={comic.name}
-                          w="100%"
-                          h="100%"
-                          objectFit="cover"
-                        />
-                      <Box
-                        position="absolute"
-                        top="10px"
-                        right="10px"
-                        bg="#FFFFFF"
-                        color="#FF0000"
-                        fontSize="0.9rem"
-                        px="0.9rem"
-                        py="0.6rem"
-                        borderRadius="10px"
-                        boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                        textAlign="center"
-                        animation="floatBubbleRight 2s ease-in-out infinite"
-                      >
-                        {comic.bubbleText || 'HOT!'}
+                        <Image src={comic.image} alt={comic.name} w="100%" h="100%" objectFit="cover" />
                         <Box
                           position="absolute"
-                          bottom="-6px"
-                          left="20%"
-                          width="0"
-                          height="0"
-                          borderLeft="6px solid transparent"
-                          borderRight="6px solid transparent"
-                          borderTop="6px solid #FFFFFF"
-                        />
+                          top="10px"
+                          right="10px"
+                          bg="#FFFFFF"
+                          color="#FF0000"
+                          fontSize="0.9rem"
+                          px="0.9rem"
+                          py="0.6rem"
+                          borderRadius="10px"
+                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                          textAlign="center"
+                          animation="floatBubble 2s ease-in-out infinite"
+                        >
+                          {comic.bubbleText || 'HOT!'}
+                          <Box
+                            position="absolute"
+                            bottom="-6px"
+                            left="20%"
+                            width="0"
+                            height="0"
+                            borderLeft="6px solid transparent"
+                            borderRight="6px solid transparent"
+                            borderTop="6px solid #FFFFFF"
+                          />
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
                 </Box>
-              </Box>
-                <style>
-                {`
-                  @keyframes floatBubbleRight {
-                    0%, 100% { transform: translateY(0px) rotate(10deg); }
-                    50% { transform: translateY(-5px) rotate(10deg); }
-                  }
-                `}
-                </style>
-                {/* Back */}
+
+                {/* Back Card */}
                 <Box
                   position="absolute"
                   w="100%"
                   h="100%"
                   borderRadius="15px"
-                  bg="#FF69B4"
-                  color="#FFFFFF"
-                  display="flex"
-                  flexDirection="column"
-                  alignItems="center"
-                  justifyContent="center"
-                  p="1rem"
-                  boxShadow="0 6px 15px rgba(0,0,0,0.3)"
                   style={{ backfaceVisibility: 'hidden' }}
                   transform="rotateY(180deg)"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
                   textAlign="center"
                 >
-                  <Text fontSize={{ base: '0.9rem', md: '1rem' }} fontWeight="bold" mb="0.5rem">
-                    {comic.name}
-                  </Text>
-                  <Text fontSize={{ base: '0.85rem', md: '0.95rem' }} mb="0.5rem">
-                    {comic.description}
-                  </Text>
-                  <Text fontSize={{ base: '0.9rem', md: '1rem' }} fontWeight="bold" color="#FFD700" mb="1rem">
-                    {comic.price}
-                  </Text>
-                  <Button
-                    onClick={(e) => { e.stopPropagation(); handlePurchase(comic.name); }}
-                    fontFamily="'Bangers', system-ui"
-                    fontSize={{ base: '1rem', md: '1.1rem' }}
-                    bg="#FFFFFF"
-                    color="#FF69B4"
-                    px="2.5rem"
-                    py="0.8rem"
-                    borderRadius="10px"
-                    border="3px solid #FF69B4"
-                    boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
-                    _hover={{
-                      transform: 'scale(1.05)',
-                      boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
-                      bg: '#FFFFFF',
-                    }}
-                    transition="all 0.3s ease-in-out"
+                  <Box
+                    w="100%"
+                    h="100%"
+                    border="2px solid #FFFFFF"
+                    borderRadius="15px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    bg="#FF69B4"
                   >
-                    NEGOTIATE
-                  </Button>
+                    <Box
+                      w="calc(100% - 6px)"
+                      h="calc(100% - 6px)"
+                      border="3px solid #FF69B4"
+                      borderRadius="13px"
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="center"
+                      bg="#FF69B4"
+                    >
+                      <Box
+                        w="calc(100% - 4px)"
+                        h="calc(100% - 4px)"
+                        border="2px solid #FFFFFF"
+                        borderRadius="12px"
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        justifyContent="center"
+                        p="1rem"
+                        position="relative"
+                        overflow="hidden"
+                        bg="#FF69B4"
+                        color="#FFFFFF"
+                      >
+                        {/* Fun cross shimmer hologram */}
+                        <Box
+                          position="absolute"
+                          top="0"
+                          left="0"
+                          w="100%"
+                          h="100%"
+                          bg="repeating-linear-gradient(45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 5px, transparent 5px, transparent 10px)"
+                          animation="holoShimmer1 2s linear infinite alternate"
+                          pointerEvents="none"
+                        />
+                        <Box
+                          position="absolute"
+                          top="0"
+                          left="0"
+                          w="100%"
+                          h="100%"
+                          bg="repeating-linear-gradient(-45deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08) 5px, transparent 5px, transparent 10px)"
+                          animation="holoShimmer2 3s linear infinite alternate"
+                          pointerEvents="none"
+                        />
+                        <Box
+                          position="absolute"
+                          top="0"
+                          left="0"
+                          w="100%"
+                          h="100%"
+                          bg="repeating-linear-gradient(90deg, rgba(255,0,255,0.04), rgba(0,255,255,0.04), rgba(255,255,0,0.04))"
+                          animation="holoShimmer3 4s linear infinite alternate"
+                          pointerEvents="none"
+                        />
+
+                        <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy" zIndex="1">
+                          {comic.name}
+                        </Text>
+                        <Text fontSize="0.95rem" mb="0.5rem" zIndex="1">
+                          {comic.description}
+                        </Text>
+                        <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem" zIndex="1">
+                          {comic.price}
+                        </Text>
+                        <Button
+                          onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
+                          fontFamily="'Bangers', system-ui"
+                          fontSize="1.1rem"
+                          bg="#FFFFFF"
+                          color="#FF69B4"
+                          px="2.5rem"
+                          py="0.8rem"
+                          borderRadius="10px"
+                          border="3px solid #FF69B4"
+                          boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
+                          _hover={{
+                            transform: 'scale(1.05)',
+                            boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
+                            bg: '#FFFFFF',
+                          }}
+                          transition="all 0.3s ease-in-out"
+                          zIndex="1"
+                        >
+                          NEGOTIATE
+                        </Button>
+                      </Box>
+                    </Box>
+                  </Box>
                 </Box>
               </Box>
             </Box>
@@ -243,7 +288,7 @@ const Comics = () => {
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize={{ base: '1.8rem', md: '2.2rem' }}
+          fontSize="2.2rem"
           bg="#FFFFFF"
           color="#FF69B4"
           px="3rem"
@@ -261,6 +306,29 @@ const Comics = () => {
           Home
         </Button>
       </Flex>
+
+      <style>
+        {`
+          @keyframes floatBubble {
+            0% { transform: translateY(0px) rotate(10deg); }
+            50% { transform: translateY(-5px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(10deg); }
+          }
+
+          @keyframes holoShimmer1 {
+            0% { background-position: 0 0; }
+            100% { background-position: 150% 150%; }
+          }
+          @keyframes holoShimmer2 {
+            0% { background-position: 0 0; }
+            100% { background-position: -150% 150%; }
+          }
+          @keyframes holoShimmer3 {
+            0% { background-position: 0 0; }
+            100% { background-position: 150% -150%; }
+          }
+        `}
+      </style>
     </Box>
   );
 };
