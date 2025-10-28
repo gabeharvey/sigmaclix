@@ -49,7 +49,7 @@ const Comics = () => {
       image: '/x-men-129-front.jpg',
       price: '$3,000',
       description: 'The legendary 1st appearance of Emma Frost, the White Queen, and Kitty Pryde — a true Bronze Age key for elite collectors.',
-      bubbleText: '👑 1st Appearance 👑'
+      bubbleText: '1st Appearance'
     }
     // You can add more comics here following the same structure
   ];
@@ -147,39 +147,44 @@ const Comics = () => {
                           h="100%"
                           objectFit="cover"
                         />
+                      <Box
+                        position="absolute"
+                        top="10px"
+                        right="10px"
+                        bg="#FFFFFF"
+                        color="#FF0000"
+                        fontSize="0.9rem"
+                        px="0.9rem"
+                        py="0.6rem"
+                        borderRadius="10px"
+                        boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                        textAlign="center"
+                        animation="floatBubbleRight 2s ease-in-out infinite"
+                      >
+                        {comic.bubbleText || 'HOT!'}
                         <Box
                           position="absolute"
-                          top="10px"
-                          right="10px"
-                          bg="#FFEB3B"
-                          color="#FF0000"
-                          // fontWeight="bold"
-                          fontSize="0.9rem"
-                          px="0.9rem"
-                          py="0.6rem"
-                          borderRadius="10px"
-                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                          textAlign="center"
-                          transform="rotate(-10deg)"
-                          animation="floatBubble 2s ease-in-out infinite"
-                        >
-                          {comic.bubbleText || 'HOT!'}
-                          <Box
-                            position="absolute"
-                            bottom="-6px"
-                            left="20%"
-                            width="0"
-                            height="0"
-                            borderLeft="6px solid transparent"
-                            borderRight="6px solid transparent"
-                            borderTop="6px solid #FFEB3B"
-                            transform="rotate(10deg)"
-                          />
-                        </Box>
+                          bottom="-6px"
+                          left="20%"
+                          width="0"
+                          height="0"
+                          borderLeft="6px solid transparent"
+                          borderRight="6px solid transparent"
+                          borderTop="6px solid #FFFFFF"
+                        />
                       </Box>
                     </Box>
                   </Box>
                 </Box>
+              </Box>
+                <style>
+                {`
+                  @keyframes floatBubbleRight {
+                    0%, 100% { transform: translateY(0px) rotate(10deg); }
+                    50% { transform: translateY(-5px) rotate(10deg); }
+                  }
+                `}
+                </style>
                 {/* Back */}
                 <Box
                   position="absolute"
@@ -256,15 +261,6 @@ const Comics = () => {
           Home
         </Button>
       </Flex>
-
-      <style>
-        {`
-          @keyframes floatBubble {
-            0%, 100% { transform: translateY(0px) rotate(-10deg); }
-            50% { transform: translateY(-5px) rotate(-10deg); }
-          }
-        `}
-      </style>
     </Box>
   );
 };

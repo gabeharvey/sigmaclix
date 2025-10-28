@@ -49,7 +49,7 @@ const Toys = () => {
     //   image: '/wonder-woman-funko.jpg',
     //   price: '$40',
     //   description: 'A must-have Funko Pop for superhero collectors!',
-    //   bubbleText: '🧸FUN🧸'
+    //   bubbleText: 'FUN'
     // },
     // Add more toys here
   ];
@@ -151,17 +151,15 @@ const Toys = () => {
                           position="absolute"
                           top="10px"
                           right="10px"
-                          bg="#FFEB3B"
+                          bg="#FFFFFF"
                           color="#FF0000"
-                          // fontWeight="bold"
                           fontSize="0.9rem"
                           px="0.9rem"
                           py="0.6rem"
                           borderRadius="10px"
                           boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
                           textAlign="center"
-                          transform="rotate(-10deg)"
-                          animation="floatBubble 2s ease-in-out infinite"
+                          animation="floatBubbleRight 2s ease-in-out infinite"
                         >
                           {toy.bubbleText || 'HOT!'}
                           <Box
@@ -172,14 +170,21 @@ const Toys = () => {
                             height="0"
                             borderLeft="6px solid transparent"
                             borderRight="6px solid transparent"
-                            borderTop="6px solid #FFEB3B"
-                            transform="rotate(10deg)"
+                            borderTop="6px solid #FFFFFF"
                           />
                         </Box>
                       </Box>
                     </Box>
                   </Box>
                 </Box>
+                  <style>
+                  {`
+                    @keyframes floatBubbleRight {
+                      0%, 100% { transform: translateY(0px) rotate(10deg); }
+                      50% { transform: translateY(-5px) rotate(10deg); }
+                    }
+                  `}
+                  </style>
                 {/* Back */}
                 <Box
                   position="absolute"
@@ -256,15 +261,6 @@ const Toys = () => {
           Home
         </Button>
       </Flex>
-
-      <style>
-        {`
-          @keyframes floatBubble {
-            0%, 100% { transform: translateY(0px) rotate(-10deg); }
-            50% { transform: translateY(-5px) rotate(-10deg); }
-          }
-        `}
-      </style>
     </Box>
   );
 };
