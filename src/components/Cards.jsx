@@ -133,6 +133,7 @@ const Cards = () => {
                         position="relative"
                       >
                         <Image src={card.image} alt={card.name} w="100%" h="100%" objectFit="cover" />
+                        {/* Floating Bubble with fade */}
                         <Box
                           position="absolute"
                           top="10px"
@@ -146,6 +147,10 @@ const Cards = () => {
                           boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
                           textAlign="center"
                           animation="floatBubble 2s ease-in-out infinite"
+                          style={{
+                            opacity: isFlipped ? 0 : 1,
+                            transition: 'opacity 0.3s ease-in-out'
+                          }}
                         >
                           {card.bubbleText || 'HOT!'}
                           <Box
@@ -212,6 +217,7 @@ const Cards = () => {
                         bg="#FF69B4"
                         color="#FFFFFF"
                       >
+                        {/* Holographic shimmer */}
                         <Box
                           position="absolute"
                           top="0"
@@ -242,6 +248,8 @@ const Cards = () => {
                           animation="holoShimmer3 4s linear infinite alternate"
                           pointerEvents="none"
                         />
+
+                        {/* Card info */}
                         <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy" zIndex="1">
                           {card.name}
                         </Text>
@@ -281,16 +289,15 @@ const Cards = () => {
           );
         })}
       </Flex>
-
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize="2.2rem"
+          fontSize={{ base: '1.8rem', md: '2.2rem' }} 
           bg="#FFFFFF"
           color="#FF69B4"
-          px="3rem"
-          py="1.5rem"
+          px={{ base: '2.5rem', md: '3rem' }} 
+          py={{ base: '1rem', md: '1.5rem' }}
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
           boxShadow="0 0 0 4px #FFFFFF, 0 0 0 6px #FF69B4"
@@ -304,7 +311,6 @@ const Cards = () => {
           Home
         </Button>
       </Flex>
-
       <style>
         {`
           @keyframes floatBubble {

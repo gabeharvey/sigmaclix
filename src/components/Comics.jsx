@@ -75,15 +75,15 @@ const Comics = () => {
         Comics
       </Text>
 
-      <Flex wrap="wrap" justify="center" align="center" direction={{ base: 'column', md: 'row' }} gap="2rem">
+      <Flex wrap="wrap" justify="center" align="center" gap="2rem">
         {comics.map((comic) => {
           const isFlipped = flippedComics[comic.id];
 
           return (
             <Box
               key={comic.id}
-              w="220px" // Fixed width for all screens
-              h="300px" // Fixed height
+              w="220px"
+              h="300px"
               perspective="1000px"
               cursor="pointer"
               onClick={() => handleFlip(comic.id)}
@@ -96,7 +96,7 @@ const Comics = () => {
                 style={{ transformStyle: 'preserve-3d', transition: 'transform 0.6s' }}
                 transform={isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'}
               >
-                {/* Front Card */}
+                {/* Front */}
                 <Box
                   position="absolute"
                   w="100%"
@@ -133,38 +133,41 @@ const Comics = () => {
                         position="relative"
                       >
                         <Image src={comic.image} alt={comic.name} w="100%" h="100%" objectFit="cover" />
-                        <Box
-                          position="absolute"
-                          top="10px"
-                          right="10px"
-                          bg="#FFFFFF"
-                          color="#FF0000"
-                          fontSize="0.9rem"
-                          px="0.9rem"
-                          py="0.6rem"
-                          borderRadius="10px"
-                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                          textAlign="center"
-                          animation="floatBubble 2s ease-in-out infinite"
-                        >
-                          {comic.bubbleText || 'HOT!'}
+                        {/* Bubble only visible when not flipped */}
+                        {!isFlipped && (
                           <Box
                             position="absolute"
-                            bottom="-6px"
-                            left="20%"
-                            width="0"
-                            height="0"
-                            borderLeft="6px solid transparent"
-                            borderRight="6px solid transparent"
-                            borderTop="6px solid #FFFFFF"
-                          />
-                        </Box>
+                            top="10px"
+                            right="10px"
+                            bg="#FFFFFF"
+                            color="#FF0000"
+                            fontSize="0.9rem"
+                            px="0.9rem"
+                            py="0.6rem"
+                            borderRadius="10px"
+                            boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                            textAlign="center"
+                            animation="floatBubble 2s ease-in-out infinite"
+                          >
+                            {comic.bubbleText || 'HOT!'}
+                            <Box
+                              position="absolute"
+                              bottom="-6px"
+                              left="20%"
+                              width="0"
+                              height="0"
+                              borderLeft="6px solid transparent"
+                              borderRight="6px solid transparent"
+                              borderTop="6px solid #FFFFFF"
+                            />
+                          </Box>
+                        )}
                       </Box>
                     </Box>
                   </Box>
                 </Box>
 
-                {/* Back Card */}
+                {/* Back */}
                 <Box
                   position="absolute"
                   w="100%"
@@ -212,7 +215,7 @@ const Comics = () => {
                         bg="#FF69B4"
                         color="#FFFFFF"
                       >
-                        {/* Fun cross shimmer hologram */}
+                        {/* Hologram shimmer */}
                         <Box
                           position="absolute"
                           top="0"
@@ -283,16 +286,15 @@ const Comics = () => {
           );
         })}
       </Flex>
-
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize="2.2rem"
+          fontSize={{ base: '1.8rem', md: '2.2rem' }} 
           bg="#FFFFFF"
           color="#FF69B4"
-          px="3rem"
-          py="1.5rem"
+          px={{ base: '2.5rem', md: '3rem' }} 
+          py={{ base: '1rem', md: '1.5rem' }}
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
           boxShadow="0 0 0 4px #FFFFFF, 0 0 0 6px #FF69B4"
@@ -306,7 +308,6 @@ const Comics = () => {
           Home
         </Button>
       </Flex>
-
       <style>
         {`
           @keyframes floatBubble {
