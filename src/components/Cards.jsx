@@ -240,9 +240,9 @@ const Cards = () => {
                       <Text fontSize="0.95rem" mb="0.5rem">
                         {card.description}
                       </Text>
-                      <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
+                      {/* <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
                         {card.price}
-                      </Text>
+                      </Text> */}
                       <Button
                         onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
                         fontFamily="'Bangers', system-ui"
@@ -261,7 +261,7 @@ const Cards = () => {
                         }}
                         transition="all 0.3s ease-in-out"
                       >
-                        NEGOTIATE
+                        MAKE OFFER
                       </Button>
                     </Box>
                   </Box>

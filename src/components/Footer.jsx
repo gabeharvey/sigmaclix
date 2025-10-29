@@ -49,21 +49,15 @@ function Footer() {
 
         {/* Company Address */}
         <Text
-                            mt="0.25rem"
-                            fontFamily="'Luckiest Guy', system-ui"
-                            fontSize={{ base: '.9rem', md: '1.05rem', lg: '1.2rem' }} 
-                            fontWeight="bold"
-                            textAlign="center"
-                            lineHeight="1.2"
-                            color="#00B3B3"
-                            letterSpacing="0.5px"
-                            textShadow="
-                                -1px -1px 0 #fff,
-                                1px -1px 0 #fff,
-                                -1px  1px 0 #fff,
-                                1px  1px 0 #fff
-                            "
-        >
+              mt="0.25rem"
+              fontSize={['xl', '2xl']}
+              fontWeight="bold"
+              letterSpacing="wider"
+              whiteSpace={{ base: 'normal', md: 'nowrap' }}
+              color="#FFD500"
+              textShadow="2px 2px 4px rgba(255, 255, 255, 0.7)"
+              style={{ WebkitTextStroke: '1px white' }}
+            >
           Austin, TX
         </Text>
       </Flex>

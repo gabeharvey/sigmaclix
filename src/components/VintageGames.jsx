@@ -235,9 +235,9 @@ const VintageGames = () => {
                     <Text fontSize="0.95rem" mb="0.5rem">
                       {game.description}
                     </Text>
-                    <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
+                    {/* <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
                       {game.price}
-                    </Text>
+                    </Text> */}
                     <Button
                       onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
                       fontFamily="'Bangers', system-ui"
@@ -256,7 +256,7 @@ const VintageGames = () => {
                       }}
                       transition="all 0.3s ease-in-out"
                     >
-                      NEGOTIATE
+                      MAKE OFFER
                     </Button>
                   </Box>
                 </Box>
