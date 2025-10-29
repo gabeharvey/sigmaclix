@@ -55,6 +55,14 @@ const Comics = () => {
       price: '$1,500',
       description: 'The iconic 1st full appearance of Venom.',
       bubbleText: '1st Appearance'
+    },
+    {
+      id: 3,
+      name: 'Fantastic Four #94 CGC 9.6 White Pages',
+      image: '/agatha-front.jpg',
+      price: '$1,200',
+      description: 'The spellbinding 1st appearance of Agatha Harkness — Marvel’s mystical matriarch and mentor to Wanda Maximoff.',
+      bubbleText: '1st Appearance'
     }
   ];
 
