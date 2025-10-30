@@ -63,6 +63,14 @@ const Comics = () => {
       price: '$1,200',
       description: 'The spellbinding 1st appearance of Agatha Harkness — Marvel’s mystical matriarch and mentor to Wanda Maximoff.',
       bubbleText: '1st Appearance'
+    },
+    {
+      id: 4,
+      name: 'NYX #3 CGC 9.8 White Pages',
+      image: '/x-23-front.jpg',
+      price: '$2,000',
+      description: 'The fierce 1st appearance of X-23 — the clone-daughter of Wolverine and a cornerstone of modern mutant lore. 💥🧬',
+      bubbleText: '1st Appearance'
     }
   ];
 
