@@ -59,10 +59,10 @@ const Cards = () => {
     {
       id: 3,
       name: '2016 Panini Prizm Dak Prescott Rookie 1/1 Black Finite',
-      image: '/dak-1.jpg',
+      image: '/dak-11.jpg',
       price: '$40,000',
       description: '1/1 Masterpiece of a Dallas Cowboys Legend.',
-      bubbleText: 'GOAT'
+      bubbleText: 'Dallas QB'
     },
   ];
 
