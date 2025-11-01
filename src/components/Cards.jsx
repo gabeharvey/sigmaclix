@@ -48,12 +48,20 @@ const Cards = () => {
       description: 'Ohtani’s legendary rookie card delivers epic collector value.',
       bubbleText: 'LEGENDARY'
     },
-        {
-      id: 1,
+    {
+      id: 2,
       name: '2017 Panini Donruss Patrick Mahomes Rated Rookie /100',
       image: '/mahomes-rc-11.jpg',
       price: '$40,000',
       description: 'Low numbered Rated Rookie in incredible condition.',
+      bubbleText: 'GOAT'
+    },
+    {
+      id: 3,
+      name: '2016 Panini Prizm Dak Prescott Rookie 1/1 Black Finite',
+      image: '/dak-1.jpg',
+      price: '$40,000',
+      description: '1/1 Masterpiece of a Dallas Cowboys Legend.',
       bubbleText: 'GOAT'
     },
   ];
