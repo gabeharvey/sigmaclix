@@ -48,6 +48,14 @@ const Cards = () => {
       description: 'Ohtani’s legendary rookie card delivers epic collector value.',
       bubbleText: 'LEGENDARY'
     },
+        {
+      id: 1,
+      name: '2017 Panini Donruss Patrick Mahomes Rated Rookie /100',
+      image: '/mahomes-rc-11.jpg',
+      price: '$40,000',
+      description: 'Low numbered Rated Rookie in incredible condition.',
+      bubbleText: 'GOAT'
+    },
   ];
 
   return (
