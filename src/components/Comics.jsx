@@ -74,7 +74,7 @@ const Comics = () => {
     },
     {
       id: 5,
-      name: 'Captain Britain #8 CGC 9.6 White Pages',
+      name: 'Captain Britain #8 CGC 9.4 White Pages',
       image: '/psylocke-front.jpg',
       price: '$1,400',
       description: 'The electrifying 1st appearance of Psylocke — telepath, warrior, and one of Marvel’s most enigmatic mutants. ⚔️💜',
