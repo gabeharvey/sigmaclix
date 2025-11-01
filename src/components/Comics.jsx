@@ -71,6 +71,14 @@ const Comics = () => {
       price: '$2,000',
       description: 'The fierce 1st appearance of X-23 — the clone-daughter of Wolverine and a cornerstone of modern mutant lore. 💥🧬',
       bubbleText: '1st Appearance'
+    },
+    {
+      id: 5,
+      name: 'Captain Britain #8 CGC 9.6 White Pages',
+      image: '/psylocke-front.jpg',
+      price: '$1,400',
+      description: 'The electrifying 1st appearance of Psylocke — telepath, warrior, and one of Marvel’s most enigmatic mutants. ⚔️💜',
+      bubbleText: '1st Appearance'
     }
   ];
 
