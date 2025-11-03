@@ -46,7 +46,8 @@ const Cards = () => {
       image: '/ohtani-rc-1.jpg',
       price: '$40,000',
       description: 'Ohtani’s legendary rookie card delivers epic collector value.',
-      bubbleText: 'LEGENDARY'
+      bubbleText: 'LEGENDARY',
+      isSold: false,
     },
     {
       id: 2,
@@ -54,7 +55,8 @@ const Cards = () => {
       image: '/mahomes-rc-11.jpg',
       price: '$40,000',
       description: 'Low numbered Rated Rookie in incredible condition.',
-      bubbleText: 'GOAT'
+      bubbleText: 'GOAT',
+      isSold: false,
     },
     {
       id: 3,
@@ -62,7 +64,8 @@ const Cards = () => {
       image: '/dak-11.jpg',
       price: '$40,000',
       description: '1/1 Masterpiece of a Dallas Cowboys Legend.',
-      bubbleText: 'Dallas QB'
+      bubbleText: 'Dallas QB',
+      isSold: true,
     },
   ];
 
@@ -128,6 +131,7 @@ const Cards = () => {
                     alignItems="center"
                     justifyContent="center"
                     bg="#FFFFFF"
+                    position="relative"
                   >
                     <Box
                       w="calc(100% - 6px)"
@@ -138,7 +142,34 @@ const Cards = () => {
                       alignItems="center"
                       justifyContent="center"
                       bg="#FFFFFF"
+                      position="relative"
                     >
+                      {/* SOLD Banner for the third card */}
+                      {card.isSold && (
+                      <Box
+                        position="absolute"
+                        top="38%" 
+                        left="0"
+                        width="100%"
+                        textAlign="center"
+                        bg="#FF69B4"
+                        color="#FFFFFF"
+                        fontWeight="bold"
+                        fontSize="1.8rem"
+                        fontFamily="'Luckiest Guy', cursive"
+                        zIndex="10"
+                        py="0.4rem"
+                        textShadow="2px 2px 0 #000"
+                        borderTop="5px solid"
+                        borderBottom="5px solid"
+                        sx={{
+                          borderImage: "repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10"
+                        }}
+                      >
+                        SOLD
+                      </Box>
+                      )}
+
                       <Box
                         w="calc(100% - 4px)"
                         h="calc(100% - 4px)"
@@ -148,7 +179,7 @@ const Cards = () => {
                         position="relative"
                       >
                         <Image src={card.image} alt={card.name} w="100%" h="100%" objectFit="cover" />
-                        {!isFlipped && (
+                        {!isFlipped && card.bubbleText && (
                           <Box
                             position="absolute"
                             top="10px"
@@ -163,7 +194,7 @@ const Cards = () => {
                             textAlign="center"
                             animation="floatBubble 2s ease-in-out infinite"
                           >
-                            {card.bubbleText || 'HOT!'}
+                            {card.bubbleText}
                             <Box
                               position="absolute"
                               bottom="-6px"
@@ -256,9 +287,6 @@ const Cards = () => {
                       <Text fontSize="0.95rem" mb="0.5rem">
                         {card.description}
                       </Text>
-                      {/* <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
-                        {card.price}
-                      </Text> */}
                       <Button
                         onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
                         fontFamily="'Bangers', system-ui"
