@@ -7,6 +7,7 @@ const Cards = () => {
   const navigate = useNavigate();
   const [flippedCards, setFlippedCards] = useState({});
 
+  // Sounds
   const flipSound = new Audio('/card-flip.mp3');
   flipSound.volume = 0.7;
 
@@ -84,18 +85,13 @@ const Cards = () => {
         textAlign="center"
         mb="2rem"
         color="#FF69B4"
-        textShadow="
-          -2px -2px 0 #FFFFFF,  
-           2px -2px 0 #FFFFFF,
-          -2px  2px 0 #FFFFFF,
-           2px  2px 0 #FFFFFF
-        "
+        textShadow="-2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 2px 2px 0 #FFFFFF"
       >
         Cards
       </Text>
 
       <Flex wrap="wrap" justify="center" align="center" gap="2rem">
-        {cards.map(card => {
+        {cards.map((card) => {
           const isFlipped = flippedCards[card.id];
 
           return (
@@ -140,13 +136,13 @@ const Cards = () => {
                       borderTop="5px solid"
                       borderBottom="5px solid"
                       sx={{
-                        borderImage: "repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10",
+                        borderImage:
+                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
                       }}
                     >
                       SOLD
                     </Box>
                   )}
-
                   <Box
                     w="100%"
                     h="100%"
@@ -177,7 +173,13 @@ const Cards = () => {
                         overflow="hidden"
                         position="relative"
                       >
-                        <Image src={card.image} alt={card.name} w="100%" h="100%" objectFit="cover" />
+                        <Image
+                          src={card.image}
+                          alt={card.name}
+                          w="100%"
+                          h="100%"
+                          objectFit="cover"
+                        />
                         {!isFlipped && card.bubbleText && (
                           <Box
                             position="absolute"
@@ -224,6 +226,32 @@ const Cards = () => {
                   justifyContent="center"
                   textAlign="center"
                 >
+                  {card.isSold && (
+                    <Box
+                      position="absolute"
+                      top="38%"
+                      left="0"
+                      w="100%"
+                      textAlign="center"
+                      bg="#FF69B4"
+                      color="#FFFFFF"
+                      fontWeight="bold"
+                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                      fontFamily="'Luckiest Guy', cursive"
+                      zIndex="10"
+                      py="0.4rem"
+                      textShadow="2px 2px 0 #000"
+                      borderTop="5px solid"
+                      borderBottom="5px solid"
+                      sx={{
+                        borderImage:
+                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                      }}
+                    >
+                      SOLD
+                    </Box>
+                  )}
+
                   <Box
                     w="100%"
                     h="100%"
@@ -287,7 +315,10 @@ const Cards = () => {
                         {card.description}
                       </Text>
                       <Button
-                        onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePurchase();
+                        }}
                         fontFamily="'Bangers', system-ui"
                         fontSize="1.1rem"
                         bg="#FFFFFF"
