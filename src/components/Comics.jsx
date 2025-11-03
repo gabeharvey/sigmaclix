@@ -7,6 +7,7 @@ const Comics = () => {
   const navigate = useNavigate();
   const [flippedComics, setFlippedComics] = useState({});
 
+  // Sounds
   const flipSound = new Audio('/card-flip.mp3');
   flipSound.volume = 0.7;
 
@@ -46,7 +47,8 @@ const Comics = () => {
       image: '/x-men-129-front.jpg',
       price: '$3,000',
       description: 'The legendary 1st appearance of Emma Frost (The White Queen) and Kitty Pryde.',
-      bubbleText: '1st Appearance'
+      bubbleText: '1st Appearance',
+      isSold: false,
     },
     {
       id: 2,
@@ -54,7 +56,8 @@ const Comics = () => {
       image: '/venom-front.jpg',
       price: '$1,500',
       description: 'The iconic 1st full appearance of Venom.',
-      bubbleText: '1st Appearance'
+      bubbleText: '1st Appearance',
+      isSold: false,
     },
     {
       id: 3,
@@ -62,7 +65,8 @@ const Comics = () => {
       image: '/agatha-front.jpg',
       price: '$1,200',
       description: 'The spellbinding 1st appearance of Agatha Harkness — Marvel’s mystical matriarch and mentor to Wanda Maximoff.',
-      bubbleText: '1st Appearance'
+      bubbleText: '1st Appearance',
+      isSold: false,
     },
     {
       id: 4,
@@ -70,7 +74,8 @@ const Comics = () => {
       image: '/x-23-front.jpg',
       price: '$2,000',
       description: 'The fierce 1st appearance of X-23 — the clone-daughter of Wolverine and a cornerstone of modern mutant lore. 💥🧬',
-      bubbleText: '1st Appearance'
+      bubbleText: '1st Appearance',
+      isSold: false,
     },
     {
       id: 5,
@@ -78,8 +83,9 @@ const Comics = () => {
       image: '/psylocke-front.jpg',
       price: '$1,400',
       description: 'The electrifying 1st appearance of Psylocke — telepath, warrior, and one of Marvel’s most enigmatic mutants. ⚔️💜',
-      bubbleText: '1st Appearance'
-    }
+      bubbleText: '1st Appearance',
+      isSold: false,
+    },
   ];
 
   return (
@@ -97,12 +103,7 @@ const Comics = () => {
         textAlign="center"
         mb="2rem"
         color="#FF69B4"
-        textShadow="
-          -2px -2px 0 #FFFFFF,  
-           2px -2px 0 #FFFFFF,
-          -2px  2px 0 #FFFFFF,
-           2px  2px 0 #FFFFFF
-        "
+        textShadow="-2px -2px 0 #FFFFFF, 2px -2px 0 #FFFFFF, -2px 2px 0 #FFFFFF, 2px 2px 0 #FFFFFF"
       >
         Comics
       </Text>
@@ -135,6 +136,32 @@ const Comics = () => {
                   borderRadius="15px"
                   style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
+                  {comic.isSold && (
+                    <Box
+                      position="absolute"
+                      top="38%"
+                      left="0"
+                      w="100%"
+                      textAlign="center"
+                      bg="#FF69B4"
+                      color="#FFFFFF"
+                      fontWeight="bold"
+                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                      fontFamily="'Luckiest Guy', cursive"
+                      zIndex="10"
+                      py="0.4rem"
+                      textShadow="2px 2px 0 #000"
+                      borderTop="5px solid"
+                      borderBottom="5px solid"
+                      sx={{
+                        borderImage: 'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                        boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
+                      }}
+                    >
+                      SOLD
+                    </Box>
+                  )}
                   <Box
                     w="100%"
                     h="100%"
@@ -144,6 +171,7 @@ const Comics = () => {
                     alignItems="center"
                     justifyContent="center"
                     bg="#FFFFFF"
+                    position="relative"
                   >
                     <Box
                       w="calc(100% - 6px)"
@@ -154,6 +182,7 @@ const Comics = () => {
                       alignItems="center"
                       justifyContent="center"
                       bg="#FFFFFF"
+                      position="relative"
                     >
                       <Box
                         w="calc(100% - 4px)"
@@ -163,8 +192,14 @@ const Comics = () => {
                         overflow="hidden"
                         position="relative"
                       >
-                        <Image src={comic.image} alt={comic.name} w="100%" h="100%" objectFit="cover" />
-                        {!isFlipped && (
+                        <Image
+                          src={comic.image}
+                          alt={comic.name}
+                          w="100%"
+                          h="100%"
+                          objectFit="cover"
+                        />
+                        {!isFlipped && comic.bubbleText && (
                           <Box
                             position="absolute"
                             top="10px"
@@ -179,7 +214,7 @@ const Comics = () => {
                             textAlign="center"
                             animation="floatBubble 2s ease-in-out infinite"
                           >
-                            {comic.bubbleText || 'HOT!'}
+                            {comic.bubbleText}
                             <Box
                               position="absolute"
                               bottom="-6px"
@@ -197,7 +232,7 @@ const Comics = () => {
                   </Box>
                 </Box>
 
-                {/* Back - no border, same as Cards */}
+                {/* Back */}
                 <Box
                   position="absolute"
                   w="100%"
@@ -210,20 +245,42 @@ const Comics = () => {
                   justifyContent="center"
                   textAlign="center"
                 >
+                  {comic.isSold && (
+                    <Box
+                      position="absolute"
+                      top="38%"
+                      left="0"
+                      w="100%"
+                      textAlign="center"
+                      bg="#FF69B4"
+                      color="#FFFFFF"
+                      fontWeight="bold"
+                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                      fontFamily="'Luckiest Guy', cursive"
+                      zIndex="10"
+                      py="0.4rem"
+                      textShadow="2px 2px 0 #000"
+                      borderTop="5px solid"
+                      borderBottom="5px solid"
+                      sx={{
+                        borderImage: 'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        transform: 'rotateY(0deg)',
+                        boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
+                      }}
+                    >
+                      SOLD
+                    </Box>
+                  )}
                   <Box
                     w="100%"
                     h="100%"
+                    borderRadius="15px"
                     display="flex"
-                    flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
-                    p="1rem"
-                    zIndex="1"
-                    color="#FFFFFF"
                     bg="#FF69B4"
                     position="relative"
                     overflow="hidden"
-                    borderRadius="15px"
                   >
                     {/* Prism effect */}
                     <Box
@@ -259,35 +316,44 @@ const Comics = () => {
                       pointerEvents="none"
                     />
 
-                    <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy">
-                      {comic.name}
-                    </Text>
-                    <Text fontSize="0.95rem" mb="0.5rem">
-                      {comic.description}
-                    </Text>
-                    {/* <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
-                      {comic.price}
-                    </Text> */}
-                    <Button
-                      onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
-                      fontFamily="'Bangers', system-ui"
-                      fontSize="1.1rem"
-                      bg="#FFFFFF"
-                      color="#FF69B4"
-                      px="2.5rem"
-                      py="0.8rem"
-                      borderRadius="10px"
-                      border="3px solid #FF69B4"
-                      boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
-                      _hover={{
-                        transform: 'scale(1.05)',
-                        boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
-                        bg: '#FFFFFF',
-                      }}
-                      transition="all 0.3s ease-in-out"
+                    <Box
+                      w="100%"
+                      h="100%"
+                      display="flex"
+                      flexDirection="column"
+                      alignItems="center"
+                      justifyContent="center"
+                      p="1rem"
+                      zIndex="1"
+                      color="#FFFFFF"
                     >
-                      MAKE OFFER
-                    </Button>
+                      <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy">
+                        {comic.name}
+                      </Text>
+                      <Text fontSize="0.95rem" mb="0.5rem">
+                        {comic.description}
+                      </Text>
+                      <Button
+                        onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
+                        fontFamily="'Bangers', system-ui"
+                        fontSize="1.1rem"
+                        bg="#FFFFFF"
+                        color="#FF69B4"
+                        px="2.5rem"
+                        py="0.8rem"
+                        borderRadius="10px"
+                        border="3px solid #FF69B4"
+                        boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
+                        _hover={{
+                          transform: 'scale(1.05)',
+                          boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
+                          bg: '#FFFFFF',
+                        }}
+                        transition="all 0.3s ease-in-out"
+                      >
+                        MAKE OFFER
+                      </Button>
+                    </Box>
                   </Box>
                 </Box>
               </Box>
