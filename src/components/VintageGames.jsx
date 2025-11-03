@@ -7,14 +7,15 @@ const VintageGames = () => {
   const navigate = useNavigate();
   const [flippedGames, setFlippedGames] = useState({});
 
+  // Sounds
   const flipSound = new Audio('/card-flip.mp3');
   flipSound.volume = 0.7;
 
-  const powerUpSound = new Audio('/power-up.mp3'); 
+  const powerUpSound = new Audio('/power-up.mp3');
   powerUpSound.volume = 0.7;
 
-  const moneySound = new Audio('/coin.mp3'); 
-  moneySound.volume = 0.7;
+  const coinSound = new Audio('/coin.mp3');
+  coinSound.volume = 0.7;
 
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
@@ -30,9 +31,9 @@ const VintageGames = () => {
   };
 
   const handlePurchase = () => {
-    moneySound.currentTime = 0; 
-    moneySound.play().catch(err => console.warn('Sound play failed:', err));
-    navigate('/'); 
+    coinSound.currentTime = 0;
+    coinSound.play().catch(err => console.warn('Sound play failed:', err));
+    navigate('/');
     setTimeout(() => {
       const contactSection = document.getElementById('contact');
       if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
@@ -44,18 +45,42 @@ const VintageGames = () => {
     //   id: 1,
     //   name: 'Retro NES Console',
     //   image: '/nes-console.jpg',
-    //   price: '$250',
     //   description: 'Classic Nintendo Entertainment System in mint condition.',
-    //   bubbleText: 'Collector!'
+    //   bubbleText: 'Collector!',
+    //   isSold: false,
     // },
     // {
     //   id: 2,
     //   name: 'Vintage Pac-Man Arcade',
     //   image: '/pacman-arcade.jpg',
-    //   price: '$1,200',
     //   description: 'Fully functional original Pac-Man arcade machine.',
-    //   bubbleText: 'Rare!'
-    // }
+    //   bubbleText: 'Rare!',
+    //   isSold: true,
+    // },
+    // {
+    //   id: 3,
+    //   name: 'Sega Genesis Classic',
+    //   image: '/sega-genesis.jpg',
+    //   description: 'Iconic Sega console with original cartridges.',
+    //   bubbleText: 'HOT!',
+    //   isSold: false,
+    // },
+    // {
+    //   id: 4,
+    //   name: 'Atari 2600',
+    //   image: '/atari-2600.jpg',
+    //   description: 'Original Atari 2600 console with joystick and games.',
+    //   bubbleText: 'Retro!',
+    //   isSold: false,
+    // },
+    // {
+    //   id: 5,
+    //   name: 'Neo Geo MVS',
+    //   image: '/neo-geo-mvs.jpg',
+    //   description: 'Arcade system loved by hardcore collectors.',
+    //   bubbleText: 'Legendary!',
+    //   isSold: true,
+    // },
   ];
 
   return (
@@ -100,12 +125,39 @@ const VintageGames = () => {
               >
                 {/* Front */}
                 <Box
-                  position="absolute"
                   w="100%"
                   h="100%"
+                  position="absolute"
                   borderRadius="15px"
                   style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
+                  {game.isSold && (
+                    <Box
+                      position="absolute"
+                      top="38%"
+                      left="0"
+                      w="100%"
+                      textAlign="center"
+                      bg="#FF69B4"
+                      color="#FFFFFF"
+                      fontWeight="bold"
+                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                      fontFamily="'Luckiest Guy', cursive"
+                      zIndex="10"
+                      py="0.4rem"
+                      textShadow="2px 2px 0 #000"
+                      borderTop="5px solid"
+                      borderBottom="5px solid"
+                      sx={{
+                        borderImage:
+                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                        boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
+                      }}
+                    >
+                      SOLD
+                    </Box>
+                  )}
                   <Box
                     w="100%"
                     h="100%"
@@ -115,6 +167,7 @@ const VintageGames = () => {
                     alignItems="center"
                     justifyContent="center"
                     bg="#FFFFFF"
+                    position="relative"
                   >
                     <Box
                       w="calc(100% - 6px)"
@@ -127,43 +180,50 @@ const VintageGames = () => {
                       bg="#FFFFFF"
                       position="relative"
                     >
-                      <Image
-                        src={game.image}
-                        alt={game.name}
-                        w="100%"
-                        h="100%"
-                        objectFit="cover"
+                      <Box
+                        w="calc(100% - 4px)"
+                        h="calc(100% - 4px)"
+                        border="2px solid #FFFFFF"
                         borderRadius="12px"
-                      />
-                      {!isFlipped && (
-                        <Box
-                          position="absolute"
-                          top="10px"
-                          right="10px"
-                          bg="#FFFFFF"
-                          color="#FF0000"
-                          fontSize="0.9rem"
-                          px="0.9rem"
-                          py="0.6rem"
-                          borderRadius="10px"
-                          boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
-                          textAlign="center"
-                          animation="floatBubble 2s ease-in-out infinite"
-                          pointerEvents="none"
-                        >
-                          {game.bubbleText || 'HOT!'}
+                        overflow="hidden"
+                        position="relative"
+                      >
+                        <Image
+                          src={game.image}
+                          alt={game.name}
+                          w="100%"
+                          h="100%"
+                          objectFit="cover"
+                        />
+                        {!isFlipped && game.bubbleText && (
                           <Box
                             position="absolute"
-                            bottom="-6px"
-                            left="20%"
-                            width="0"
-                            height="0"
-                            borderLeft="6px solid transparent"
-                            borderRight="6px solid transparent"
-                            borderTop="6px solid #FFFFFF"
-                          />
-                        </Box>
-                      )}
+                            top="10px"
+                            right="10px"
+                            bg="#FFFFFF"
+                            color="#FF0000"
+                            fontSize="0.9rem"
+                            px="0.9rem"
+                            py="0.6rem"
+                            borderRadius="10px"
+                            boxShadow="4px 4px 0px #000, 0 0 6px rgba(0,0,0,0.3)"
+                            textAlign="center"
+                            animation="floatBubble 2s ease-in-out infinite"
+                          >
+                            {game.bubbleText}
+                            <Box
+                              position="absolute"
+                              bottom="-6px"
+                              left="20%"
+                              width="0"
+                              height="0"
+                              borderLeft="6px solid transparent"
+                              borderRight="6px solid transparent"
+                              borderTop="6px solid #FFFFFF"
+                            />
+                          </Box>
+                        )}
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
@@ -181,19 +241,46 @@ const VintageGames = () => {
                   justifyContent="center"
                   textAlign="center"
                 >
+                  {game.isSold && (
+                    <Box
+                      position="absolute"
+                      top="38%"
+                      left="0"
+                      w="100%"
+                      textAlign="center"
+                      bg="#FF69B4"
+                      color="#FFFFFF"
+                      fontWeight="bold"
+                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                      fontFamily="'Luckiest Guy', cursive"
+                      zIndex="10"
+                      py="0.4rem"
+                      textShadow="2px 2px 0 #000"
+                      borderTop="5px solid"
+                      borderBottom="5px solid"
+                      sx={{
+                        borderImage:
+                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        transform: 'rotateY(0deg)',
+                        boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
+                      }}
+                    >
+                      SOLD
+                    </Box>
+                  )}
+
                   <Box
                     w="100%"
                     h="100%"
+                    borderRadius="15px"
                     display="flex"
                     flexDirection="column"
                     alignItems="center"
                     justifyContent="center"
                     p="1rem"
+                    bg="#FF69B4"
                     position="relative"
                     overflow="hidden"
-                    borderRadius="15px"
-                    bg="#FF69B4"
-                    color="#FFFFFF"
                   >
                     {/* Prism effect */}
                     <Box
@@ -229,15 +316,13 @@ const VintageGames = () => {
                       pointerEvents="none"
                     />
 
-                    <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy">
+                    {/* Game info + button */}
+                    <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy" color="#FFFFFF">
                       {game.name}
                     </Text>
-                    <Text fontSize="0.95rem" mb="0.5rem">
+                    <Text fontSize="0.95rem" mb="0.5rem" color="#FFFFFF">
                       {game.description}
                     </Text>
-                    {/* <Text fontSize="1rem" fontWeight="bold" color="#FFD700" mb="1rem">
-                      {game.price}
-                    </Text> */}
                     <Button
                       onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
                       fontFamily="'Bangers', system-ui"
@@ -270,10 +355,10 @@ const VintageGames = () => {
         <Button
           onClick={handleHomeClick}
           fontFamily="'Bangers', system-ui"
-          fontSize={{ base: '1.8rem', md: '2.2rem' }} 
+          fontSize={{ base: '1.8rem', md: '2.2rem' }}
           bg="#FFFFFF"
           color="#FF69B4"
-          px={{ base: '2.5rem', md: '3rem' }} 
+          px={{ base: '2.5rem', md: '3rem' }}
           py={{ base: '1rem', md: '1.5rem' }}
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
