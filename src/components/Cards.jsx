@@ -122,7 +122,6 @@ const Cards = () => {
                   borderRadius="15px"
                   style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
-                  {/* SOLD Banner */}
                   {card.isSold && (
                     <Box
                       position="absolute"
