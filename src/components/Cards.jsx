@@ -148,14 +148,14 @@ const Cards = () => {
                       {card.isSold && (
                       <Box
                         position="absolute"
-                        top="38%" 
+                        top="50%" 
                         left="0"
                         width="100%"
                         textAlign="center"
                         bg="#FF69B4"
                         color="#FFFFFF"
                         fontWeight="bold"
-                        fontSize="1.8rem"
+                        fontSize={{ base: '1.5rem', md: '1.8rem' }} 
                         fontFamily="'Luckiest Guy', cursive"
                         zIndex="10"
                         py="0.4rem"
@@ -163,13 +163,13 @@ const Cards = () => {
                         borderTop="5px solid"
                         borderBottom="5px solid"
                         sx={{
-                          borderImage: "repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10"
+                          borderImage: "repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10",
+                          transform: 'translateY(-50%)' 
                         }}
                       >
                         SOLD
                       </Box>
-                      )}
-
+                    )}
                       <Box
                         w="calc(100% - 4px)"
                         h="calc(100% - 4px)"
