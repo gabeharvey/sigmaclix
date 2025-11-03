@@ -248,6 +248,7 @@ const Cards = () => {
                       sx={{
                         borderImage:
                           'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                          transform: 'rotateY(0deg)',
                           boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
                       }}
                     >
