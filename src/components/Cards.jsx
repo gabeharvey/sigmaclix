@@ -116,12 +116,38 @@ const Cards = () => {
               >
                 {/* Front */}
                 <Box
-                  position="absolute"
                   w="100%"
                   h="100%"
+                  position="absolute"
                   borderRadius="15px"
                   style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
+                  {/* SOLD Banner */}
+                  {card.isSold && (
+                    <Box
+                      position="absolute"
+                      top="38%"
+                      left="0"
+                      w="100%"
+                      textAlign="center"
+                      bg="#FF69B4"
+                      color="#FFFFFF"
+                      fontWeight="bold"
+                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                      fontFamily="'Luckiest Guy', cursive"
+                      zIndex="10"
+                      py="0.4rem"
+                      textShadow="2px 2px 0 #000"
+                      borderTop="5px solid"
+                      borderBottom="5px solid"
+                      sx={{
+                        borderImage: "repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10",
+                      }}
+                    >
+                      SOLD
+                    </Box>
+                  )}
+
                   <Box
                     w="100%"
                     h="100%"
@@ -132,7 +158,6 @@ const Cards = () => {
                     justifyContent="center"
                     bg="#FFFFFF"
                     position="relative"
-                    style={{ backfaceVisibility: 'hidden' }}
                   >
                     <Box
                       w="calc(100% - 6px)"
@@ -144,35 +169,7 @@ const Cards = () => {
                       justifyContent="center"
                       bg="#FFFFFF"
                       position="relative"
-                      style={{ backfaceVisibility: 'hidden' }}
                     >
-                      {/* SOLD Banner */}
-                      {card.isSold && (
-                        <Box
-                          position="absolute"
-                          top="50%"
-                          left="50%"
-                          transform="translate(-50%, -50%)"
-                          width={{ base: '80%', md: '100%' }}
-                          textAlign="center"
-                          bg="#FF69B4"
-                          color="#FFFFFF"
-                          fontWeight="bold"
-                          fontSize={{ base: '1.4rem', md: '1.8rem' }}
-                          fontFamily="'Luckiest Guy', cursive"
-                          zIndex="10"
-                          py="0.4rem"
-                          textShadow="2px 2px 0 #000"
-                          borderTop="5px solid"
-                          borderBottom="5px solid"
-                          sx={{
-                            borderImage: "repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10",
-                          }}
-                        >
-                          SOLD
-                        </Box>
-                      )}
-
                       <Box
                         w="calc(100% - 4px)"
                         h="calc(100% - 4px)"
