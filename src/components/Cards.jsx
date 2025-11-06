@@ -68,6 +68,15 @@ const Cards = () => {
       bubbleText: 'Dallas QB',
       isSold: true,
     },
+    {
+      id: 4,
+      name: '2017 Topps Gypsy Queen Aaron Judge Rookie 1/1 Black Ink',
+      image: '/judge-rc-trim.jpg',
+      price: '$35,000',
+      description: '1/1 Black Ink Fortune Teller of the Yankees phenom — holy grail item.',
+      bubbleText: 'Yankees Power',
+      isSold: false,
+    },
   ];
 
   return (
