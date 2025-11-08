@@ -66,7 +66,7 @@ const Cards = () => {
       price: '$40,000',
       description: '1/1 Masterpiece of a Dallas Cowboys Legend.',
       bubbleText: 'Dallas QB',
-      isSold: true,
+      isSold: false,
     },
     {
       id: 4,
