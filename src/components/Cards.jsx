@@ -77,6 +77,15 @@ const Cards = () => {
       bubbleText: 'Yankees Power',
       isSold: false,
     },
+    {
+      id: 5,
+      name: 'Leonard Fournette Panini Prizm Black Finite Auto 1/1',
+      image: '/fournette-2.jpg',
+      price: '$12,500',
+      description: 'The ultimate LSU & NFL collector’s piece — Leonard Fournette’s ultra-rare 1/1 Black Finite autograph from Panini Prizm. A true holy grail for Tigers fans.',
+      bubbleText: 'Geaux Tigers',
+      isSold: false,
+    },
   ];
 
   return (
