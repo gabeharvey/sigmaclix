@@ -91,7 +91,7 @@ const Cards = () => {
       name: '2018 Panini Donruss Saquon Barkley Rated Rookie Black Press Proof 03/10',
       image: '/saquon-2.jpg',
       price: '$7,500',
-      description: 'Ultra-rare Black Press Proof Rated Rookie of Saquon Barkley, numbered 03/10 — a true centerpiece for NFL, Giants, and Penn State collectors.',
+      description: 'Ultra-rare Black Press Proof Rated Rookie of Saquon Barkley, numbered 03/10 — a true centerpiece for NFL, Eagles, and Penn State collectors.',
       bubbleText: 'Fly Eagles Fly',
       isSold: false,
     },
