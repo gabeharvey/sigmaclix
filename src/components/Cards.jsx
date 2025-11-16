@@ -95,6 +95,15 @@ const Cards = () => {
       bubbleText: 'Fly Eagles Fly',
       isSold: false,
     },
+    {
+      id: 7,
+      name: '2025 Panini Donruss Paige Bueckers RC 2/5 Black Gold Laser',
+      image: '/paige-2.jpg',
+      price: '$7,500',
+      description: 'Ultra-Short Print of Young Phenom ROY Paige Bueckers Rookie Card.',
+      bubbleText: 'Phenom',
+      isSold: false,
+    },
   ];
 
   return (
