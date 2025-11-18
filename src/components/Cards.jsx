@@ -107,7 +107,7 @@ const Cards = () => {
     {
       id: 8,
       name: '2025 Panini Donruss Paige Bueckers RC 1/1',
-      image: '/paige-black-laser-1.jpg',
+      image: '/paige-black-laser-3.jpg',
       price: '$7,500',
       description: '1/1 Black Holo Laser Net Marvels RC.',
       bubbleText: 'Paige Buckets',
