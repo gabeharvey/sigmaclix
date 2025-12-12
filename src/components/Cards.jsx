@@ -110,7 +110,7 @@ const Cards = () => {
       image: '/paige-black-laser-3.jpg',
       price: '$7,500',
       description: '1/1 Black Holo Laser Net Marvels RC.',
-      bubbleText: 'Paige 1/1 RC',
+      bubbleText: '1 of 1',
       isSold: false,
     },
   ];
