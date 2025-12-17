@@ -23,6 +23,9 @@ const VintageGames = () => {
   const zoomSound = new Audio('/camera-sound.mp3');
   zoomSound.volume = 0.4;
 
+  const popSound = new Audio('/bubble-pop-2.mp3');
+  popSound.volume = 0.7;
+
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
     flipSound.play().catch(err => console.warn('Sound play failed:', err));
@@ -351,17 +354,30 @@ const VintageGames = () => {
           borderRadius="15px"
           overflow="hidden"
         >
-          <ModalCloseButton
-            top="12px"
-            right="12px"
-            color="#FF69B4"
-            bg="#FFFFFF"
-            border="2px solid #FF69B4"
-            borderRadius="8px"
-            boxShadow="3px 3px 0 #000"
-            _hover={{ transform: 'scale(1.1)', boxShadow: '5px 5px 0 #000', bg: '#FFFFFF' }}
-            _active={{ transform: 'scale(0.95)', boxShadow: '2px 2px 0 #000' }}
-          />
+        <ModalCloseButton
+          top="12px"
+          right="12px"
+          color="#FF69B4"
+          bg="#FFFFFF"
+          border="2px solid #FF69B4"
+          borderRadius="8px"
+          boxShadow="3px 3px 0 #000"
+          _hover={{
+            transform: 'scale(1.1)',
+            boxShadow: '5px 5px 0 #000',
+            bg: '#FFFFFF',
+          }}
+          _active={{
+            transform: 'scale(0.95)',
+            boxShadow: '2px 2px 0 #000',
+          }}
+          onClick={(e) => {
+            e.stopPropagation(); // prevent any unwanted bubbling
+            popSound.currentTime = 0;
+            popSound.play().catch(err => console.warn('Pop sound failed', err));
+            onClose();
+          }}
+        />
           <ModalBody p="0" display="flex">
             {zoomImage && (
               <Image

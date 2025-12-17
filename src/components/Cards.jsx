@@ -41,6 +41,9 @@ const handleZoom = (e, image) => {
   const zoomSound = new Audio('/camera-sound.mp3'); 
   zoomSound.volume = 0.4;
 
+  const popSound = new Audio('/bubble-pop-2.mp3');
+  popSound.volume = 0.7;
+
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
     flipSound.play().catch(err => console.warn('Sound play failed:', err));
@@ -475,6 +478,12 @@ const handleZoom = (e, image) => {
                     _active={{
                       transform: 'scale(0.95)',
                       boxShadow: '2px 2px 0 #000',
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation(); // prevent any unwanted bubbling
+                      popSound.currentTime = 0;
+                      popSound.play().catch(err => console.warn('Pop sound failed', err));
+                      onClose();
                     }}
                   />
                   <ModalBody p="0" display="flex">
