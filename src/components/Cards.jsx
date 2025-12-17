@@ -239,32 +239,34 @@ const handleZoom = (e, image) => {
                         overflow="hidden"
                         position="relative"
                       >
-                      <IconButton
-                        aria-label="Zoom image"
-                        icon={<SearchIcon />}
-                        size="sm"
-                        position="absolute"
-                        bottom="10px"
-                        left="10px"
-                        bg="#FFFFFF"
-                        color="#FF69B4"
-                        border="2px solid #FF69B4"
-                        borderRadius="8px" 
-                        w="36px" 
-                        h="36px"
-                        zIndex="5"
-                        boxShadow="3px 3px 0 #000" 
-                        _hover={{
-                          transform: 'scale(1.1)',
-                          boxShadow: '5px 5px 0 #000',
-                          bg: '#FFFFFF',
-                        }}
-                        _active={{
-                          transform: 'scale(0.95)',
-                          boxShadow: '2px 2px 0 #000',
-                        }}
-                        onClick={(e) => handleZoom(e, card.image)}
-                      />
+                        {!isFlipped && (
+                          <IconButton
+                            aria-label="Zoom image"
+                            icon={<SearchIcon />}
+                            size="sm"
+                            position="absolute"
+                            bottom="10px"
+                            left="10px"
+                            bg="#FFFFFF"
+                            color="#FF69B4"
+                            border="2px solid #FF69B4"
+                            borderRadius="8px"
+                            w="36px"
+                            h="36px"
+                            zIndex="5"
+                            boxShadow="3px 3px 0 #000"
+                            _hover={{
+                              transform: 'scale(1.1)',
+                              boxShadow: '5px 5px 0 #000',
+                              bg: '#FFFFFF',
+                            }}
+                            _active={{
+                              transform: 'scale(0.95)',
+                              boxShadow: '2px 2px 0 #000',
+                            }}
+                            onClick={(e) => handleZoom(e, card.image)}
+                          />
+                        )}
                         <Image
                           src={card.image}
                           alt={card.name}
