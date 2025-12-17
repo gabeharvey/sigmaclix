@@ -21,7 +21,9 @@ const Cards = () => {
 const [zoomImage, setZoomImage] = useState(null);
 
 const handleZoom = (e, image) => {
-  e.stopPropagation(); // prevent card flip
+  e.stopPropagation(); 
+  zoomSound.currentTime = 0; 
+  zoomSound.play().catch(err => console.warn('Zoom sound failed', err));
   setZoomImage(image);
   onOpen();
 };
@@ -35,6 +37,9 @@ const handleZoom = (e, image) => {
 
   const moneySound = new Audio('/coin.mp3');
   moneySound.volume = 0.7;
+
+  const zoomSound = new Audio('/camera-sound.mp3'); 
+  zoomSound.volume = 0.4;
 
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
