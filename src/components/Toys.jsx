@@ -1,11 +1,14 @@
-import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
+import { Box, Flex, Text, Image, Button, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, useDisclosure, IconButton } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { SearchIcon } from '@chakra-ui/icons';
 import '../App.css';
 
 const Toys = () => {
   const navigate = useNavigate();
   const [flippedToys, setFlippedToys] = useState({});
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [zoomImage, setZoomImage] = useState(null);
 
   // Sounds
   const flipSound = new Audio('/card-flip.mp3');
@@ -16,6 +19,9 @@ const Toys = () => {
 
   const moneySound = new Audio('/coin.mp3');
   moneySound.volume = 0.7;
+
+  const zoomSound = new Audio('/camera-sound.mp3'); 
+  zoomSound.volume = 0.4;
 
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
@@ -40,32 +46,22 @@ const Toys = () => {
     }, 500);
   };
 
+  const handleZoom = (e, image) => {
+    e.stopPropagation();
+    zoomSound.currentTime = 0;
+    zoomSound.play().catch(err => console.warn('Zoom sound failed', err));
+    setZoomImage(image);
+    onOpen();
+  };
+
   const toys = [
     // {
     //   id: 1,
-    //   name: 'Vintage Transformer',
-    //   image: '/transformer.jpg',
-    //   price: '$200',
-    //   description: 'Classic 1980s Transformer toy.',
-    //   bubbleText: 'Collector!',
-    //   isSold: false,
-    // },
-    // {
-    //   id: 2,
-    //   name: 'Retro G.I. Joe',
-    //   image: '/gi-joe.jpg',
-    //   price: '$150',
-    //   description: 'Original G.I. Joe figure in mint condition.',
-    //   bubbleText: 'Rare!',
-    //   isSold: true,
-    // },
-    // {
-    //   id: 3,
-    //   name: 'LEGO Classic Set',
-    //   image: '/lego-classic.jpg',
-    //   price: '$120',
-    //   description: 'Iconic LEGO set for creative building.',
-    //   bubbleText: 'FUN!',
+    //   name: 'Vinyl Cape Jawa',
+    //   image: '/vinyl-jawa.png',
+    //   price: '$250',
+    //   description: 'A rare Vinyl Cape Jawa figure in mint condition.',
+    //   bubbleText: 'RARE!',
     //   isSold: false,
     // },
   ];
@@ -136,8 +132,7 @@ const Toys = () => {
                       borderTop="5px solid"
                       borderBottom="5px solid"
                       sx={{
-                        borderImage:
-                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        borderImage: 'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
                         transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
                         boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
                       }}
@@ -175,13 +170,28 @@ const Toys = () => {
                         overflow="hidden"
                         position="relative"
                       >
-                        <Image
-                          src={toy.image}
-                          alt={toy.name}
-                          w="100%"
-                          h="100%"
-                          objectFit="cover"
-                        />
+                        {!isFlipped && (
+                          <IconButton
+                            aria-label="Zoom image"
+                            icon={<SearchIcon />}
+                            size="sm"
+                            position="absolute"
+                            bottom="10px"
+                            left="10px"
+                            bg="#FFFFFF"
+                            color="#FF69B4"
+                            border="2px solid #FF69B4"
+                            borderRadius="8px"
+                            w="36px"
+                            h="36px"
+                            zIndex="5"
+                            boxShadow="3px 3px 0 #000"
+                            _hover={{ transform: 'scale(1.1)', boxShadow: '5px 5px 0 #000' }}
+                            _active={{ transform: 'scale(0.95)', boxShadow: '2px 2px 0 #000' }}
+                            onClick={(e) => handleZoom(e, toy.image)}
+                          />
+                        )}
+                        <Image src={toy.image} alt={toy.name} w="100%" h="100%" objectFit="cover" />
                         {!isFlipped && toy.bubbleText && (
                           <Box
                             position="absolute"
@@ -228,34 +238,6 @@ const Toys = () => {
                   justifyContent="center"
                   textAlign="center"
                 >
-                  {toy.isSold && (
-                    <Box
-                      position="absolute"
-                      top="38%"
-                      left="0"
-                      w="100%"
-                      textAlign="center"
-                      bg="#FF69B4"
-                      color="#FFFFFF"
-                      fontWeight="bold"
-                      fontSize={{ base: '1.6rem', md: '1.8rem' }}
-                      fontFamily="'Luckiest Guy', cursive"
-                      zIndex="10"
-                      py="0.4rem"
-                      textShadow="2px 2px 0 #000"
-                      borderTop="5px solid"
-                      borderBottom="5px solid"
-                      sx={{
-                        borderImage:
-                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
-                        transform: 'rotateY(0deg)',
-                        boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
-                      }}
-                    >
-                      SOLD
-                    </Box>
-                  )}
-
                   <Box
                     w="100%"
                     h="100%"
@@ -267,7 +249,32 @@ const Toys = () => {
                     position="relative"
                     overflow="hidden"
                   >
-                    {/* Prism effect */}
+                    {/* SOLD banner for back */}
+                    {toy.isSold && (
+                      <Box
+                        position="absolute"
+                        top="38%"
+                        left="0"
+                        w="100%"
+                        textAlign="center"
+                        bg="#FF69B4"
+                        color="#FFFFFF"
+                        fontWeight="bold"
+                        fontSize={{ base: '1.6rem', md: '1.8rem' }}
+                        fontFamily="'Luckiest Guy', cursive"
+                        zIndex="10" // must be above overlays
+                        py="0.4rem"
+                        textShadow="2px 2px 0 #000"
+                        borderTop="5px solid"
+                        borderBottom="5px solid"
+                        sx={{
+                          borderImage: 'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                          boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
+                        }}
+                      >
+                        SOLD
+                      </Box>
+                    )}
                     <Box
                       position="absolute"
                       top="0"
@@ -319,10 +326,7 @@ const Toys = () => {
                         {toy.description}
                       </Text>
                       <Button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handlePurchase();
-                        }}
+                        onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
                         fontFamily="'Bangers', system-ui"
                         fontSize="1.1rem"
                         bg="#FFFFFF"
@@ -332,11 +336,7 @@ const Toys = () => {
                         borderRadius="10px"
                         border="3px solid #FF69B4"
                         boxShadow="0 0 0 2px #FFFFFF, 0 0 0 4px #FF69B4"
-                        _hover={{
-                          transform: 'scale(1.05)',
-                          boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4',
-                          bg: '#FFFFFF',
-                        }}
+                        _hover={{ transform: 'scale(1.05)', boxShadow: '0 0 10px #FFFFFF, 0 0 15px #FF69B4', bg: '#FFFFFF' }}
                         transition="all 0.3s ease-in-out"
                       >
                         MAKE OFFER
@@ -350,6 +350,46 @@ const Toys = () => {
         })}
       </Flex>
 
+      {/* Zoom Modal */}
+      <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+        <ModalOverlay bg="rgba(0,0,0,0.85)" />
+        <ModalContent
+          bg="transparent"
+          maxW="unset"
+          w="auto"
+          h="auto"
+          border="4px solid #FF69B4"
+          borderRadius="15px"
+          overflow="hidden"
+        >
+          <ModalCloseButton
+            top="12px"
+            right="12px"
+            color="#FF69B4"
+            bg="#FFFFFF"
+            border="2px solid #FF69B4"
+            borderRadius="8px"
+            boxShadow="3px 3px 0 #000"
+            _hover={{ transform: 'scale(1.1)', boxShadow: '5px 5px 0 #000', bg: '#FFFFFF' }}
+            _active={{ transform: 'scale(0.95)', boxShadow: '2px 2px 0 #000' }}
+          />
+          <ModalBody p="0" display="flex">
+            {zoomImage && (
+              <Image
+                src={zoomImage}
+                alt="Zoomed toy"
+                w="auto"
+                h="auto"
+                maxW="95vw"
+                maxH="95vh"
+                objectFit="contain"
+                display="block"
+              />
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
@@ -362,11 +402,7 @@ const Toys = () => {
           borderRadius="25px 10px 25px 15px"
           border="3px solid #FF69B4"
           boxShadow="0 0 0 4px #FFFFFF, 0 0 0 6px #FF69B4"
-          _hover={{
-            transform: 'scale(1.1) rotate(-1deg)',
-            boxShadow: '0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FF69B4',
-            bg: '#FFFFFF',
-          }}
+          _hover={{ transform: 'scale(1.1) rotate(-1deg)', boxShadow: '0 0 20px #FFFFFF, 0 0 30px #FFFFFF, 0 0 40px #FF69B4', bg: '#FFFFFF' }}
           transition="all 0.3s ease-in-out"
         >
           Home
@@ -374,23 +410,10 @@ const Toys = () => {
       </Flex>
 
       <style>{`
-        @keyframes floatBubble {
-          0% { transform: translateY(0px) rotate(10deg); }
-          50% { transform: translateY(-5px) rotate(10deg); }
-          100% { transform: translateY(0px) rotate(10deg); }
-        }
-        @keyframes tiltPrism1 {
-          0% { background-position: 0 0; }
-          100% { background-position: 200% 200%; }
-        }
-        @keyframes tiltPrism2 {
-          0% { background-position: 0 0; }
-          100% { background-position: -200% 200%; }
-        }
-        @keyframes tiltPrism3 {
-          0% { background-position: 0 0; }
-          100% { background-position: 200% -200%; }
-        }
+        @keyframes floatBubble { 0% { transform: translateY(0px) rotate(10deg); } 50% { transform: translateY(-5px) rotate(10deg); } 100% { transform: translateY(0px) rotate(10deg); } }
+        @keyframes tiltPrism1 { 0% { background-position: 0 0; } 100% { background-position: 200% 200%; } }
+        @keyframes tiltPrism2 { 0% { background-position: 0 0; } 100% { background-position: -200% 200%; } }
+        @keyframes tiltPrism3 { 0% { background-position: 0 0; } 100% { background-position: 200% -200%; } }
       `}</style>
     </Box>
   );

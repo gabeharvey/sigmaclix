@@ -1,11 +1,14 @@
-import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
+import { Box, Flex, Text, Image, Button, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, useDisclosure, IconButton } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { SearchIcon } from '@chakra-ui/icons';
 import '../App.css';
 
 const VintageGames = () => {
   const navigate = useNavigate();
-  const [flippedGames, setFlippedGames] = useState({});
+  const [flippedItems, setFlippedItems] = useState({});
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [zoomImage, setZoomImage] = useState(null);
 
   // Sounds
   const flipSound = new Audio('/card-flip.mp3');
@@ -17,10 +20,13 @@ const VintageGames = () => {
   const coinSound = new Audio('/coin.mp3');
   coinSound.volume = 0.7;
 
+  const zoomSound = new Audio('/camera-sound.mp3');
+  zoomSound.volume = 0.4;
+
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
     flipSound.play().catch(err => console.warn('Sound play failed:', err));
-    setFlippedGames(prev => ({ ...prev, [id]: !prev[id] }));
+    setFlippedItems(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleHomeClick = () => {
@@ -40,52 +46,20 @@ const VintageGames = () => {
     }, 500);
   };
 
-  const games = [
+  const VintageGames = [
     // {
     //   id: 1,
-    //   name: 'Retro NES Console',
-    //   image: '/nes-console.jpg',
-    //   description: 'Classic Nintendo Entertainment System in mint condition.',
-    //   bubbleText: 'Collector!',
-    //   isSold: false,
-    // },
-    // {
-    //   id: 2,
-    //   name: 'Vintage Pac-Man Arcade',
-    //   image: '/pacman-arcade.jpg',
-    //   description: 'Fully functional original Pac-Man arcade machine.',
-    //   bubbleText: 'Rare!',
-    //   isSold: true,
-    // },
-    // {
-    //   id: 3,
-    //   name: 'Sega Genesis Classic',
-    //   image: '/sega-genesis.jpg',
-    //   description: 'Iconic Sega console with original cartridges.',
+    //   name: 'Vintage Game Placeholder',
+    //   image: '/vintage-games-placeholder.png',
+    //   description: 'This is a placeholder collectible item.',
     //   bubbleText: 'HOT!',
     //   isSold: false,
-    // },
-    // {
-    //   id: 4,
-    //   name: 'Atari 2600',
-    //   image: '/atari-2600.jpg',
-    //   description: 'Original Atari 2600 console with joystick and games.',
-    //   bubbleText: 'Retro!',
-    //   isSold: false,
-    // },
-    // {
-    //   id: 5,
-    //   name: 'Neo Geo MVS',
-    //   image: '/neo-geo-mvs.jpg',
-    //   description: 'Arcade system loved by hardcore collectors.',
-    //   bubbleText: 'Legendary!',
-    //   isSold: true,
     // },
   ];
 
   return (
     <Box
-      id="vintage-games"
+      id="VintageGames"
       minH="100vh"
       bg="#FFD500"
       px={{ base: '1rem', md: '3rem', lg: '5rem' }}
@@ -104,17 +78,17 @@ const VintageGames = () => {
       </Text>
 
       <Flex wrap="wrap" justify="center" align="center" gap="2rem">
-        {games.map((game) => {
-          const isFlipped = flippedGames[game.id];
+        {VintageGames.map((item) => {
+          const isFlipped = flippedItems[item.id];
 
           return (
             <Box
-              key={game.id}
+              key={item.id}
               w="220px"
               h="300px"
               perspective="1000px"
               cursor="pointer"
-              onClick={() => handleFlip(game.id)}
+              onClick={() => handleFlip(item.id)}
             >
               <Box
                 w="100%"
@@ -131,7 +105,7 @@ const VintageGames = () => {
                   borderRadius="15px"
                   style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
-                  {game.isSold && (
+                  {item.isSold && (
                     <Box
                       position="absolute"
                       top="38%"
@@ -188,14 +162,29 @@ const VintageGames = () => {
                         overflow="hidden"
                         position="relative"
                       >
-                        <Image
-                          src={game.image}
-                          alt={game.name}
-                          w="100%"
-                          h="100%"
-                          objectFit="cover"
-                        />
-                        {!isFlipped && game.bubbleText && (
+                        {!isFlipped && (
+                          <IconButton
+                            aria-label="Zoom image"
+                            icon={<SearchIcon />}
+                            size="sm"
+                            position="absolute"
+                            bottom="10px"
+                            left="10px"
+                            bg="#FFFFFF"
+                            color="#FF69B4"
+                            border="2px solid #FF69B4"
+                            borderRadius="8px"
+                            w="36px"
+                            h="36px"
+                            zIndex="5"
+                            boxShadow="3px 3px 0 #000"
+                            _hover={{ transform: 'scale(1.1)', boxShadow: '5px 5px 0 #000' }}
+                            _active={{ transform: 'scale(0.95)', boxShadow: '2px 2px 0 #000' }}
+                            onClick={(e) => { e.stopPropagation(); setZoomImage(item.image); onOpen(); zoomSound.play().catch(err => console.warn(err)); }}
+                          />
+                        )}
+                        <Image src={item.image} alt={item.name} w="100%" h="100%" objectFit="cover" />
+                        {!isFlipped && item.bubbleText && (
                           <Box
                             position="absolute"
                             top="10px"
@@ -210,7 +199,7 @@ const VintageGames = () => {
                             textAlign="center"
                             animation="floatBubble 2s ease-in-out infinite"
                           >
-                            {game.bubbleText}
+                            {item.bubbleText}
                             <Box
                               position="absolute"
                               bottom="-6px"
@@ -241,7 +230,7 @@ const VintageGames = () => {
                   justifyContent="center"
                   textAlign="center"
                 >
-                  {game.isSold && (
+                  {item.isSold && (
                     <Box
                       position="absolute"
                       top="38%"
@@ -268,7 +257,6 @@ const VintageGames = () => {
                       SOLD
                     </Box>
                   )}
-
                   <Box
                     w="100%"
                     h="100%"
@@ -316,12 +304,12 @@ const VintageGames = () => {
                       pointerEvents="none"
                     />
 
-                    {/* Game info + button */}
+                    {/* Info + Button */}
                     <Text fontSize="1rem" mb="0.5rem" fontFamily="Luckiest Guy" color="#FFFFFF">
-                      {game.name}
+                      {item.name}
                     </Text>
                     <Text fontSize="0.95rem" mb="0.5rem" color="#FFFFFF">
-                      {game.description}
+                      {item.description}
                     </Text>
                     <Button
                       onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
@@ -351,6 +339,46 @@ const VintageGames = () => {
         })}
       </Flex>
 
+      {/* Zoom Modal */}
+      <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+        <ModalOverlay bg="rgba(0,0,0,0.85)" />
+        <ModalContent
+          bg="transparent"
+          maxW="unset"
+          w="auto"
+          h="auto"
+          border="4px solid #FF69B4"
+          borderRadius="15px"
+          overflow="hidden"
+        >
+          <ModalCloseButton
+            top="12px"
+            right="12px"
+            color="#FF69B4"
+            bg="#FFFFFF"
+            border="2px solid #FF69B4"
+            borderRadius="8px"
+            boxShadow="3px 3px 0 #000"
+            _hover={{ transform: 'scale(1.1)', boxShadow: '5px 5px 0 #000', bg: '#FFFFFF' }}
+            _active={{ transform: 'scale(0.95)', boxShadow: '2px 2px 0 #000' }}
+          />
+          <ModalBody p="0" display="flex">
+            {zoomImage && (
+              <Image
+                src={zoomImage}
+                alt="Zoomed collectible"
+                w="auto"
+                h="auto"
+                maxW="95vw"
+                maxH="95vh"
+                objectFit="contain"
+                display="block"
+              />
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
@@ -375,23 +403,10 @@ const VintageGames = () => {
       </Flex>
 
       <style>{`
-        @keyframes floatBubble {
-          0% { transform: translateY(0px) rotate(10deg); }
-          50% { transform: translateY(-5px) rotate(10deg); }
-          100% { transform: translateY(0px) rotate(10deg); }
-        }
-        @keyframes tiltPrism1 {
-          0% { background-position: 0 0; }
-          100% { background-position: 200% 200%; }
-        }
-        @keyframes tiltPrism2 {
-          0% { background-position: 0 0; }
-          100% { background-position: -200% 200%; }
-        }
-        @keyframes tiltPrism3 {
-          0% { background-position: 0 0; }
-          100% { background-position: 200% -200%; }
-        }
+        @keyframes floatBubble { 0% { transform: translateY(0px) rotate(10deg); } 50% { transform: translateY(-5px) rotate(10deg); } 100% { transform: translateY(0px) rotate(10deg); } }
+        @keyframes tiltPrism1 { 0% { background-position: 0 0; } 100% { background-position: 200% 200%; } }
+        @keyframes tiltPrism2 { 0% { background-position: 0 0; } 100% { background-position: -200% 200%; } }
+        @keyframes tiltPrism3 { 0% { background-position: 0 0; } 100% { background-position: 200% -200%; } }
       `}</style>
     </Box>
   );
