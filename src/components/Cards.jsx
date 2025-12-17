@@ -43,10 +43,10 @@ const Cards = () => {
   const cards = [
     {
       id: 1,
-      name: '2018 Topps Heritage Shohei Ohtani RC Auto',
-      image: '/ohtani-rc-1.jpg',
+      name: '2018 Topps Heritage Shohei Ohtani Real One RC Auto PSA 9',
+      image: '/shohei-rc-1.jpg',
       price: '$40,000',
-      description: 'Ohtani’s legendary rookie card delivers epic collector value.',
+      description: 'This is a PRIME EXAMPLE and one of the most desirable cards of the MLB Legend.',
       bubbleText: 'LEGENDARY',
       isSold: false,
     },
