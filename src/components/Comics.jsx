@@ -1,4 +1,5 @@
-import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
+import { Box, Flex, Text, Image, Button, IconButton, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, useDisclosure } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../App.css';
@@ -6,6 +7,8 @@ import '../App.css';
 const Comics = () => {
   const navigate = useNavigate();
   const [flippedComics, setFlippedComics] = useState({});
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [zoomImage, setZoomImage] = useState(null);
 
   // Sounds
   const flipSound = new Audio('/card-flip.mp3');
@@ -16,6 +19,9 @@ const Comics = () => {
 
   const moneySound = new Audio('/coin.mp3');
   moneySound.volume = 0.7;
+
+  const zoomSound = new Audio('/camera-sound.mp3');
+  zoomSound.volume = 0.4;
 
   const handleFlip = (id) => {
     flipSound.currentTime = 0;
@@ -38,6 +44,14 @@ const Comics = () => {
       const contactSection = document.getElementById('contact');
       if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
     }, 500);
+  };
+
+  const handleZoom = (e, image) => {
+    e.stopPropagation();
+    zoomSound.currentTime = 0;
+    zoomSound.play().catch(err => console.warn('Zoom sound failed', err));
+    setZoomImage(image);
+    onOpen();
   };
 
   const comics = [
@@ -73,7 +87,7 @@ const Comics = () => {
       name: 'NYX #3 CGC 9.8 White Pages',
       image: '/x-23-front.jpg',
       price: '$2,000',
-      description: 'The fierce 1st appearance of X-23 — the clone-daughter of Wolverine and a cornerstone of modern mutant lore.',
+      description: 'The fierce 1st appearance of X-23 — the clone-daughter of Wolverine.',
       bubbleText: '1st Appearance',
       isSold: false,
     },
@@ -109,7 +123,7 @@ const Comics = () => {
       </Text>
 
       <Flex wrap="wrap" justify="center" align="center" gap="2rem">
-        {comics.map(comic => {
+        {comics.map((comic) => {
           const isFlipped = flippedComics[comic.id];
 
           return (
@@ -130,9 +144,9 @@ const Comics = () => {
               >
                 {/* Front */}
                 <Box
-                  position="absolute"
                   w="100%"
                   h="100%"
+                  position="absolute"
                   borderRadius="15px"
                   style={{ backfaceVisibility: 'hidden', overflow: 'hidden' }}
                 >
@@ -154,7 +168,8 @@ const Comics = () => {
                       borderTop="5px solid"
                       borderBottom="5px solid"
                       sx={{
-                        borderImage: 'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        borderImage:
+                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
                         transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
                         boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
                       }}
@@ -192,6 +207,34 @@ const Comics = () => {
                         overflow="hidden"
                         position="relative"
                       >
+                        {!isFlipped && (
+                          <IconButton
+                            aria-label="Zoom image"
+                            icon={<SearchIcon />}
+                            size="sm"
+                            position="absolute"
+                            bottom="10px"
+                            left="10px"
+                            bg="#FFFFFF"
+                            color="#FF69B4"
+                            border="2px solid #FF69B4"
+                            borderRadius="8px"
+                            w="36px"
+                            h="36px"
+                            zIndex="5"
+                            boxShadow="3px 3px 0 #000"
+                            _hover={{
+                              transform: 'scale(1.1)',
+                              boxShadow: '5px 5px 0 #000',
+                              bg: '#FFFFFF',
+                            }}
+                            _active={{
+                              transform: 'scale(0.95)',
+                              boxShadow: '2px 2px 0 #000',
+                            }}
+                            onClick={(e) => handleZoom(e, comic.image)}
+                          />
+                        )}
                         <Image
                           src={comic.image}
                           alt={comic.name}
@@ -263,7 +306,8 @@ const Comics = () => {
                       borderTop="5px solid"
                       borderBottom="5px solid"
                       sx={{
-                        borderImage: 'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
+                        borderImage:
+                          'repeating-linear-gradient(45deg, #FFFFFF 0 4px, transparent 4px 8px) 10',
                         transform: 'rotateY(0deg)',
                         boxShadow: '2px 4px 8px rgba(0,0,0,0.35)',
                       }}
@@ -361,6 +405,53 @@ const Comics = () => {
           );
         })}
       </Flex>
+
+      {/* Zoom Modal */}
+      <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+        <ModalOverlay bg="rgba(0,0,0,0.85)" />
+        <ModalContent
+          bg="transparent"
+          maxW="unset"
+          w="auto"
+          h="auto"
+          border="4px solid #FF69B4"
+          borderRadius="15px"
+          overflow="hidden"
+        >
+          <ModalCloseButton
+            top="12px"
+            right="12px"
+            color="#FF69B4"
+            bg="#FFFFFF"
+            border="2px solid #FF69B4"
+            borderRadius="8px"
+            boxShadow="3px 3px 0 #000"
+            _hover={{
+              transform: 'scale(1.1)',
+              boxShadow: '5px 5px 0 #000',
+              bg: '#FFFFFF',
+            }}
+            _active={{
+              transform: 'scale(0.95)',
+              boxShadow: '2px 2px 0 #000',
+            }}
+          />
+          <ModalBody p="0" display="flex">
+            {zoomImage && (
+              <Image
+                src={zoomImage}
+                alt="Zoomed comic"
+                w="auto"
+                h="auto"
+                maxW="95vw"
+                maxH="95vh"
+                objectFit="contain"
+                display="block"
+              />
+            )}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
 
       <Flex justify="center" mt="3rem">
         <Button
