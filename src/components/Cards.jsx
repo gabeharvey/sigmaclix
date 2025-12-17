@@ -2,10 +2,29 @@ import { Box, Flex, Text, Image, Button } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../App.css';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure,
+  IconButton,
+} from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const Cards = () => {
   const navigate = useNavigate();
   const [flippedCards, setFlippedCards] = useState({});
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+const [zoomImage, setZoomImage] = useState(null);
+
+const handleZoom = (e, image) => {
+  e.stopPropagation(); // prevent card flip
+  setZoomImage(image);
+  onOpen();
+};
 
   // Sounds
   const flipSound = new Audio('/card-flip.mp3');
@@ -220,6 +239,32 @@ const Cards = () => {
                         overflow="hidden"
                         position="relative"
                       >
+                      <IconButton
+                        aria-label="Zoom image"
+                        icon={<SearchIcon />}
+                        size="sm"
+                        position="absolute"
+                        bottom="10px"
+                        left="10px"
+                        bg="#FFFFFF"
+                        color="#FF69B4"
+                        border="2px solid #FF69B4"
+                        borderRadius="8px" 
+                        w="36px" 
+                        h="36px"
+                        zIndex="5"
+                        boxShadow="3px 3px 0 #000" 
+                        _hover={{
+                          transform: 'scale(1.1)',
+                          boxShadow: '5px 5px 0 #000',
+                          bg: '#FFFFFF',
+                        }}
+                        _active={{
+                          transform: 'scale(0.95)',
+                          boxShadow: '2px 2px 0 #000',
+                        }}
+                        onClick={(e) => handleZoom(e, card.image)}
+                      />
                         <Image
                           src={card.image}
                           alt={card.name}
@@ -390,11 +435,58 @@ const Cards = () => {
                   </Box>
                 </Box>
               </Box>
+
+
             </Box>
           );
         })}
       </Flex>
+              <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+                <ModalOverlay bg="rgba(0,0,0,0.85)" />
+                  <ModalContent
+                    bg="transparent"
+                    maxW="unset"
+                    w="auto"
+                    h="auto"
+                    border="4px solid #FF69B4"
+                    borderRadius="15px"
+                    overflow="hidden"
+                  >
+                  <ModalCloseButton
+                    top="12px"
+                    right="12px"
+                    color="#FF69B4"
+                    bg="#FFFFFF"
+                    border="2px solid #FF69B4"
+                    borderRadius="8px"
+                    boxShadow="3px 3px 0 #000"
+                    _hover={{
+                      transform: 'scale(1.1)',
+                      boxShadow: '5px 5px 0 #000',
+                      bg: '#FFFFFF',
+                    }}
+                    _active={{
+                      transform: 'scale(0.95)',
+                      boxShadow: '2px 2px 0 #000',
+                    }}
+                  />
+                  <ModalBody p="0" display="flex">
+                    {zoomImage && (
+                  <Image
+                    src={zoomImage}
+                    alt="Zoomed card"
+                    w="auto"
+                    h="auto"
+                    maxW="95vw"
+                    maxH="95vh"
+                    objectFit="contain"
+                    display="block"
+                  />
 
+                    )}
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
       <Flex justify="center" mt="3rem">
         <Button
           onClick={handleHomeClick}
