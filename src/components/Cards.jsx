@@ -77,6 +77,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'LEGENDARY',
       isSold: false,
     },
+    {
+      id: 2,
+      name: '2016 Panini Prizm Dak Prescott RC 10/10 Bookend Gold Auto PSA 7',
+      image: '/dak-3.jpg',
+      price: '$40,000',
+      description: '10/10 Panini Prizm Dak Prescott RC 10/10 Bookend Gold Auto PSA 7',
+      bubbleText: 'Dallas Cowboys',
+      isSold: false,
+    },
   ];
 
   return (
