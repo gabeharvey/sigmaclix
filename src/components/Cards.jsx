@@ -140,6 +140,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'WWE Rising Phenom',
       isSold: false,
     },
+    {
+      id: 9,
+      name: '2023-24 Topps Chome UCC Lamine Yamal 285/299 Violet Speckle Refractor PSA 10',
+      image: '/lamine-yamal.jpeg',
+      price: '$40,000',
+      description: 'Perfect specimen of young soccer prodigy. Iconic with plenty of upside. Only 299 printed.',
+      bubbleText: 'Prodigy',
+      isSold: false,
+    },
   ];
 
   return (
