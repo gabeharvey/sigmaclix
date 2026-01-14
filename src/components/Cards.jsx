@@ -79,6 +79,15 @@ const handleZoom = (e, image) => {
     },
     {
       id: 2,
+      name: '2025 Panini Donruss WNBA Paige Bueckers RC 2/5 Black Gold Laser PSA 10',
+      image: '/paige-bueckers.jpeg',
+      price: '$40,000',
+      description: 'A person would have difficulty finding a finer example of a Paige Bueckers Card Rookie Card. A true holy grail item.',
+      bubbleText: 'Holy Grail',
+      isSold: false,
+    },
+    {
+      id: 3,
       name: '2016 Panini Prizm Dak Prescott RC 10/10 Bookend Gold Auto PSA 7',
       image: '/dak-3.jpg',
       price: '$40,000',
@@ -87,7 +96,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 3,
+      id: 4,
       name: '2016 Panini Prizm Dak Prescott RC 3/5 Gold Vinyl PSA 8',
       image: '/dak-prescott.jpeg',
       price: '$40,000',
@@ -96,7 +105,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 4,
+      id: 5,
       name: '2023 Topps Chrome Hannah Hidalgo McDonalds All-American Superfractor 1/1 PSA 10',
       image: '/hannah-hidalgo.jpeg',
       price: '$40,000',
@@ -105,7 +114,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 5,
+      id: 6,
       name: '2023 Topps Chrome Hannah Hidalgo McDonalds All-American Red 2/5 PSA 9',
       image: '/hannah-hidalgo-1.jpeg',
       price: '$40,000',
@@ -114,7 +123,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 6,
+      id: 7,
       name: '2017 Toppys Gypsy Queen Aaron Judge Fortune Teller RC 1/1 Black Ink PSA 10',
       image: '/aaron-judge.jpeg',
       price: '$40,000',
@@ -123,7 +132,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 7,
+      id: 8,
       name: '2022 Panini Donruss Chronicles WWE Roxanne Perez Rated Rookie 05/10 Gold PSA 9',
       image: '/roxanne-perez.jpeg',
       price: '$40,000',
