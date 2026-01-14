@@ -86,6 +86,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'Dallas Cowboys',
       isSold: false,
     },
+        {
+      id: 2,
+      name: '2016 Panini Prizm Dak Prescott RC 3/5 Gold Vinyl PSA 8',
+      image: '/dak-prescott.jpeg',
+      price: '$40,000',
+      description: 'Only 5 made of this crown jewel. Extremely scarce card of NFL legend.',
+      bubbleText: 'Scarce',
+      isSold: false,
+    },
   ];
 
   return (
