@@ -97,7 +97,7 @@ const handleZoom = (e, image) => {
     },
     {
       id: 4,
-      name: '2023 Topps Chrome Hannah Hidalgo McD All-American Superfractor 1/1 PSA 10',
+      name: '2023 Topps Chrome Hannah Hidalgo McDonalds All-American Superfractor 1/1 PSA 10',
       image: '/hannah-hidalgo.jpeg',
       price: '$40,000',
       description: 'Holy grail item of talented young rising star. Notre Dame Fighting Irish. Nuff said.',
@@ -106,6 +106,15 @@ const handleZoom = (e, image) => {
     },
     {
       id: 5,
+      name: '2023 Topps Chrome Hannah Hidalgo McDonalds All-American Red 2/5 PSA 9',
+      image: '/hannah-hidalgo-1.jpeg',
+      price: '$40,000',
+      description: 'Extremely scarce card of young phenom. Only 5 printed.',
+      bubbleText: '2/5',
+      isSold: false,
+    },
+    {
+      id: 6,
       name: '2017 Toppys Gypsy Queen Aaron Judge Fortune Teller RC 1/1 Black Ink PSA 10',
       image: '/aaron-judge.jpeg',
       price: '$40,000',
@@ -114,7 +123,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 6,
+      id: 7,
       name: '2022 Panini Donruss Chronicles WWE Roxanne Perez Rated Rookie 05/10 Gold PSA 9',
       image: '/roxanne-perez.jpeg',
       price: '$40,000',
