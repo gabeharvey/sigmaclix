@@ -104,6 +104,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'Superfractor',
       isSold: false,
     },
+    {
+      id: 5,
+      name: '2017 Toppys Gypsy Queen Aaron Judge Fortune Teller RC 1/1 Black Ink PSA 10',
+      image: '/aaron-judge.jpeg',
+      price: '$40,000',
+      description: 'Extremely Unique 1/1 Rookie Card of the New York Yankees 3x MVP Home Run King. PSA 10. Only one printed in Black Ink.',
+      bubbleText: 'Bronx Bomber',
+      isSold: false,
+    },
   ];
 
   return (
