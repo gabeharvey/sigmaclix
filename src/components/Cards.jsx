@@ -158,6 +158,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'GOAT',
       isSold: false,
     },
+    {
+      id: 11,
+      name: '2025 Topps Chrome Marvel Fantasma 1st Appearance Alpha 01/10 Black Refractor PSA 9',
+      image: '/fantasma.jpeg',
+      price: '$40,000',
+      description: 'First print alpha version of emerging Marvel Super Hero. Beautiful Card!',
+      bubbleText: 'Alpha 1st Appearance',
+      isSold: false,
+    },
   ];
 
   return (
