@@ -86,13 +86,22 @@ const handleZoom = (e, image) => {
       bubbleText: 'Dallas Cowboys',
       isSold: false,
     },
-        {
+    {
       id: 3,
       name: '2016 Panini Prizm Dak Prescott RC 3/5 Gold Vinyl PSA 8',
       image: '/dak-prescott.jpeg',
       price: '$40,000',
       description: 'Only 5 made of this crown jewel. Extremely scarce card of NFL legend.',
       bubbleText: 'Scarce',
+      isSold: false,
+    },
+    {
+      id: 4,
+      name: '2023 Topps Chrome Hannah Hidalgo McD All-American Superfractor 1/1 PSA 10',
+      image: '/hannah-hidalgo.jpeg',
+      price: '$40,000',
+      description: 'Holy grail item of talented young rising star. Notre Dame Fighting Irish. Nuff said.',
+      bubbleText: 'Superfractor',
       isSold: false,
     },
   ];
