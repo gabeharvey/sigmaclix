@@ -149,6 +149,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'Prodigy',
       isSold: false,
     },
+    {
+      id: 10,
+      name: '2017 Panini Donruss Patrick Mahomes Rated Rookie 053/100 Silver Press Proof PSA 9',
+      image: '/patrick-mahomes.jpeg',
+      price: '$40,000',
+      description: 'Limited Print Rated Rookie of NFL Legend.',
+      bubbleText: 'GOAT',
+      isSold: false,
+    },
   ];
 
   return (
