@@ -87,7 +87,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
         {
-      id: 2,
+      id: 3,
       name: '2016 Panini Prizm Dak Prescott RC 3/5 Gold Vinyl PSA 8',
       image: '/dak-prescott.jpeg',
       price: '$40,000',
