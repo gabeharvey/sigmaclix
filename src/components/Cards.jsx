@@ -113,6 +113,15 @@ const handleZoom = (e, image) => {
       bubbleText: 'Bronx Bomber',
       isSold: false,
     },
+    {
+      id: 6,
+      name: '2022 Panini Donruss Chronicles WWE Roxanne Perez Rated Rookie 05/10 Gold PSA 9',
+      image: '/roxanne-perez.jpeg',
+      price: '$40,000',
+      description: 'Extremely popular rising WWE superstar rookie card. Only 10 printed.',
+      bubbleText: 'WWE Rising Phenom',
+      isSold: false,
+    },
   ];
 
   return (
