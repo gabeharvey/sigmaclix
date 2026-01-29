@@ -73,7 +73,7 @@ const handleZoom = (e, image) => {
       name: '2018 Topps Heritage Shohei Ohtani Real One RC Auto PSA 9',
       image: '/shohei-rc-1.jpg',
       price: '$40,000',
-      description: 'This is a PRIME EXAMPLE and one of the most desirable cards of the MLB Legend.',
+      description: 'This is a PRIME example and one of the most desirable cards of the MLB Legend.',
       bubbleText: 'LEGENDARY',
       isSold: false,
     },
