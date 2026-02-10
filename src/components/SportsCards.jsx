@@ -106,6 +106,15 @@ const handleZoom = (e, image) => {
     },
     {
       id: 5,
+      name: '2016 Panini Prizm Dak Prescott RC 2/5 Gold Vinyl PSA 10',
+      image: '/dak-prescott-10-trim.jpeg',
+      price: '$40,000',
+      description: 'Stunning perfect masterpiece of the Dallas Legend. Only 5 printed. PSA 10.',
+      bubbleText: 'Grail Item',
+      isSold: false,
+    },
+    {
+      id: 6,
       name: '2023 Topps Chrome Hannah Hidalgo McDonalds All-American Superfractor 1/1 PSA 10',
       image: '/hannah-hidalgo.jpeg',
       price: '$40,000',
@@ -114,7 +123,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 6,
+      id: 7,
       name: '2023 Topps Chrome Hannah Hidalgo McDonalds All-American Red 2/5 PSA 9',
       image: '/hannah-hidalgo-1.jpeg',
       price: '$40,000',
@@ -123,7 +132,7 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 7,
+      id: 8,
       name: '2017 Toppys Gypsy Queen Aaron Judge Fortune Teller RC 1/1 Black Ink PSA 10',
       image: '/aaron-judge.jpeg',
       price: '$40,000',
@@ -132,21 +141,12 @@ const handleZoom = (e, image) => {
       isSold: false,
     },
     {
-      id: 8,
+      id: 9,
       name: '2022 Panini Donruss Chronicles WWE Roxanne Perez Rated Rookie 05/10 Gold PSA 9',
       image: '/roxanne-perez.jpeg',
       price: '$40,000',
       description: 'Extremely popular rising WWE superstar rookie card. Only 10 printed.',
       bubbleText: 'WWE Rising Phenom',
-      isSold: false,
-    },
-    {
-      id: 9,
-      name: '2024=25 Topps Chrome Cooper Flagg RC 75/75 Purple Pulsar Bookend PSA 9',
-      image: '/cooper-flagg-trim.jpeg',
-      price: '$40,000',
-      description: 'VERY clean bookend of generational talent Cooper Flagg.',
-      bubbleText: 'Generational Talent',
       isSold: false,
     },
     {
