@@ -8,6 +8,8 @@ import Comics from './components/Comics.jsx';
 import VintageGames from './components/VintageGames.jsx';
 import Toys from './components/Toys.jsx';
 import Presentation from './components/Presentation.jsx';
+import SportsCards from './components/SportsCards.jsx';
+import TCGCards from './components/TCGCards.jsx';
 
 const theme = extendTheme({
   styles: {
@@ -22,14 +24,16 @@ const theme = extendTheme({
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />, 
+    element: <App />,
     children: [
-      { index: true, element: <MainLayout /> }, 
-      { path: 'cards', element: <Cards /> }, 
-      { path: 'comics', element: <Comics /> }, 
-      { path: 'vintagegames', element: <VintageGames /> }, 
-      { path: 'toys', element: <Toys /> }, 
-      { path: 'presentation', element: <Presentation /> }, 
+      { index: true, element: <MainLayout /> },
+      { path: 'cards', element: <Cards /> },
+      { path: 'cards/sports', element: <SportsCards /> },
+      { path: 'cards/tcg', element: <TCGCards /> },
+      { path: 'comics', element: <Comics /> },
+      { path: 'vintagegames', element: <VintageGames /> },
+      { path: 'toys', element: <Toys /> },
+      { path: 'presentation', element: <Presentation /> },
     ],
   },
 ]);
