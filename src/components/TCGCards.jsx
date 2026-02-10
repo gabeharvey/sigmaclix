@@ -70,6 +70,15 @@ const handleZoom = (e, image) => {
   const cards = [
     {
       id: 1,
+      name: '2025 Topps Chrome Marvel Storm Superfactor 1/1 PSA 9',
+      image: '/storm-superfractor.jpeg',
+      price: '$40,000',
+      description: '1/1 Monster of the iconic Storm. Sure to be a collection centerpiece.',
+      bubbleText: 'Masterpiece',
+      isSold: false,
+    },
+    {
+      id: 2,
       name: '2025 Topps Chrome Marvel Fantasma 1st Appearance Alpha 01/10 Black Refractor PSA 9',
       image: '/fantasma.jpeg',
       price: '$40,000',
