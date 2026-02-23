@@ -203,6 +203,15 @@ const handleZoom = (e, image) => {
       bubbleText: '💣',
       isSold: false,
     },
+    {
+      id: 16,
+      name: '2016 Panini Donruss Elite Dak Prescott 1/1 Gold PSA 9',
+      image: '/dak-first.jpeg',
+      price: '$40,000',
+      description: 'First series featuring Dak Prescott in Dallas Cowboys Uniform',
+      bubbleText: 'Big D Grail',
+      isSold: false,
+    },
   ];
 
   return (
