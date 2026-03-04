@@ -201,7 +201,7 @@ const handleZoom = (e, image) => {
       price: '$40,000',
       description: 'Purple Pulsar 💣. Only 299 printed. PERFECT specimen',
       bubbleText: '💣',
-      isSold: false,
+      isSold: true,
     },
     {
       id: 16,
