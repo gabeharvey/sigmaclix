@@ -183,7 +183,7 @@ const handleZoom = (e, image) => {
       price: '$40,000',
       description: 'Pink Geometric 🌸. Only 250 printed.',
       bubbleText: '🌸',
-      isSold: false,
+      isSold: true,
     },
     {
       id: 14,
