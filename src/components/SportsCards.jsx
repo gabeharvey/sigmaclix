@@ -156,7 +156,7 @@ const handleZoom = (e, image) => {
       price: '$40,000',
       description: 'Limited Print Rated Rookie of NFL Legend.',
       bubbleText: 'GOAT',
-      isSold: false,
+      isSold: true,
     },
     {
       id: 11,
