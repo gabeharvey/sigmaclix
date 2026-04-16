@@ -82,8 +82,8 @@ const handleZoom = (e, image) => {
       name: '2025 Panini Donruss WNBA Paige Bueckers RC 2/5 Black Gold Laser PSA 10',
       image: '/paige-bueckers.jpeg',
       price: '$40,000',
-      description: 'A person would have difficulty finding a finer example of a Paige Bueckers Card Rookie Card. A true holy grail item.',
-      bubbleText: 'Holy Grail',
+      description: 'A person would have difficulty finding a finer example of a Paige Bueckers Card Rookie Card. A true grail item.',
+      bubbleText: 'Grail',
       isSold: false,
     },
     {
