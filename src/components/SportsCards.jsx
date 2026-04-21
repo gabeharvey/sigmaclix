@@ -215,7 +215,7 @@ const handleZoom = (e, image) => {
     {
       id: 17,
       name: '2025 Topps Chrome Lauren Betts 1/1 Superfractor PSA 9',
-      image: '/lauren-betts-1.png',
+      image: '/lauren-betts-2.jpeg',
       price: '$19,999',
       description: 'True 1/1 Superfractor. First card of Lauren Betts following her rise as a National Champion at UCLA and #4 overall WNBA Draft selection.',
       bubbleText: '1/1 Monster',
