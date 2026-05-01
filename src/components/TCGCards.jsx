@@ -215,7 +215,7 @@ const handleZoom = (e, image) => {
     {
       id: 17,
       name: 'Web-Head First Appearance Red 1/5 PSA 9 2025 Topps Chrome Marvel Sapphire',
-      image: '/web-head-red-1-5.jpeg',
+      image: '/web-head-red-1-5.png',
       price: 'TBD',
       description: 'Ultra rare 1/5 Web-Head sapphire red parallel.',
       bubbleText: '1/5',
@@ -224,7 +224,7 @@ const handleZoom = (e, image) => {
     {
       id: 18,
       name: 'Web-Head First Appearance Red 5/5 PSA 9 2025 Topps Chrome Marvel Sapphire',
-      image: '/web-head-red-5-5.jpeg',
+      image: '/web-head-red-5-5.png',
       price: 'TBD',
       description: 'Web-Head first appearance red sapphire variant limited to 5.',
       bubbleText: '5/5',
@@ -233,7 +233,7 @@ const handleZoom = (e, image) => {
     {
       id: 19,
       name: 'Web-Head First Appearance Red Shimmer 5/5 PSA 10 2025 Topps Chrome Marvel',
-      image: '/web-head-red-shimmer.jpeg',
+      image: '/web-head-red-shimmer-5-5.png',
       price: 'TBD',
       description: 'Gem Mint Web-Head red shimmer Superfractor-style parallel.',
       bubbleText: 'GEM MT',
