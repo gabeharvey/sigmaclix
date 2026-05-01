@@ -89,7 +89,7 @@ const handleZoom = (e, image) => {
     {
       id: 3,
       name: 'Amaranth First Appearance Clawed Red Refractor 4/5 PSA 10 2025 Topps Chrome Marvel',
-      image: '/amaranth-red-4-5.jpeg',
+      image: '/amaranth-clawed-4-5.png',
       price: 'TBD',
       description: 'Gem Mint Amaranth first appearance clawed red refractor.',
       bubbleText: 'GEM MT',
@@ -98,7 +98,7 @@ const handleZoom = (e, image) => {
     {
       id: 4,
       name: 'Amaranth Superfractor 1/1 PSA 8 2025 Topps Chrome Marvel First Appearance Grail',
-      image: '/amaranth-superfractor.jpeg',
+      image: '/amaranth-superfractor.png',
       price: 'TBD',
       description: 'First appearance Superfractor of Amaranth, a rare Marvel grail card.',
       bubbleText: '1st Appearance',
@@ -107,7 +107,7 @@ const handleZoom = (e, image) => {
     {
       id: 5,
       name: 'Enchantress Superfractor 1/1 PSA 8 2025 Topps Chrome Marvel Grail',
-      image: '/enchantress-superfractor.jpeg',
+      image: '/enchantress-superfractor.png',
       price: 'TBD',
       description: 'Enchantress Superfractor grail card from 2025 Marvel Chrome set.',
       bubbleText: 'Grail',
