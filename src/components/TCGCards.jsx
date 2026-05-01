@@ -125,7 +125,7 @@ const handleZoom = (e, image) => {
     {
       id: 7,
       name: 'Liberty First Appearance Red Wave 4/5 PSA 9 2025 Topps Chrome Marvel',
-      image: '/liberty-red-wave.jpeg',
+      image: '/liberty-4-5.png',
       price: 'TBD',
       description: 'Liberty red wave first appearance Marvel Chrome card.',
       bubbleText: '4/5',
@@ -134,7 +134,7 @@ const handleZoom = (e, image) => {
     {
       id: 8,
       name: 'Psylocke Superfractor 1/1 PSA 6 2025 Topps Chrome Marvel Excellent Mint Grail',
-      image: '/psylocke-superfractor.jpeg',
+      image: '/psylocke-superfractor.png',
       price: 'TBD',
       description: 'Iconic Psylocke Superfractor grail piece from 2025 Topps Chrome Marvel.',
       bubbleText: 'Grail',
@@ -143,7 +143,7 @@ const handleZoom = (e, image) => {
     {
       id: 9,
       name: 'Rio Vidal Death Debut 1/5 PSA 10 2025 Topps Chrome Marvel Red Geometric',
-      image: '/rio-vidal-red-geometric.jpeg',
+      image: '/rio-vidal-red-geometric.png',
       price: 'TBD',
       description: 'Death debut Rio Vidal red geometric limited print card.',
       bubbleText: '1/5',
