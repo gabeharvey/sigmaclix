@@ -116,7 +116,7 @@ const handleZoom = (e, image) => {
     {
       id: 6,
       name: 'Hellrune Superfractor 1/1 PSA 10 2025 Topps Chrome Marvel First Appearance',
-      image: '/hellrune-superfractor.jpeg',
+      image: '/hellrune-superfractor.png',
       price: 'TBD',
       description: 'Gem Mint PSA 10 Hellrune first appearance Superfractor.',
       bubbleText: 'GEM MT',
@@ -152,7 +152,7 @@ const handleZoom = (e, image) => {
     {
       id: 10,
       name: 'Solarus First Appearance Clawed Red 2/5 PSA 9 2025 Topps Chrome Marvel',
-      image: '/solarus-red-2-5.jpeg',
+      image: '/solarus-clawed-2-5.png',
       price: 'TBD',
       description: 'Solarus first appearance clawed red parallel limited to 5.',
       bubbleText: '2/5',
@@ -161,7 +161,7 @@ const handleZoom = (e, image) => {
     {
       id: 11,
       name: 'Solarus First Appearance Clawed Red 3/5 PSA 10 2025 Topps Chrome Marvel Grail',
-      image: '/solarus-red-3-5.jpeg',
+      image: '/solarus-clawed-3-5.png',
       price: 'TBD',
       description: 'Gem Mint Solarus clawed red grail card.',
       bubbleText: 'GEM MT',
@@ -170,7 +170,7 @@ const handleZoom = (e, image) => {
     {
       id: 12,
       name: 'Solarus First Appearance Clawed Red Refractor 5/5 PSA 8 2025 Topps Chrome Marvel',
-      image: '/solarus-red-5-5.jpeg',
+      image: '/solarus-clawed-5-5.png',
       price: 'TBD',
       description: 'Solarus refractor red 5/5 limited Marvel Chrome card.',
       bubbleText: '5/5',
@@ -179,7 +179,7 @@ const handleZoom = (e, image) => {
     {
       id: 13,
       name: 'Solarus Red Wave 2/5 PSA 10 2025 Topps Chrome Marvel First Appearance Grail',
-      image: '/solarus-red-wave-2-5.jpeg',
+      image: '/solarus-red-wave-2-5.png',
       price: 'TBD',
       description: 'Gem Mint Solarus red wave grail first appearance card.',
       bubbleText: 'GRAIL',
