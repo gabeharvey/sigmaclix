@@ -188,7 +188,7 @@ const handleZoom = (e, image) => {
     {
       id: 14,
       name: 'Spider-Girl First Appearance Red 1/5 PSA 9 2025 Topps Chrome Marvel Sapphire',
-      image: '/spider-girl-red.jpeg',
+      image: '/spider-girl-red-1-5.png',
       price: 'TBD',
       description: 'Spider-Girl first appearance sapphire red 1/5 print run.',
       bubbleText: '1/5',
@@ -206,7 +206,7 @@ const handleZoom = (e, image) => {
     {
       id: 16,
       name: 'X-23 Clawed Superfractor 1/1 PSA 8 2025 Topps Chrome Marvel Grail',
-      image: '/x23-superfractor.jpeg',
+      image: '/x23-clawed-superfractor.png',
       price: 'TBD',
       description: 'Clawed variant Superfractor of X-23, highly collectible Marvel grail.',
       bubbleText: 'Grail',
