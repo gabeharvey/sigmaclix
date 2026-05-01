@@ -71,7 +71,7 @@ const handleZoom = (e, image) => {
     {
       id: 1,
       name: 'America Chavez Padparadscha 1/1 PSA 8 2025 Topps Chrome Marvel Sapphire',
-      image: '/america-chavez-padparadscha.jpeg',
+      image: '/america-chavez-padparadscha.png',
       price: 'TBD',
       description: 'Ultra rare Padparadscha 1/1 America Chavez sapphire variant.',
       bubbleText: '1/1',
@@ -80,7 +80,7 @@ const handleZoom = (e, image) => {
     {
       id: 2,
       name: 'America Chavez Superfractor 1/1 PSA 8 2025 Topps Chrome Marvel Grail',
-      image: '/america-chavez-superfractor.jpeg',
+      image: '/america-chavez-superfractor.png',
       price: 'TBD',
       description: 'America Chavez Superfractor collectible Marvel grail card.',
       bubbleText: 'Grail',
