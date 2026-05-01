@@ -212,7 +212,7 @@ const Plushies = () => {
                               transform: 'scale(0.95)',
                               boxShadow: '2px 2px 0 #000',
                             }}
-                            onClick={(e) => handleZoom(e, plushies.image)}
+                            onClick={(e) => handleZoom(e, plush.image)}
                           />
                         )}
                         <Image
