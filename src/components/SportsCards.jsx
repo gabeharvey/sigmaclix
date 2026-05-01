@@ -233,7 +233,7 @@ const handleZoom = (e, image) => {
     {
       id: 19,
       name: '2015 Topps Chrome Mini Amari Cooper RC 1/1 Superfractor BGS 9.5 GEM MT 1989 Insert',
-      image: '/amari-cooper-1989-superfractor.png',
+      image: '/amari-cooper-mini-1989-superfractor.png',
       price: '$40,000',
       description: 'Ultra rare Superfractor rookie of Amari Cooper from the iconic 1989 insert series.',
       bubbleText: 'SUPERFRACTOR',
@@ -251,7 +251,7 @@ const handleZoom = (e, image) => {
     {
       id: 21,
       name: '2016 Panini Spectra Ezekiel Elliott / Dak Prescott Dual RC Auto 1/1 PSA 8',
-      image: '/zeke-dak-dual-auto.jpg',
+      image: '/dak-zeke-dual-auto-superfractor.png',
       price: '$40,000',
       description: 'Dual auto rookie 1/1 featuring Ezekiel Elliott and Dak Prescott.',
       bubbleText: 'DUAL AUTO',
@@ -260,7 +260,7 @@ const handleZoom = (e, image) => {
     {
       id: 22,
       name: '2014 Topps Chrome Carlos Hyde RC 1/1 Superfractor BGS 9.5 GEM MT 1965 Insert',
-      image: '/carlos-hyde-superfractor.jpg',
+      image: '/carlos-hyde-superfractor.png',
       price: '$40,000',
       description: 'Superfractor rookie of Carlos Hyde with 1965 insert design.',
       bubbleText: 'SUPERFRACTOR',
@@ -269,7 +269,7 @@ const handleZoom = (e, image) => {
     {
       id: 23,
       name: '2016 Panini Certified Dak Prescott RC 1/1 New Generation Jersey Black PSA 7',
-      image: '/dak-certified-black.jpg',
+      image: '/dak-certified-black.png',
       price: '$40,000',
       description: 'Black jersey rookie 1/1 Dak Prescott from Certified New Generation.',
       bubbleText: 'BLACK JERSEY',
@@ -278,7 +278,7 @@ const handleZoom = (e, image) => {
     {
       id: 24,
       name: '2014 Topps Chrome Mini Jeremy Hill RC 1/1 Superfractor BGS 9.5 GEM MT 1985 Insert',
-      image: '/jeremy-hill-superfractor.jpg',
+      image: '/jeremy-hill-superfractor.png',
       price: '$40,000',
       description: 'Superfractor rookie of Jeremy Hill from 1985 insert set.',
       bubbleText: 'SUPERFRACTOR',
@@ -287,7 +287,7 @@ const handleZoom = (e, image) => {
     {
       id: 25,
       name: '2016 Panini Donruss Dak Prescott Rookie Phenom RC 1/1 Auto NFLPA Logo PSA 7',
-      image: '/dak-rookie-phenom.jpg',
+      image: '/dak-rookie-phenom.png',
       price: '$40,000',
       description: 'NFLPA Logo Auto Rookie Phenom 1/1 of Dak Prescott.',
       bubbleText: 'AUTO 1/1',
