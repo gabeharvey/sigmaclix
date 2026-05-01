@@ -296,7 +296,7 @@ const handleZoom = (e, image) => {
     {
       id: 26,
       name: '2016 Panini Prizm Dak Prescott RC 1/1 Super Prime Jersey PSA 10 GEM MT',
-      image: '/dak-super-prime.jpg',
+      image: '/dak-super-prime.png',
       price: '$40,000',
       description: 'Premier Jersey Super Prime 1/1 PSA 10 Dak Prescott rookie.',
       bubbleText: 'PSA 10',
@@ -305,7 +305,7 @@ const handleZoom = (e, image) => {
     {
       id: 27,
       name: '2016 Panini Prizm Dak Prescott RC 1/1 Rookie Introductions Black Finite',
-      image: '/dak-black-finite.jpg',
+      image: '/dak-black-finite.png',
       price: '$40,000',
       description: 'Black Finite 1/1 Rookie Introductions insert of Dak Prescott.',
       bubbleText: 'BLACK FINITE',
@@ -314,7 +314,7 @@ const handleZoom = (e, image) => {
     {
       id: 28,
       name: '2016 Panini Cyber Monday Dak Prescott RC 1/1 Hyperplaid Memorabilia PSA 8',
-      image: '/dak-hyperplaid.jpg',
+      image: '/dak-hyperplaid.png',
       price: '$40,000',
       description: 'Hyperplaid memorabilia 1/1 rookie Dak Prescott Cyber Monday release.',
       bubbleText: 'HYPERPLAI D',
@@ -323,7 +323,7 @@ const handleZoom = (e, image) => {
     {
       id: 29,
       name: '2016 Panini Donruss Elite Dak Prescott RC 4/5 Blue Color Match Jersey PSA 9',
-      image: '/dak-blue-color-match.jpg',
+      image: '/dak-blue-color-match.png',
       price: '$40,000',
       description: 'Blue Color Match jersey /5 parallel of Dak Prescott rookie.',
       bubbleText: '4/5',
