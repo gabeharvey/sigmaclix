@@ -74,7 +74,7 @@ const Navbar = () => {
     };
 
     const handleLinkType = (text) => {
-        const pageLinks = ['CARDS', 'COMICS', 'VINTAGE GAMES', 'TOYS'];
+        const pageLinks = ['CARDS', 'COMICS', 'VINTAGE GAMES', 'TOYS', 'PLUSHIES'];
         return pageLinks.includes(text) ? 'page' : 'scroll';
     };
 
@@ -83,7 +83,7 @@ const Navbar = () => {
         return `/${text.toLowerCase()}`;
     };
 
-    const navItems = ['HOME', 'STOCK', 'SOCIAL', 'CARDS', 'COMICS', 'VINTAGE GAMES', 'TOYS', 'CONTACT'];
+    const navItems = ['HOME', 'STOCK', 'SOCIAL', 'CARDS', 'COMICS', 'VINTAGE GAMES', 'TOYS', 'PLUSHIES', 'CONTACT'];
 
     return (
         <Box position="sticky" top="0" zIndex="999" bg="transparent">
