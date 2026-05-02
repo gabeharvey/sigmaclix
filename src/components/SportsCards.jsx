@@ -85,7 +85,7 @@ const handleZoom = (e, image) => {
       name: '2017 Topps Gypsy Queen Aaron Judge On-Card Auto 04/99 PSA 10',
       image: '/judge-rc-4-99.png',
       price: '$40,000',
-      description: 'Extremely rare Aaron Judge rookie On-Card Autograph from 2017 Topps Gypsy Queen. Numbered 04/99 and graded PSA 10 GEM MINT. Elite Yankees cornerstone rookie auto featuring the Home Run King in pristine condition.',
+      description: 'Extremely rare Aaron Judge rookie On-Card Autograph from 2017 Topps Gypsy Queen. Numbered 04/99 and graded PSA 10 GEM MINT.',
       bubbleText: 'Bronx Bomber',
       isSold: false,
     },
